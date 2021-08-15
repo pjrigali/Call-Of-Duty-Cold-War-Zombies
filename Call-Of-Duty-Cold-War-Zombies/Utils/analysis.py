@@ -346,7 +346,10 @@ class Analyze:
         plt.grid(linestyle=':')
         plt.xlim(0, x_limit)
         plt.gca().add_artist(legend1)
-        plt.show()
 
         if save_image:
             plt.savefig(keyword)
+
+        plt.show()
+
+
