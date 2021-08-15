@@ -491,7 +491,7 @@ class Build:
     def process(self,
                 weapon: str,
                 nickname: str = None,
-                equipped_attachments: List[str] = None,
+                equipped_attachments: dict = None,
                 rarity: str = None,
                 pap: str = None,
                 accuracy: float = None,
