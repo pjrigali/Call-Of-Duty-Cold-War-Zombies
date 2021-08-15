@@ -2,7 +2,7 @@
 
 Zombies Module is a Python library for analyzing weapons in Cold War Zombies.
 
-Weapon stats are current through Season 4. 
+Weapon stats are current through Season 4. Zombie health cap is set to level 43.
 
 ## Usage
 
