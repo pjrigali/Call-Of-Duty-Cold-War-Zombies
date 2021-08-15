@@ -308,16 +308,16 @@ class Analyze:
 
                 return temp_dic
 
-    def viz(self, lst, keyword: str, x_limit: int, ind: int):
+    def viz(self, gun_lst: list, keyword: str, x_limit: int, ind: int, save_image: bool = False) -> None:
         n = 0
-        for i in lst:
+        for i in gun_lst:
             if keyword in i[1].columns:
                 n += 1
 
         cmap = [plt.get_cmap('viridis')(1. * i / n) for i in range(n)]
 
         df = DataFrame()
-        for i in lst:
+        for i in gun_lst:
             df[i[0]] = i[1][keyword]
 
         mu = df.mean(axis=1)
@@ -346,4 +346,10 @@ class Analyze:
         plt.grid(linestyle=':')
         plt.xlim(0, x_limit)
         plt.gca().add_artist(legend1)
+
+        if save_image:
+            plt.savefig(keyword)
+
         plt.show()
+
+
