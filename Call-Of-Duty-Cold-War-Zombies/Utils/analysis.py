@@ -13,11 +13,6 @@ from random import choices, seed
 seed(1)
 
 
-def damage_per_clip(dr: np.ndarray, shots_average: np.ndarray) -> np.ndarray:
-    n_dr = [dr[i] * shots_average for i, j in enumerate(dr)]
-    return np.around(n_dr, 0)
-
-
 class Analyze:
 
     def __init__(self, ranges: int = 200):
@@ -165,6 +160,10 @@ class Analyze:
     def damage_per_max_ammo(self, dic: dict, dr: np.ndarray) -> np.ndarray:
         return np.multiply(np.divide(dic['Ammo Capacity'], dic['Burst']), dr)
 
+    def damage_per_clip(self, dr: np.ndarray, shots_average: np.ndarray) -> np.ndarray:
+        n_dr = [dr[i] * shots_average for i, j in enumerate(dr)]
+        return np.around(n_dr, 0)
+
     def movement_ratio(self, dic: dict) -> float:
         lst = {
             'Movement Speed': [0, 0, 0],
@@ -256,7 +255,7 @@ class Analyze:
             adr = np.multiply(np.divide(damage_range, 4), dic['Armour Damage'])
             if for_viz:
                 temp_dic = {
-                    'Damage Per Clip': damage_per_clip(adr, mu),
+                    'Damage Per Clip': self.damage_per_clip(adr, mu),
                     'Damage Per Second': self.damage_per_second(dic, adr),
                     'Time To Kill': self.time_to_kill(dic, damage_range, zom) + self.time_to_kill(dic, adr,
                                                                                                   zom + armour),
@@ -267,7 +266,7 @@ class Analyze:
                 return [dic['Temp Name'], DataFrame(temp_dic)]
             else:
                 temp_dic = {'Temp Name': dic['Temp Name'],
-                            'Damage Per Clip': damage_per_clip(adr, mu),
+                            'Damage Per Clip': self.damage_per_clip(adr, mu),
                             'Damage Per Second': self.damage_per_second(dic, adr),
                             'Time To Kill': self.time_to_kill(dic, damage_range, zom) + self.time_to_kill(dic,
                                                                                                           adr,
@@ -285,16 +284,16 @@ class Analyze:
         else:
             if for_viz:
                 temp_dic = {
-                    'Damage Per Clip': damage_per_clip(damage_range, mu),
+                    'Damage Per Clip': self.damage_per_clip(damage_range, mu),
                     'Damage Per Second': self.damage_per_second(dic, damage_range),
                     'Time To Kill': self.time_to_kill(dic, damage_range, zom),
                     'Shots To Kill': self.shots_to_kill(damage_range, zom),
                     'Damage Per Max Ammo': self.damage_per_max_ammo(dic, damage_range),
                     }
-                return [dic['Temp Name'], DataFrame(temp_dic)]
+                return DataFrame(temp_dic)
             else:
                 temp_dic = {'Temp Name': dic['Temp Name'],
-                            'Damage Per Clip': damage_per_clip(damage_range, mu),
+                            'Damage Per Clip': self.damage_per_clip(damage_range, mu),
                             'Damage Per Second': self.damage_per_second(dic, damage_range),
                             'Time To Kill': self.time_to_kill(dic, damage_range, zom),
                             'Shots To Kill': self.shots_to_kill(damage_range, zom),
@@ -308,18 +307,15 @@ class Analyze:
 
                 return temp_dic
 
-    def viz(self, gun_lst: list, keyword: str, x_limit: int, ind: int, save_image: bool = False) -> None:
+    def viz(self, gun_data: dict, keyword: str, x_limit: int, ind: int, save_image: bool = False) -> None:
         n = 0
-        for i in gun_lst:
-            if keyword in i[1].columns:
+        df = DataFrame()
+        for i in gun_data.keys():
+            df[i] = gun_data[i][keyword]
+            if keyword in gun_data[i].columns:
                 n += 1
 
         cmap = [plt.get_cmap('viridis')(1. * i / n) for i in range(n)]
-
-        df = DataFrame()
-        for i in gun_lst:
-            df[i[0]] = i[1][keyword]
-
         mu = df.mean(axis=1)
         labels = []
         count = 0
@@ -342,8 +338,10 @@ class Analyze:
             plt.ylabel('Shots')
         elif 'Ratio' in keyword:
             plt.ylabel('Ratio')
+        else:
+            plt.ylabel('Other')
 
-        plt.grid(linestyle=':')
+        plt.grid(linewidth=1, linestyle=(0, (5, 5)), alpha=.75)
         plt.xlim(0, x_limit)
         plt.gca().add_artist(legend1)
 
@@ -352,4 +350,7 @@ class Analyze:
 
         plt.show()
 
+    def viz_all(self, data: dict, x_limit: int, ind: int, save_image: bool) -> None:
 
+        for keyword in ['Damage Per Max Ammo', 'Damage Per Clip', 'Damage Per Second', 'Time To Kill', 'Shots To Kill']:
+            self.viz(gun_data=data, keyword=keyword, x_limit=x_limit, ind=ind, save_image=save_image)
