@@ -4,7 +4,7 @@ Created on Thu Apr 22 21:09:41 2021
 
 @author: Peter
 """
-from pandas import DataFrame, concat
+import pandas as pd
 from typing import List
 import Utils.weapon_stats as w
 import Utils.analysis as a
@@ -13,10 +13,15 @@ aa = a.Analyze()
 
 class Build:
 
-    def __init__(self, weapon_class_levels, perk_class_levels):
-        self.weapon_class_levels = weapon_class_levels
-        self.perk_class_levels = perk_class_levels
-        self.consecutive = True
+    def __init__(self, weapon_class_levels: dict, perk_class_levels: dict):
+        self.weapon_class_levels: dict = weapon_class_levels
+        self.perk_class_levels: dict = perk_class_levels
+
+        if perk_class_levels['deadshot'] == '5':
+            self.consecutive: bool = True
+        else:
+            self.consecutive: bool = False
+
         self.stats = {'XM4': w.Xm4,
                       'AK47': w.Ak47,
                       'Krig': w.Krig,
@@ -66,18 +71,25 @@ class Build:
                             'Lmg': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
                             'Assault': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
                             'Melee': {'object': 'gun butt', 'Damage': 1.00, 'regen': 0}}
-        self.weapon_lst = ['Launcher', 'Special', 'Smg', 'Shotgun', 'Pistol', 'Marksman', 'Sniper', 'Lmg', 'Assault',
-                           'Melee']
+        # self.weapon_type_lst = ['Launcher', 'Special', 'Smg', 'Shotgun', 'Pistol', 'Marksman', 'Sniper', 'Lmg',
+        #                         'Assault', 'Melee']
         self.weapon_tier_inputs = {'Launcher': '0', 'Special': '0', 'Smg': '0', 'Shotgun': '0', 'Pistol': '0',
                                    'Marksman': '0', 'Sniper': '0', 'Lmg': '0', 'Assault': '0', 'Melee': '0'}
-        self.perk_dict = {'speed': {'swap': 0, 'field recharge': 0, 'eload': 1.15, 'barr. and myst.': 0,
+        self.perk_dict = {'speed': {'swap': 0, 'field recharge': 0, 'reload': 1.15, 'barr. and myst.': 0,
                                     'fire and reload': 0},
                           'stamin up': {'movement': 1.07, 'sprint': 1.07, 'back pedal': 1.00, 'fall damage': 0,
                                         'aim walking': 1.00, 'equipment': 1.00, 'sprint falloff': 0},
                           'deadshot': {'scope sway': 0, 'critical1': 1.00, 'armour': 1.00, 'hip fire spread': 1.00,
                                        'critical': 1.00, 'consecutive': 1}}
-        self.perk_lst = ['speed', 'stamin up', 'deadshot']
+        # self.perk_lst = ['speed', 'stamin up', 'deadshot']
         self.perk_tier_inputs = {'speed': '0', 'stamin up': '0', 'deadshot': '0'}
+        self.col_lst = ['Name', 'Temp Name', 'Damage', 'Damage 2', 'Damage 3', 'Range',
+                        'Range 2', 'Fire Rate', 'Velocity', 'Armour Damage', 'Melee Quickness',
+                        'Movement Speed', 'Sprinting Speed', 'Shooting Speed', 'Sprint to Fire',
+                        'Aim Walking', 'ADS', 'Vertical Recoil', 'Horizontal Recoil',
+                        'Centering Speed', 'Idle Sway', 'Flinch', 'Hip Fire', 'Mag Capacity',
+                        'Reload', 'Ammo Capacity', 'Accuracy', 'Critical', 'Pack', 'Rare',
+                        'Shoot To Reload Ratio', 'Movement Ratio', 'Control Ratio', 'Drop Off Ratio']
 
         def set_weapon_class(weapon_type: str, tier: str) -> None:
 
@@ -163,8 +175,8 @@ class Build:
                 self.weapon_dict['Melee'] = self.melee
             self.weapon_tier_inputs[weapon_type] = tier
 
-        for i, j in enumerate(self.weapon_lst):
-            set_weapon_class(j, weapon_class_levels[i])
+        for i, j in enumerate(self.weapon_dict.keys()):
+            set_weapon_class(j, weapon_class_levels[j])
 
         def set_perk_class(perk_type: str, tier: str) -> None:
 
@@ -214,24 +226,14 @@ class Build:
                 self.perk_dict['deadshot'] = self.dead
             self.perk_tier_inputs[perk_type] = tier
 
-        for i, j in enumerate(self.perk_lst):
-            set_perk_class(j, perk_class_levels[i])
+        for i, j in enumerate(self.perk_dict.keys()):
+            set_perk_class(j, perk_class_levels[j])
 
     def get_weapon_classes(self) -> dict:
-
         return self.weapon_dict
 
     def get_perk_classes(self) -> dict:
-
         return self.perk_dict
-
-    # def set_weapons_perks(self, weapon_tiers, perk_tiers):
-    #
-    #     for i, j in enumerate(self.weapon_lst):
-    #         self.set_weapon_class(j, weapon_tiers[i])
-    #
-    #     for i, j in enumerate(self.perk_lst):
-    #         self.set_perk_class(j, perk_tiers[i])
 
     def apply_multipliers(self, weapon_multi: dict, perk_multi: dict, dic: dict) -> dict:
 
@@ -246,11 +248,6 @@ class Build:
                 for k in perk_multi[j].keys():
                     if i == k:
                         dn[i] = round(dn[i] * perk_multi[j][k], 2)
-
-        if perk_multi['deadshot']['consecutive'] == 1:
-            self.consecutive = True
-        else:
-            self.consecutive = False
 
         return dn
 
@@ -458,30 +455,30 @@ class Build:
 
         return dn
 
-    def get_attachments(self, dic: dict, inp=None, extended=None):
+    def get_attachments(self, dic: dict, inp: dict = None, extended: bool = False):
 
-        if extended is not None:
-            temp_df = DataFrame(columns=['Effects', 'Spot', 'Name'])
+        if extended:
+            temp_df = pd.DataFrame(columns=['Effects', 'Spot', 'Name'])
             for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
-                temp_i = DataFrame(index=list(dic[part].keys()), columns=['Effects', 'Spot', 'Name'])
+                temp_i = pd.DataFrame(index=list(dic[part].keys()), columns=['Effects', 'Spot', 'Name'])
                 for j in dic[part].keys():
                     temp_i.loc[j] = [dic[part][j], part, j]
-                temp_df = concat([temp_df, temp_i])
+                temp_df = pd.concat([temp_df, temp_i])
             temp_df = temp_df.set_index(['Spot', 'Name'])
 
             if inp is None:
                 return temp_df
         else:
-            temp_df = DataFrame(columns=['Names'])
+            temp_df = pd.DataFrame(columns=['Names'])
             for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
                 if dic[part] is not None:
-                    temp_i = DataFrame([[list(dic[part].keys())]], index=[part], columns=['Names'])
-                    temp_df = concat([temp_df, temp_i])
+                    temp_i = pd.DataFrame([[list(dic[part].keys())]], index=[part], columns=['Names'])
+                    temp_df = pd.concat([temp_df, temp_i])
 
             if inp is None:
                 return temp_df
 
-        if inp is not None:
+        if inp:
             temp_lst = []
             for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
                 if part in inp.keys():
@@ -562,11 +559,6 @@ class Build:
         dic_i['Damage 3'] = dic_i['Damage 3']
         dic_i['Mag Capacity'] = dic_i['Mag Capacity']
 
-        # dic_i['Damage'] = dic_i['Damage'] * dic_i['Burst']
-        # dic_i['Damage 2'] = dic_i['Damage 2'] * dic_i['Burst']
-        # dic_i['Damage 3'] = dic_i['Damage 3'] * dic_i['Burst']
-        # dic_i['Mag Capacity'] = dic_i['Mag Capacity'] / dic_i['Burst']
-
         if rarity is not None:
             dic_i['Rare'] = rarity
             dic_i['Damage'] = dic_i['Damage'] * self.rare_level[rarity]
@@ -593,28 +585,34 @@ class Build:
                 else:
                     final_dic[part] = None
             temp_dic = final_dic
-        else:
-            pass
 
-        temp_dic['Shooting Time'] = aa.shoot_time(temp_dic)
-        temp_dic['Shoot To Reload Ratio'] = aa.shoot_reload_ratio(temp_dic)
-        temp_dic['Movement Ratio'] = aa.movement_ratio(temp_dic)
-        temp_dic['Control Ratio'] = aa.control_ratio(temp_dic)
-        temp_dic['Drop Off Ratio'] = aa.drop_off_ratio(temp_dic)
-
-        dic_i['Shooting Time'] = aa.shoot_time(dic_i)
-        dic_i['Shoot To Reload Ratio'] = aa.shoot_reload_ratio(dic_i)
-        dic_i['Movement Ratio'] = aa.movement_ratio(dic_i)
-        dic_i['Control Ratio'] = aa.control_ratio(dic_i)
-        dic_i['Drop Off Ratio'] = aa.drop_off_ratio(dic_i)
+        for data in [temp_dic, dic_i]:
+            data['Shooting Time'] = aa.shoot_time(data)
+            data['Shoot To Reload Ratio'] = aa.shoot_reload_ratio(data)
+            data['Movement Ratio'] = aa.movement_ratio(data)
+            data['Control Ratio'] = aa.control_ratio(data)
+            data['Drop Off Ratio'] = aa.drop_off_ratio(data)
 
         return [dic_i, temp_dic]
 
-    def process_multi(self, weapon_lst) -> list:
+    def process_multi(self, weapon_lst: List[dict]) -> list:
 
         p_lst = []
         for i in weapon_lst:
-            o, n = self.process(i[0], i[1], i[2], i[3], i[4], i[5], i[6])
+            o, n = self.process(weapon=i['weapon'],
+                                nickname=i['nickname'],
+                                equipped_attachments=i['equipped_attachments'],
+                                rarity=i['rarity'],
+                                pap=i['pap'],
+                                accuracy=i['accuracy'],
+                                critical=i['critical'])
             p_lst.append(n)
 
         return p_lst
+
+    def build_df(self, data: list, cols: List[str] = None) -> pd.DataFrame:
+
+        if cols is None:
+            return pd.DataFrame(data)[self.col_lst].set_index('Temp Name')
+        else:
+            return pd.DataFrame(data)[cols].set_index('Temp Name')
