@@ -6,7 +6,6 @@ Created on Thu Apr 22 20:18:33 2021
 """
 from Utils import health_armour as z
 from Utils import analysis as a
-from Utils import processor as p
 
 
 if __name__ == '__main__':
@@ -14,18 +13,14 @@ if __name__ == '__main__':
     weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                            'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5'}
-    base = p.Build(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels)
-    analysis = a.Analyze(build=base, max_range=100)
+    analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels, max_range=100)
 
     # Set Zombie Health
     zombie = z.Health(level=20, health_cap=55, outbreak=False)
     zombie_health = zombie.get_health()
     zombie_armour = zombie.get_armour(multiplier=2)
 
-    # Return the attachments and their effects for a specific gun
-    attach = base.process('Diamatti')
-    attach_df = base.get_attachments(weapon_dic=attach, equipped_dic=None)
-
+    # Example Loadouts
     equipped1 = {
         'Muzzle': 'Agency Suppressor',
         'Barrel': 'Task Force',
@@ -85,7 +80,8 @@ if __name__ == '__main__':
         'Stock': 'SAS Combat Stock'
     }
 
-    guns = base.process_multi(weapon_dic_lst=[
+    # Returns a Dict with the specific weapon stats, adjusted for attachments.
+    guns = analysis.process_multi(weapon_dic_lst=[
         {'weapon': 'MP5', 'nickname': 'Temp MP5', 'equipped_attachments': equipped1, 'rarity': 'common',
          'pap': '0', 'accuracy': None, 'critical': None},
         {'weapon': 'PPSH', 'nickname': 'Temp PPSH', 'equipped_attachments': equipped2, 'rarity': 'common',
@@ -100,15 +96,73 @@ if __name__ == '__main__':
          'pap': '0', 'accuracy': None, 'critical': None},
     ])
 
-    gun_df = analysis.build_df(weapon_dic_lst=guns, cols=base.col_lst)
+    # Convert to a DataFrame.
+    gun_df = analysis.build_df(weapon_dic_lst=guns, cols=None)
 
-    weapon_compare = {}
-    for i in guns:
-        weapon_compare[i['Temp Name']] = analysis.compare(weapon_dic=i, zombie_health=zombie_health, for_viz=True,
-                                                          armour=False)
+    # Build Data for Viz.
+    weapon_compare_dic = analysis.compare_multi(weapon_dic_lst=guns, zombie_health=zombie_health,
+                                                zombie_armour=zombie_armour, for_viz=True)
 
-    analysis.viz_all(weapon_df_dic=weapon_compare, x_limit=40, ind=5, save_image=False)
+    # Return all visualizations.
+    analysis.viz_all(weapon_df_dic=weapon_compare_dic, x_limit=40, ind=5, save_image=False)
 
-    # Returns the effects from the attachments
-    base.get_attachments(weapon_dic=base.process('AK74u')[1], equipped_dic=equipped4)
+    # Return a single visualization.
+    analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Second', x_limit=40, ind=5, save_image=False)
+
+    # Return the attachments and their effects for a specific gun
+    mp5 = {'weapon': 'MP5', 'nickname': 'Temp MP5', 'equipped_attachments': equipped1, 'rarity': 'common',
+           'pap': '0', 'accuracy': None, 'critical': None}
+    attach = analysis.process(weapon_dic=mp5)
+    attach_df = analysis.get_attachments(weapon_dic=attach, equipped_dic=None)
+
+    # Returns the effects as a list  from the attachments
+    effects_lst = analysis.get_attachments(weapon_dic=attach, equipped_dic=equipped1)
+
+
+    # Not Finished
+    # data = base.get_attachments(weapon_dic=base.process('AK74u'))
+    # effect_lst = []
+    # index_lst = []
+    # for ind, val in enumerate(data['effect']):
+    #     for effect in val:
+    #         if 'Vertical' in effect:
+    #             index_lst.append(ind)
+    #             effect_lst.append(effect)
+    # data_n = data.iloc[index_lst]
+    #
+    # import matplotlib.pyplot as plt
+    # import pandas as pd
+    # import numpy as np
+    #
+    # t = base.stats['AK74u'].vertical_recoil
+    #
+    # num_lst = []
+    # for effect in effect_lst:
+    #     e_i = float(effect.split('%')[0].split(' ')[1]) / 100
+    #     if '+' in effect:
+    #         num_lst.append(t + (t * e_i))
+    #     else:
+    #         num_lst.append(t - (t * e_i))
+    #
+    # people = ['None'] + list(data_n['name'])
+    # y_pos = np.arange(len(people))
+    # # performance = [t] + num_lst
+    # fig, ax = plt.subplots(figsize=(10, 7))
+    #
+    # arr = np.array(num_lst)
+    # tt = [.5] + list(np.around((arr - t) / (np.max(arr) - np.min(arr)).T + 0.50, 3))
+    # performance = tt
+    # ax.barh(y_pos, performance, align='center')
+    # for i, v in enumerate(performance):
+    #     ax.text(v + 5, i, str(int(v)), color='black', fontsize='medium')
+    #
+    # for i, v in enumerate(['None'] + list(data_n['location'])):
+    #     ax.text(5, i, v, color='black', fontsize='xx-large')
+    #
+    # ax.set_yticks(y_pos)
+    # ax.set_yticklabels(people)
+    # ax.invert_yaxis()
+    # ax.set_xlabel('Vertical Recoil')
+    # ax.set_title('AK74u')
+    # plt.show()
 
