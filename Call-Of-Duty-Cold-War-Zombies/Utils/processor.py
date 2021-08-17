@@ -5,6 +5,8 @@ Created on Thu Apr 22 21:09:41 2021
 @author: Peter
 """
 import pandas as pd
+import numpy as np
+from numpy.random import normal
 from typing import List
 import Utils.weapon_stats as w
 
@@ -12,8 +14,8 @@ import Utils.weapon_stats as w
 class Build:
 
     def __init__(self, weapon_class_levels: dict = None, perk_class_levels: dict = None):
-        self.weapon_class_levels: dict = weapon_class_levels
-        self.perk_class_levels: dict = perk_class_levels
+        self.weapon_class_levels = weapon_class_levels
+        self.perk_class_levels = perk_class_levels
 
         if perk_class_levels['deadshot'] == '5':
             self.consecutive: bool = True
@@ -86,6 +88,15 @@ class Build:
                         'Reload', 'Ammo Capacity', 'Accuracy', 'Critical', 'Pack', 'Rare',
                         'Shoot To Reload Ratio', 'Movement Ratio', 'Control Ratio', 'Drop Off Ratio',
                         ]
+
+        def shot_distribution(stats=self.stats.values()) -> np.ndarray:
+            acc = [i.gun_acc_value for i in stats]
+            acc_n = [i for i in acc if i != 0]
+            sig1 = np.around(np.std(acc_n), 3)
+            mu1 = np.around(np.mean(acc_n), 3)
+            return np.around(normal(mu1, sig1, 2500), 3)
+
+        self.hits = shot_distribution()
 
         def set_weapon_class(weapon_type: str, weapon_tier: str) -> None:
 
@@ -257,7 +268,7 @@ class Build:
         dn = weapon_dic.copy()
         dm = {i: 0.0 for i in weapon_dic.keys()}
         for i in attachment_lst:
-            if i == '0':
+            if i == 'None':
                 continue
             else:
                 at = i.split('%')[0]
@@ -451,12 +462,12 @@ class Build:
 
         return dn
 
-    def get_attachments(self, weapon_dic: dict, equipped_dic: dict = None):
+    def _get_attachments(self, weapon_dic: dict, equipped_dic: dict = None):
 
         location = []
         name = []
         effect = []
-        for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
+        for part in ['Muzzle', 'Barrel', 'Body', 'Underbarrel', 'Magazine', 'Handle', 'Stock']:
             for j in weapon_dic[part].keys():
                 location.append(part)
                 name.append(j)
@@ -469,14 +480,14 @@ class Build:
 
         if equipped_dic:
             temp_lst = []
-            for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
+            for part in ['Muzzle', 'Barrel', 'Body', 'Underbarrel', 'Magazine', 'Handle', 'Stock']:
                 if part in equipped_dic.keys():
                     temp_lst.append(weapon_dic[part][equipped_dic[part]])
             return sum(temp_lst, [])
         else:
             return df
 
-    def process(self,
+    def _process(self,
                 weapon: str,
                 nickname: str = None,
                 equipped_attachments: dict = None,
@@ -530,7 +541,7 @@ class Build:
                  'Muzzle': d.muzzle,
                  'Barrel': d.barrel,
                  'Body': d.body,
-                 'Under_Barrel': d.under_barrel,
+                 'Underbarrel': d.under_barrel,
                  'Magazine': d.magazine,
                  'Handle': d.handle,
                  'Stock': d.stock,
@@ -569,28 +580,28 @@ class Build:
                                           weapon_dic=dic_i)
 
         if equipped_attachments is not None:
-            effect_lst = self.get_attachments(weapon_dic=temp_dic, equipped_dic=equipped_attachments)
+            effect_lst = self._get_attachments(weapon_dic=temp_dic, equipped_dic=equipped_attachments)
             final_dic = self.apply_attachments(weapon_dic=temp_dic, attachment_lst=effect_lst)
 
-            for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
+            for part in ['Muzzle', 'Barrel', 'Body', 'Underbarrel', 'Magazine', 'Handle', 'Stock']:
                 if part in equipped_attachments.keys():
-                    final_dic[part] = (equipped_attachments[part], final_dic[part][equipped_attachments[part]])
+                    final_dic[part] = {equipped_attachments[part]: final_dic[part][equipped_attachments[part]]}
                 else:
-                    final_dic[part] = None
+                    final_dic[part] = {'None': 'None'}
             temp_dic = final_dic
 
         return temp_dic
 
-    def process_multi(self, weapon_dic_lst: List[dict]) -> list:
-
-        p_lst = []
-        for i in weapon_dic_lst:
-            p_lst.append(self.process(weapon=i['weapon'],
-                                      nickname=i['nickname'],
-                                      equipped_attachments=i['equipped_attachments'],
-                                      rarity=i['rarity'],
-                                      pap=i['pap'],
-                                      accuracy=i['accuracy'],
-                                      critical=i['critical']))
-
-        return p_lst
+    # def _process_multi(self, weapon_dic_lst: List[dict]) -> list:
+    #
+    #     p_lst = []
+    #     for i in weapon_dic_lst:
+    #         p_lst.append(self._process(weapon=i['weapon'],
+    #                                    nickname=i['nickname'],
+    #                                    equipped_attachments=i['equipped_attachments'],
+    #                                    rarity=i['rarity'],
+    #                                    pap=i['pap'],
+    #                                    accuracy=i['accuracy'],
+    #                                    critical=i['critical']))
+    #
+    #     return p_lst
