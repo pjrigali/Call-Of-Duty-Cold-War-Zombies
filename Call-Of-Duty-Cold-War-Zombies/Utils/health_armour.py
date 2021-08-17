@@ -78,7 +78,11 @@ class Health:
             self.hp = health_lst[self.level]
 
     def get_health(self) -> float:
+        """Returns zombie health value"""
+
         return float(self.hp)
 
     def get_armour(self, multiplier: int = 2) -> float:
+        """Returns zombie armour value"""
+
         return float(self.hp / multiplier)
