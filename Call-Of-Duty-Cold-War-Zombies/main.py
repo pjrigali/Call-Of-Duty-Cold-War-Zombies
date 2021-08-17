@@ -8,6 +8,7 @@ from Utils import health_armour as z
 from Utils import analysis as a
 from Utils import processor as p
 analysis = a.Analyze()
+zombie = z.Health(level=20, health_cap=55, outbreak=False)
 
 
 if __name__ == '__main__':
@@ -17,8 +18,8 @@ if __name__ == '__main__':
     perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5'}
     base = p.Build(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels)
 
-    zombie_health = z.Health(level=20, outbreak=False).get_health()
-    zombie_armour = z.Armour(level=20, outbreak=False).get_armour()
+    zombie_health = zombie.get_health()
+    zombie_armour = zombie.get_armour(multiplier=2)
 
     # Return the attachments and their effects for a specific gun
     attach = base.process('Diamatti')[0]
