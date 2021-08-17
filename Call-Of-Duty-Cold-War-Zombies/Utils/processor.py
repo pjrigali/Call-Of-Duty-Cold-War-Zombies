@@ -7,13 +7,11 @@ Created on Thu Apr 22 21:09:41 2021
 import pandas as pd
 from typing import List
 import Utils.weapon_stats as w
-import Utils.analysis as a
-aa = a.Analyze()
 
 
 class Build:
 
-    def __init__(self, weapon_class_levels: dict, perk_class_levels: dict):
+    def __init__(self, weapon_class_levels: dict = None, perk_class_levels: dict = None):
         self.weapon_class_levels: dict = weapon_class_levels
         self.perk_class_levels: dict = perk_class_levels
 
@@ -61,18 +59,16 @@ class Build:
         self.gun_names = list(self.stats.keys())
         self.rare_level = {'common': 1.00, 'green': 1.50, 'blue': 3.00, 'purple': 6.00, 'orange': 12.00}
         self.pack_level = {'0': 1.00, '1': 2.00, '2': 4.00, '3': 8.00}
-        self.weapon_dict = {'Launcher': {'elites': 1.00, 'Armour Damage': 1.00, 'ammo': 1.00},
-                            'Special': {'elites': 1.00, 'Armour Damage': 1.00, 'ammo': 1.00},
-                            'Smg': {'Close': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                            'Shotgun': {'Close': 1.00, 'Crit': 1.00, 'Armour Damage': 1.00},
-                            'Pistol': {'Close': 1.00, 'Crit': 1.00, 'Armour Damage': 1.00},
-                            'Marksman': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                            'Sniper': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                            'Lmg': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                            'Assault': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                            'Melee': {'object': 'gun butt', 'Damage': 1.00, 'regen': 0}}
-        # self.weapon_type_lst = ['Launcher', 'Special', 'Smg', 'Shotgun', 'Pistol', 'Marksman', 'Sniper', 'Lmg',
-        #                         'Assault', 'Melee']
+        self.weapon_type_dict = {'Launcher': {'elites': 1.00, 'Armour Damage': 1.00, 'ammo': 1.00},
+                                 'Special': {'elites': 1.00, 'Armour Damage': 1.00, 'ammo': 1.00},
+                                 'Smg': {'Close': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                 'Shotgun': {'Close': 1.00, 'Crit': 1.00, 'Armour Damage': 1.00},
+                                 'Pistol': {'Close': 1.00, 'Crit': 1.00, 'Armour Damage': 1.00},
+                                 'Marksman': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                 'Sniper': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                 'Lmg': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                 'Assault': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                 'Melee': {'object': 'gun butt', 'Damage': 1.00, 'regen': 0}}
         self.weapon_tier_inputs = {'Launcher': '0', 'Special': '0', 'Smg': '0', 'Shotgun': '0', 'Pistol': '0',
                                    'Marksman': '0', 'Sniper': '0', 'Lmg': '0', 'Assault': '0', 'Melee': '0'}
         self.perk_dict = {'speed': {'swap': 0, 'field recharge': 0, 'reload': 1.15, 'barr. and myst.': 0,
@@ -81,7 +77,6 @@ class Build:
                                         'aim walking': 1.00, 'equipment': 1.00, 'sprint falloff': 0},
                           'deadshot': {'scope sway': 0, 'critical1': 1.00, 'armour': 1.00, 'hip fire spread': 1.00,
                                        'critical': 1.00, 'consecutive': 1}}
-        # self.perk_lst = ['speed', 'stamin up', 'deadshot']
         self.perk_tier_inputs = {'speed': '0', 'stamin up': '0', 'deadshot': '0'}
         self.col_lst = ['Name', 'Temp Name', 'Damage', 'Damage 2', 'Damage 3', 'Range',
                         'Range 2', 'Fire Rate', 'Velocity', 'Armour Damage', 'Melee Quickness',
@@ -89,9 +84,10 @@ class Build:
                         'Aim Walking', 'ADS', 'Vertical Recoil', 'Horizontal Recoil',
                         'Centering Speed', 'Idle Sway', 'Flinch', 'Hip Fire', 'Mag Capacity',
                         'Reload', 'Ammo Capacity', 'Accuracy', 'Critical', 'Pack', 'Rare',
-                        'Shoot To Reload Ratio', 'Movement Ratio', 'Control Ratio', 'Drop Off Ratio']
+                        'Shoot To Reload Ratio', 'Movement Ratio', 'Control Ratio', 'Drop Off Ratio',
+                        ]
 
-        def set_weapon_class(weapon_type: str, tier: str) -> None:
+        def set_weapon_class(weapon_type: str, weapon_tier: str) -> None:
 
             if weapon_type == 'Launcher':
                 self.launchers = {'1': {'elites': 1.10, 'Armour Damage': 1.00, 'ammo': 1.00},
@@ -99,86 +95,86 @@ class Build:
                                   '3': {'elites': 1.10, 'Armour Damage': 1.10, 'ammo': 0.75},
                                   '4': {'elites': 1.25, 'Armour Damage': 1.10, 'ammo': 0.75},
                                   '5': {'elites': 1.25, 'Armour Damage': 1.25, 'ammo': 0.75}
-                                  }[tier]
-                self.weapon_dict['Launcher'] = self.launchers
+                                  }[weapon_tier]
+                self.weapon_type_dict['Launcher'] = self.launchers
             elif weapon_type == 'Special':
                 self.specials = {'1': {'elites': 1.10, 'Armour Damage': 1.00, 'ammo': 1.00},
                                  '2': {'elites': 1.10, 'Armour Damage': 1.10, 'ammo': 1.00},
                                  '3': {'elites': 1.10, 'Armour Damage': 1.10, 'ammo': 0.75},
                                  '4': {'elites': 1.25, 'Armour Damage': 1.10, 'ammo': 0.75},
                                  '5': {'elites': 1.25, 'Armour Damage': 1.25, 'ammo': 0.75}
-                                 }[tier]
-                self.weapon_dict['Special'] = self.specials
+                                 }[weapon_tier]
+                self.weapon_type_dict['Special'] = self.specials
             elif weapon_type == 'Smg':
                 self.smgs = {'1': {'Close': 1.10, 'Crit': 1.00, 'Attachments': 1},
                              '2': {'Close': 1.10, 'Crit': 1.10, 'Attachments': 1},
                              '3': {'Close': 1.10, 'Crit': 1.10, 'Attachments': 1.6},
                              '4': {'Close': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                              '5': {'Close': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
-                             }[tier]
-                self.weapon_dict['Smg'] = self.smgs
+                             }[weapon_tier]
+                self.weapon_type_dict['Smg'] = self.smgs
             elif weapon_type == 'Shotgun':
                 self.shotguns = {'1': {'Close': 1.10, 'Crit': 1.00, 'Armour Damage': 1.00},
                                  '2': {'Close': 1.10, 'Crit': 1.10, 'Armour Damage': 1.00},
                                  '3': {'Close': 1.10, 'Crit': 1.10, 'Armour Damage': 1.10},
                                  '4': {'Close': 1.25, 'Crit': 1.10, 'Armour Damage': 1.10},
                                  '5': {'Close': 1.25, 'Crit': 1.25, 'Armour Damage': 1.10}
-                                 }[tier]
-                self.weapon_dict['Shotgun'] = self.shotguns
+                                 }[weapon_tier]
+                self.weapon_type_dict['Shotgun'] = self.shotguns
             elif weapon_type == 'Pistol':
                 self.pistols = {'1': {'Close': 1.10, 'Crit': 1.00, 'Armour Damage': 1.00},
                                 '2': {'Close': 1.10, 'Crit': 1.10, 'Armour Damage': 1.00},
                                 '3': {'Close': 1.10, 'Crit': 1.10, 'Armour Damage': 1.10},
                                 '4': {'Close': 1.25, 'Crit': 1.10, 'Armour Damage': 1.10},
                                 '5': {'Close': 1.25, 'Crit': 1.25, 'Armour Damage': 1.10}
-                                }[tier]
-                self.weapon_dict['Pistol'] = self.pistols
+                                }[weapon_tier]
+                self.weapon_type_dict['Pistol'] = self.pistols
             elif weapon_type == 'Marksman':
                 self.tact = {'1': {'Long': 1.10, 'Crit': 1.00, 'Attachments': 1},
                              '2': {'Long': 1.10, 'Crit': 1.10, 'Attachments': 1},
                              '3': {'Long': 1.10, 'Crit': 1.10, 'Attachments': 1.6},
                              '4': {'Long': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                              '5': {'Long': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
-                             }[tier]
-                self.weapon_dict['Marksman'] = self.tact
+                             }[weapon_tier]
+                self.weapon_type_dict['Marksman'] = self.tact
             elif weapon_type == 'Sniper':
                 self.snipers = {'1': {'Armour Damage': 1.10, 'Crit': 1.00, 'Attachments': 1},
                                 '2': {'Armour Damage': 1.10, 'Crit': 1.10, 'Attachments': 1},
                                 '3': {'Armour Damage': 1.10, 'Crit': 1.10, 'Attachments': 1.6},
                                 '4': {'Armour Damage': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                                 '5': {'Armour Damage': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
-                                }[tier]
-                self.weapon_dict['Sniper'] = self.snipers
+                                }[weapon_tier]
+                self.weapon_type_dict['Sniper'] = self.snipers
             elif weapon_type == 'Lmg':
                 self.lmgs = {'1': {'Armour Damage': 1.10, 'Crit': 1.00, 'Attachments': 1},
                              '2': {'Armour Damage': 1.10, 'Crit': 1.10, 'Attachments': 1},
                              '3': {'Armour Damage': 1.10, 'Crit': 1.10, 'Attachments': 1.6},
                              '4': {'Armour Damage': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                              '5': {'Armour Damage': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
-                             }[tier]
-                self.weapon_dict['Lmg'] = self.lmgs
+                             }[weapon_tier]
+                self.weapon_type_dict['Lmg'] = self.lmgs
             elif weapon_type == 'Assault':
                 self.assault = {'1': {'Long': 1.10, 'Crit': 1.00, 'Attachments': 1},
                                 '2': {'Long': 1.10, 'Crit': 1.10, 'Attachments': 1},
                                 '3': {'Long': 1.10, 'Crit': 1.10, 'Attachments': 1.6},
                                 '4': {'Long': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                                 '5': {'Long': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
-                                }[tier]
-                self.weapon_dict['Assault'] = self.assault
+                                }[weapon_tier]
+                self.weapon_type_dict['Assault'] = self.assault
             elif weapon_type == 'Melee':
                 self.melee = {'1': {'object': 'knife', 'Damage': 1.00, 'regen': 0},
                               '2': {'object': 'knife', 'Damage': 1.10, 'regen': 0},
                               '3': {'object': 'bowie', 'Damage': 1.10, 'regen': 0},
                               '4': {'object': 'bowie', 'Damage': 1.25, 'regen': 0},
                               '5': {'object': 'bowie', 'Damage': 1.25, 'regen': 1}
-                              }[tier]
-                self.weapon_dict['Melee'] = self.melee
-            self.weapon_tier_inputs[weapon_type] = tier
+                              }[weapon_tier]
+                self.weapon_type_dict['Melee'] = self.melee
+            self.weapon_tier_inputs[weapon_type] = weapon_tier
 
-        for i, j in enumerate(self.weapon_dict.keys()):
+        for i, j in enumerate(self.weapon_type_dict.keys()):
             set_weapon_class(j, weapon_class_levels[j])
 
-        def set_perk_class(perk_type: str, tier: str) -> None:
+        def set_perk_class(perk_type: str, perk_tier: str) -> None:
 
             if perk_type == 'speed':
                 self.speed = {'1': {'swap': 1, 'field recharge': 1, 'Reload': 0.85, 'barr. and myst.': 0,
@@ -191,7 +187,7 @@ class Build:
                                     'Shooting Speed': 1.00},
                               '5': {'swap': 1, 'field recharge': 0.80, 'Reload': 0.70, 'barr. and myst.': 1,
                                     'Shooting Speed': 1.07}
-                              }[tier]
+                              }[perk_tier]
                 self.perk_dict['speed'] = self.speed
             elif perk_type == 'stamin up':
                 self.stamin = {'1': {'Movement Speed': 1.07, 'Sprinting Speed': 1.07, 'back pedal': 1.07,
@@ -209,7 +205,7 @@ class Build:
                                '5': {'Movement Speed': 1.07, 'Sprinting Speed': 1.07, 'back pedal': 1.07,
                                      'fall damage': 1, 'Aim Walking': 1.07, 'equipment': 1.07, 'sprint falloff': 1,
                                      'Shooting Speed': 1.07}
-                               }[tier]
+                               }[perk_tier]
                 self.perk_dict['stamin up'] = self.stamin
             elif perk_type == 'deadshot':
                 self.dead = {'1': {'Idle Sway': 0, 'critical1': 2.00, 'Armour Damage': 1.00, 'Hip Fire': 1.00,
@@ -222,22 +218,22 @@ class Build:
                                    'Crit': 1.10, 'consecutive': 0},
                              '5': {'Idle Sway': 0, 'critical1': 2.00, 'Armour Damage': 1.50, 'Hip Fire': 0.70,
                                    'Crit': 1.10, 'consecutive': 1}
-                             }[tier]
+                             }[perk_tier]
                 self.perk_dict['deadshot'] = self.dead
-            self.perk_tier_inputs[perk_type] = tier
+            self.perk_tier_inputs[perk_type] = perk_tier
 
         for i, j in enumerate(self.perk_dict.keys()):
             set_perk_class(j, perk_class_levels[j])
 
     def get_weapon_classes(self) -> dict:
-        return self.weapon_dict
+        return self.weapon_type_dict
 
     def get_perk_classes(self) -> dict:
         return self.perk_dict
 
-    def apply_multipliers(self, weapon_multi: dict, perk_multi: dict, dic: dict) -> dict:
+    def apply_multipliers(self, weapon_multi: dict, perk_multi: dict, weapon_dic: dict) -> dict:
 
-        dn = dic.copy()
+        dn = weapon_dic.copy()
         # Weapons
         for j in weapon_multi[dn['Weapon Type']]:
             dn[j] = round(dn[j] * weapon_multi[dn['Weapon Type']][j], 2)
@@ -251,15 +247,15 @@ class Build:
 
         return dn
 
-    def apply_attachments(self, dic: dict, attachment_lst: List[str]) -> dict:
+    def apply_attachments(self, weapon_dic: dict, attachment_lst: List[str]) -> dict:
 
-        if dic['Pack'] != '0':
+        if weapon_dic['Pack'] != '0':
             pack_mag = True
         else:
             pack_mag = False
 
-        dn = dic.copy()
-        dm = {i: 0.0 for i in dic.keys()}
+        dn = weapon_dic.copy()
+        dm = {i: 0.0 for i in weapon_dic.keys()}
         for i in attachment_lst:
             if i == '0':
                 continue
@@ -455,35 +451,30 @@ class Build:
 
         return dn
 
-    def get_attachments(self, dic: dict, inp: dict = None, extended: bool = False):
+    def get_attachments(self, weapon_dic: dict, equipped_dic: dict = None):
 
-        if extended:
-            temp_df = pd.DataFrame(columns=['Effects', 'Spot', 'Name'])
-            for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
-                temp_i = pd.DataFrame(index=list(dic[part].keys()), columns=['Effects', 'Spot', 'Name'])
-                for j in dic[part].keys():
-                    temp_i.loc[j] = [dic[part][j], part, j]
-                temp_df = pd.concat([temp_df, temp_i])
-            temp_df = temp_df.set_index(['Spot', 'Name'])
+        location = []
+        name = []
+        effect = []
+        for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
+            for j in weapon_dic[part].keys():
+                location.append(part)
+                name.append(j)
+                effect.append(weapon_dic[part][j])
 
-            if inp is None:
-                return temp_df
-        else:
-            temp_df = pd.DataFrame(columns=['Names'])
-            for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
-                if dic[part] is not None:
-                    temp_i = pd.DataFrame([[list(dic[part].keys())]], index=[part], columns=['Names'])
-                    temp_df = pd.concat([temp_df, temp_i])
+        df = pd.DataFrame()
+        df['location'] = location
+        df['name'] = name
+        df['effect'] = effect
 
-            if inp is None:
-                return temp_df
-
-        if inp:
+        if equipped_dic:
             temp_lst = []
             for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
-                if part in inp.keys():
-                    temp_lst.append(dic[part][inp[part]])
+                if part in equipped_dic.keys():
+                    temp_lst.append(weapon_dic[part][equipped_dic[part]])
             return sum(temp_lst, [])
+        else:
+            return df
 
     def process(self,
                 weapon: str,
@@ -492,7 +483,7 @@ class Build:
                 rarity: str = None,
                 pap: str = None,
                 accuracy: float = None,
-                critical: float = None) -> List[dict]:
+                critical: float = None) -> dict:
 
         d = self.stats[weapon]
         dic_i = {'Name': d.name,
@@ -573,11 +564,13 @@ class Build:
                 dic_i['Damage 3'] = dic_i['Damage 3'] * self.pack_level[pap] * dic_i['PAP Burst']
                 dic_i['Mag Capacity'] = dic_i['Mag Capacity'] / dic_i['PAP Burst']
 
-        temp_dic = self.apply_multipliers(self.get_weapon_classes(), self.get_perk_classes(), dic_i)
+        temp_dic = self.apply_multipliers(weapon_multi=self.get_weapon_classes(),
+                                          perk_multi=self.get_perk_classes(),
+                                          weapon_dic=dic_i)
 
         if equipped_attachments is not None:
-            effect_lst = self.get_attachments(temp_dic, equipped_attachments, True)
-            final_dic = self.apply_attachments(temp_dic, effect_lst)
+            effect_lst = self.get_attachments(weapon_dic=temp_dic, equipped_dic=equipped_attachments)
+            final_dic = self.apply_attachments(weapon_dic=temp_dic, attachment_lst=effect_lst)
 
             for part in ['Muzzle', 'Barrel', 'Body', 'Under_Barrel', 'Magazine', 'Handle', 'Stock']:
                 if part in equipped_attachments.keys():
@@ -586,33 +579,18 @@ class Build:
                     final_dic[part] = None
             temp_dic = final_dic
 
-        for data in [temp_dic, dic_i]:
-            data['Shooting Time'] = aa.shoot_time(data)
-            data['Shoot To Reload Ratio'] = aa.shoot_reload_ratio(data)
-            data['Movement Ratio'] = aa.movement_ratio(data)
-            data['Control Ratio'] = aa.control_ratio(data)
-            data['Drop Off Ratio'] = aa.drop_off_ratio(data)
+        return temp_dic
 
-        return [dic_i, temp_dic]
-
-    def process_multi(self, weapon_lst: List[dict]) -> list:
+    def process_multi(self, weapon_dic_lst: List[dict]) -> list:
 
         p_lst = []
-        for i in weapon_lst:
-            o, n = self.process(weapon=i['weapon'],
-                                nickname=i['nickname'],
-                                equipped_attachments=i['equipped_attachments'],
-                                rarity=i['rarity'],
-                                pap=i['pap'],
-                                accuracy=i['accuracy'],
-                                critical=i['critical'])
-            p_lst.append(n)
+        for i in weapon_dic_lst:
+            p_lst.append(self.process(weapon=i['weapon'],
+                                      nickname=i['nickname'],
+                                      equipped_attachments=i['equipped_attachments'],
+                                      rarity=i['rarity'],
+                                      pap=i['pap'],
+                                      accuracy=i['accuracy'],
+                                      critical=i['critical']))
 
         return p_lst
-
-    def build_df(self, data: list, cols: List[str] = None) -> pd.DataFrame:
-
-        if cols is None:
-            return pd.DataFrame(data)[self.col_lst].set_index('Temp Name')
-        else:
-            return pd.DataFrame(data)[cols].set_index('Temp Name')
