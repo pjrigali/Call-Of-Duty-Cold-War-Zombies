@@ -14,20 +14,17 @@ if __name__ == '__main__':
     weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                            'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5'}
-    base = p.Build(weapon_class_levels=weapon_class_levels,
-                   perk_class_levels=perk_class_levels)
-    analysis = a.Analyze(build=base)
+    base = p.Build(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels)
+    analysis = a.Analyze(build=base, max_range=100)
 
-    zombie = z.Health(level=20,
-                      health_cap=55,
-                      outbreak=False)
+    # Set Zombie Health
+    zombie = z.Health(level=20, health_cap=55, outbreak=False)
     zombie_health = zombie.get_health()
     zombie_armour = zombie.get_armour(multiplier=2)
 
     # Return the attachments and their effects for a specific gun
     attach = base.process('Diamatti')
-    attach_df = base.get_attachments(weapon_dic=attach,
-                                     equipped_dic=None)
+    attach_df = base.get_attachments(weapon_dic=attach, equipped_dic=None)
 
     equipped1 = {
         'Muzzle': 'Agency Suppressor',
@@ -103,22 +100,15 @@ if __name__ == '__main__':
          'pap': '0', 'accuracy': None, 'critical': None},
     ])
 
-    gun_df = analysis.build_df(weapon_dic_lst=guns,
-                               cols=base.col_lst)
+    gun_df = analysis.build_df(weapon_dic_lst=guns, cols=base.col_lst)
 
     weapon_compare = {}
     for i in guns:
-        weapon_compare[i['Temp Name']] = analysis.compare(weapon_dic=i,
-                                                          zombie_health=zombie_health,
-                                                          for_viz=True,
+        weapon_compare[i['Temp Name']] = analysis.compare(weapon_dic=i, zombie_health=zombie_health, for_viz=True,
                                                           armour=False)
 
-    analysis.viz_all(weapon_df_dic=weapon_compare,
-                     x_limit=40,
-                     ind=5,
-                     save_image=False)
+    analysis.viz_all(weapon_df_dic=weapon_compare, x_limit=40, ind=5, save_image=False)
 
     # Returns the effects from the attachments
-    base.get_attachments(weapon_dic=base.process('AK74u')[1],
-                         equipped_dic=equipped4)
+    base.get_attachments(weapon_dic=base.process('AK74u')[1], equipped_dic=equipped4)
 
