@@ -8,53 +8,150 @@ Created on Fri Apr  9 12:58:18 2021
 
 class Weapon:
     name: str = None
+    """Name of weapon in game"""
+
     temp_name: str = None
+    """Name of weapon given by user"""
+
     damage_1: float = None
+    """Damage value before first drop off"""
+
     damage_2: float = None
+    """Damage value before second drop off"""
+
     damage_3: float = None
+    """Damage value before third drop off"""
+
     range_1: float = None
+    """Distance to first drop off"""
+
     range_2: float = None
+    """Distance to second drop off"""
+
     fire_rate: float = None
+    """Weapon rate of fire"""
+
     velocity: float = None
+    """Weapon bullet velocity"""
+
     armour_damage: float = 1.0
+    """Weapon damage to armour"""
+
     melee: float = 1000.0
+    """Weapon melee time in ms"""
+
     movement: float = None
+    """Weapon movement speed"""
+
     sprint: float = None
+    """Weapon sprinting speed"""
+
     shoot_speed: float = None
+    """Weapon shooting movement speed"""
+
     sprint_to_fire: float = None
+    """Weapon sprint to fire time in ms"""
+
     aim_walking: float = None
+    """Weapon aim walking movement speed"""
+
     ads: float = None
+    """Weapon aim down sight time"""
+
     vertical_recoil: float = None
+    """Weapon vertical recoil value"""
+
     horizontal_recoil: float = None
+    """Weapon horizontal recoil value"""
+
     centering_speed: float = None
+    """Weapon speed at re-centering after each shot. Lower is better"""
+
     idle_sway: float = None
+    """Weapon aim sway when aim down sight"""
+
     flinch: float = 10.0
+    """Weapon flinch value"""
+
     hip_fire: float = None
+    """Weapon hipfire cross hair spread. Lower is better"""
+
     mag_capacity: float = None
+    """Weapon ammo magazine capacity"""
+
     reload: float = None
+    """Weapon reload time in seconds"""
+
     starting_ammo: float = None
+    """Weapon starting ammo in reserve"""
+
     ammo_capacity: float = None
+    """Weapon max ammo capacity"""
+
     burst: float = 1.0
+    """Weapon burst multiplier. Value is 3 if weapon uses burst fire"""
+
     pap_burst: float = 1.0
+    """Weapon burst fire after pack-a-punch multiplier. M16 and CARV.2 have a 6 round burst after pack-a-punch"""
+
     long_shot: float = None
+    """Weapon distance to be considered a longshot in game"""
+
     gun_critical_value: float = 0.50
+    """User inputted gun critical hit percentage. 
+    This can be found in game Barracks\\Combat Record\\Zombies\\Weapon Name"""
+
     gun_acc_value: float = 0.50
+    """User inputted gun critical hit percentage. 
+    This can be found in game Barracks\\Combat Record\\Zombies\\Weapon Name"""
+
     critical: float = 2.8
+    """Weapon critical hit multiplier"""
+
     long: float = 1.0
+    """Weapon multiplier for damage at a distance"""
+
     close: float = 1.0
+    """Weapon multiplier for damage at close range"""
+
     salvage: float = 1.0
+    """Weapon salvage multiplier"""
+
     equipment: float = 1.0
+    """Weapon multiplier for dropped equipment"""
+
     attachments: float = 1.0
+    """Weapon number of attachments allowed"""
+
     weapon_type: str = None
+    """Weapon category. (smg, sniper, ...)"""
+
     pack: str = None
+    """Weapon pack-a-punch level"""
+
     rare: str = None
+    """Weapon rarity level"""
+
     muzzle: dict = {'None': ['None']}
+    """Weapon muzzle attachment"""
+
     barrel: dict = {'None': ['None']}
+    """Weapon barrel attachment"""
+
     body: dict = {'None': ['None']}
+    """Weapon body attachment"""
+
     under_barrel: dict = {'None': ['None']}
+    """Weapon underbarrel attachment"""
+
     magazine: dict = {'None': ['None']}
+    """Weapon ammo magazine attachment"""
+
     handle: dict = {'None': ['None']}
+    """Weapon handle attachment"""
+
     stock: dict = {'None': ['None']}
+    """Weapon stock attachment"""
 
 
 class Assault(Weapon):

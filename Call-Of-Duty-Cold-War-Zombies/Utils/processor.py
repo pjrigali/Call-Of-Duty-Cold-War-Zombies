@@ -12,7 +12,35 @@ import Utils.weapon_stats as w
 
 
 class Build:
+    """
+    Get weapon stat values.
 
+    Applies the buffs from the weapon and perk tiers. Then saves the information in a class object.
+
+    Parameters
+    ----------
+    weapon_class_levels : dict, default None
+        Users tier for each weapon class. Using str values for 0 through 5.
+    perk_class_levels : dict, default None
+        Users tier for each perk. Using str values for 0 through 5.
+
+    Returns
+    -------
+    class object
+
+    Examples
+    --------
+    By default the values are set to 0. User inputs change these and the effects are applied across the weapons:
+
+    >>> from Utils.processor import Build
+    >>> weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
+    >>>                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
+    >>> perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
+    >>> build = Build(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels)
+
+    The multiplier is what number you would like to divide the health number by to get armour health. Prior to season 4
+    this was half the zombies health.
+    """
     def __init__(self, weapon_class_levels: dict = None, perk_class_levels: dict = None):
         self.weapon_class_levels = weapon_class_levels
         self.perk_class_levels = perk_class_levels
@@ -91,19 +119,18 @@ class Build:
                         'Aim Walking', 'ADS', 'Vertical Recoil', 'Horizontal Recoil',
                         'Centering Speed', 'Idle Sway', 'Flinch', 'Hip Fire', 'Mag Capacity',
                         'Reload', 'Ammo Capacity', 'Accuracy', 'Critical', 'Pack', 'Rare',
-                        'Shoot To Reload Ratio', 'Movement Ratio', 'Control Ratio', 'Drop Off Ratio',
-                        ]
+                        'Shoot To Reload Ratio', 'Movement Ratio', 'Control Ratio', 'Drop Off Ratio']
 
-        def shot_distribution(stats=self.stats.values()) -> np.ndarray:
-            acc = [i.gun_acc_value for i in stats]
-            acc_n = [i for i in acc if i != 0]
+        def _shot_distribution(stats=self.stats.values()) -> np.ndarray:
+            acc = [val.gun_acc_value for val in stats]
+            acc_n = [val for val in acc if val != 0]
             sig1 = np.around(np.std(acc_n), 3)
             mu1 = np.around(np.mean(acc_n), 3)
             return np.around(normal(mu1, sig1, 2500), 3)
 
-        self.hits = shot_distribution()
+        self.hits = _shot_distribution()
 
-        def set_weapon_class(weapon_type: str, weapon_tier: str) -> None:
+        def _set_weapon_class(weapon_type: str, weapon_tier: str) -> None:
 
             if weapon_type == 'Launcher':
                 self.launchers = {'1': {'elites': 1.10, 'Armour Damage': 1.00, 'ammo': 1.00},
@@ -188,9 +215,9 @@ class Build:
             self.weapon_tier_inputs[weapon_type] = weapon_tier
 
         for i, j in enumerate(self.weapon_type_dict.keys()):
-            set_weapon_class(j, weapon_class_levels[j])
+            _set_weapon_class(j, weapon_class_levels[j])
 
-        def set_perk_class(perk_type: str, perk_tier: str) -> None:
+        def _set_perk_class(perk_type: str, perk_tier: str) -> None:
 
             if perk_type == 'speed':
                 self.speed = {'1': {'swap': 1, 'field recharge': 1, 'Reload': 0.85, 'barr. and myst.': 0,
@@ -248,7 +275,7 @@ class Build:
             self.perk_tier_inputs[perk_type] = perk_tier
 
         for i, j in enumerate(self.perk_dict.keys()):
-            set_perk_class(j, perk_class_levels[j])
+            _set_perk_class(j, perk_class_levels[j])
 
     def get_weapon_classes(self) -> dict:
         return self.weapon_type_dict
@@ -256,8 +283,8 @@ class Build:
     def get_perk_classes(self) -> dict:
         return self.perk_dict
 
-    def apply_multipliers(self, weapon_multi: dict, perk_multi: dict, weapon_dic: dict) -> dict:
-
+    @staticmethod
+    def _apply_multipliers(weapon_multi: dict, perk_multi: dict, weapon_dic: dict) -> dict:
         dn = weapon_dic.copy()
         # Weapons
         for j in weapon_multi[dn['Weapon Type']]:
@@ -272,7 +299,8 @@ class Build:
 
         return dn
 
-    def apply_attachments(self, weapon_dic: dict, attachment_lst: List[str]) -> dict:
+    @staticmethod
+    def _apply_attachments(weapon_dic: dict, attachment_lst: List[str]) -> dict:
 
         if weapon_dic['Pack'] != '0':
             pack_mag = True
@@ -476,8 +504,8 @@ class Build:
 
         return dn
 
-    def _get_attachments(self, weapon_dic: dict, equipped_dic: dict = None):
-
+    @staticmethod
+    def _get_attachments(weapon_dic: dict, equipped_dic: dict = None):
         location = []
         name = []
         effect = []
@@ -501,15 +529,8 @@ class Build:
         else:
             return df
 
-    def _process(self,
-                weapon: str,
-                nickname: str = None,
-                equipped_attachments: dict = None,
-                rarity: str = None,
-                pap: str = None,
-                accuracy: float = None,
-                critical: float = None) -> dict:
-
+    def _process(self, weapon: str, nickname: str = None, equipped_attachments: dict = None, rarity: str = None,
+                 pap: str = None, accuracy: float = None, critical: float = None) -> dict:
         d = self.stats[weapon]
         dic_i = {'Name': d.name,
                  'Temp Name': d.temp_name,
@@ -589,13 +610,12 @@ class Build:
                 dic_i['Damage 3'] = dic_i['Damage 3'] * self.pack_level[pap] * dic_i['PAP Burst']
                 dic_i['Mag Capacity'] = dic_i['Mag Capacity'] / dic_i['PAP Burst']
 
-        temp_dic = self.apply_multipliers(weapon_multi=self.get_weapon_classes(),
-                                          perk_multi=self.get_perk_classes(),
-                                          weapon_dic=dic_i)
+        temp_dic = self._apply_multipliers(weapon_multi=self.get_weapon_classes(), perk_multi=self.get_perk_classes(),
+                                           weapon_dic=dic_i)
 
         if equipped_attachments is not None:
             effect_lst = self._get_attachments(weapon_dic=temp_dic, equipped_dic=equipped_attachments)
-            final_dic = self.apply_attachments(weapon_dic=temp_dic, attachment_lst=effect_lst)
+            final_dic = self._apply_attachments(weapon_dic=temp_dic, attachment_lst=effect_lst)
 
             for part in ['Muzzle', 'Barrel', 'Body', 'Underbarrel', 'Magazine', 'Handle', 'Stock']:
                 if part in equipped_attachments.keys():
@@ -605,17 +625,3 @@ class Build:
             temp_dic = final_dic
 
         return temp_dic
-
-    # def _process_multi(self, weapon_dic_lst: List[dict]) -> list:
-    #
-    #     p_lst = []
-    #     for i in weapon_dic_lst:
-    #         p_lst.append(self._process(weapon=i['weapon'],
-    #                                    nickname=i['nickname'],
-    #                                    equipped_attachments=i['equipped_attachments'],
-    #                                    rarity=i['rarity'],
-    #                                    pap=i['pap'],
-    #                                    accuracy=i['accuracy'],
-    #                                    critical=i['critical']))
-    #
-    #     return p_lst
