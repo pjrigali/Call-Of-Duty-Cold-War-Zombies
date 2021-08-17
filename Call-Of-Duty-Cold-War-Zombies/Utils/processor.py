@@ -81,8 +81,10 @@ class Build:
                           'stamin up': {'movement': 1.07, 'sprint': 1.07, 'back pedal': 1.00, 'fall damage': 0,
                                         'aim walking': 1.00, 'equipment': 1.00, 'sprint falloff': 0},
                           'deadshot': {'scope sway': 0, 'critical1': 1.00, 'armour': 1.00, 'hip fire spread': 1.00,
-                                       'critical': 1.00, 'consecutive': 1}}
-        self.perk_tier_inputs = {'speed': '0', 'stamin up': '0', 'deadshot': '0'}
+                                       'critical': 1.00, 'consecutive': 1},
+                          'death_perception': {'minimap': 0, 'indicators': 0, 'Salvage': 1.00, 'Armour Damage': 1.00,
+                                               'chests': 0}}
+        self.perk_tier_inputs = {'speed': '0', 'stamin up': '0', 'deadshot': '0', 'death_perception': '0'}
         self.col_lst = ['Name', 'Temp Name', 'Damage', 'Damage 2', 'Damage 3', 'Range',
                         'Range 2', 'Fire Rate', 'Velocity', 'Armour Damage', 'Melee Quickness',
                         'Movement Speed', 'Sprinting Speed', 'Shooting Speed', 'Sprint to Fire',
@@ -234,6 +236,15 @@ class Build:
                                    'Crit': 1.10, 'consecutive': 1}
                              }[perk_tier]
                 self.perk_dict['deadshot'] = self.dead
+            elif perk_type == 'death_perception':
+                self.dead = {'1': {'minimap': 0, 'indicators': 0, 'Salvage': 1.00, 'Armour Damage': 1.00, 'chests': 0},
+                             '2': {'minimap': 0, 'indicators': 0, 'Salvage': 1.00, 'Armour Damage': 1.00, 'chests': 0},
+                             '3': {'minimap': 0, 'indicators': 0, 'Salvage': 1.20, 'Armour Damage': 1.00, 'chests': 0},
+                             '4': {'minimap': 0, 'indicators': 0, 'Salvage': 1.20, 'Armour Damage': 1.25, 'chests': 0},
+                             '5': {'minimap': 0, 'indicators': 0, 'Salvage': 1.20, 'Armour Damage': 1.25, 'chests': 0}
+                             }[perk_tier]
+                self.perk_dict['death_perception'] = self.dead
+
             self.perk_tier_inputs[perk_type] = perk_tier
 
         for i, j in enumerate(self.perk_dict.keys()):
