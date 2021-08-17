@@ -71,7 +71,7 @@ if __name__ == '__main__':
         'Stock': 'Spetsnaz PKM Stock'
     }
     equipped6 = {
-        'Muzzle': 'Agency Suppressor',
+        'Muzzle': 'Full Repeater',
         'Barrel': 'Task Force',
         'Body': 'Ember Sighting Point',
         'Underbarrel': 'Bruiser Grip',
@@ -92,7 +92,7 @@ if __name__ == '__main__':
          'pap': '0', 'accuracy': None, 'critical': None},
         {'weapon': 'Bullfrog', 'nickname': 'Temp Bullfrog', 'equipped_attachments': equipped5, 'rarity': 'common',
          'pap': '0', 'accuracy': None, 'critical': None},
-        {'weapon': 'LC10', 'nickname': 'Temp LC10', 'equipped_attachments': equipped6, 'rarity': 'common',
+        {'weapon': 'Tec9', 'nickname': 'Temp Tec9', 'equipped_attachments': equipped6, 'rarity': 'common',
          'pap': '0', 'accuracy': None, 'critical': None},
     ])
 
