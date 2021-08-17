@@ -5,7 +5,6 @@ Zombies Module is a Python library for analyzing and comparing weapons in Cold W
 Weapon stats are current through Season 5 (_pre August 16 update_). 
 [Patch Notes](https://www.ravensoftware.com/community/2021/08/call-of-duty-bocw-warzone-season-five-patch-notes)
 
-It is recommended to input user specific values for gun accuracy and critical hit percentages in weapon_stats.py
 
 ## Usage
 
@@ -46,6 +45,8 @@ equipped2 = {
     'Stock': 'KGB Skeletal Stock'}
 
 # Returns a Dict with the specific weapon stats, adjusted for attachments.
+# Accuracy and Critical values (float) can be found in game at 
+# Barracks\\Combat Record\\Zombies\\Weapon Name.
 guns = analysis.process_multi(weapon_dic_lst=[
     {'weapon': 'MP5', 'nickname': 'Temp MP5', 'equipped_attachments': equipped1, 'rarity': 'common',
      'pap': '0', 'accuracy': None, 'critical': None},
