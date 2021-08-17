@@ -723,11 +723,11 @@ class C58(Assault):
     }
 
 
-class EM2(Assault):
+class Em2(Assault):
     name = 'EM2'
     temp_name = 'Base EM2'
     damage_1 = 48.0
-    damage_3 =42.0
+    damage_3 = 42.0
     range_1 = 38.1
     fire_rate = 535.0
     velocity = 688.0
