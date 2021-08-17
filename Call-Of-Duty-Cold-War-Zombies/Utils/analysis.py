@@ -14,9 +14,34 @@ random.seed(1)
 
 
 class Analyze(Build):
+    """
+    Constructs  dicts, pd.DataFrames and visualizations for comparing various weapons.
+
+    Applies buffs from attachments.
+
+    Parameters
+    ----------
+    weapon_class_levels : dict, default None
+        User input tiers for each weapon class. Use str value betweem 0 and 5.
+    perk_class_levels : dict, default None
+        User input tiers for each perk. Use str value value between 0 and 5.
+    max_range : int
+        User desired maximum distance for the function to compute values for. (In meters)
+
+    Examples
+    --------
+    By default the values are set to 0. User inputs change these and the effects are applied across the weapons:
+
+    >>> from Utils import analysis as a
+    >>> weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
+    >>>                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
+    >>> perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
+    >>> analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
+    >>>                      max_range=100)
+
+    """
 
     def __init__(self, weapon_class_levels: dict = None, perk_class_levels: dict = None, max_range: int = 200):
-
         self._build = Build(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels)
         self.max_range = max_range
 

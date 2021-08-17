@@ -5,6 +5,13 @@ Created on Fri Apr  9 12:58:18 2021
 @author: Peter
 """
 
+""" 
+
+See gun_critical_value and gun_acc_value for each weapon. Make changes to reflect your metrics. 
+These can be found in game Barracks\\Combat Record\\Zombies\\Weapon Name.
+
+"""
+
 
 class Weapon:
     name: str = None

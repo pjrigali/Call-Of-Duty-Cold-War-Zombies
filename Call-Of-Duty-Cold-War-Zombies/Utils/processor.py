@@ -15,14 +15,14 @@ class Build:
     """
     Get weapon stat values.
 
-    Applies the buffs from the weapon and perk tiers. Then saves the information in a class object.
+    Applies buffs from weapon and perk tiers. Then saves the information in a class object.
 
     Parameters
     ----------
     weapon_class_levels : dict, default None
-        Users tier for each weapon class. Using str values for 0 through 5.
+        User input tiers for each weapon class. Use str value betweem 0 and 5.
     perk_class_levels : dict, default None
-        Users tier for each perk. Using str values for 0 through 5.
+        User input tiers for each perk. Use str value value between 0 and 5.
 
     Returns
     -------
@@ -38,8 +38,6 @@ class Build:
     >>> perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
     >>> build = Build(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels)
 
-    The multiplier is what number you would like to divide the health number by to get armour health. Prior to season 4
-    this was half the zombies health.
     """
     def __init__(self, weapon_class_levels: dict = None, perk_class_levels: dict = None):
         self.weapon_class_levels = weapon_class_levels

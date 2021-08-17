@@ -5,6 +5,8 @@ Zombies Module is a Python library for analyzing and comparing weapons in Cold W
 Weapon stats are current through Season 5 (_pre August 16 update_). 
 [Patch Notes](https://www.ravensoftware.com/community/2021/08/call-of-duty-bocw-warzone-season-five-patch-notes)
 
+It is recommended to input user specific values for gun accuracy and critical hit percentages in weapon_stats.py
+
 ## Usage
 
 ```python
@@ -16,7 +18,8 @@ from Utils import analysis as a
 weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
 perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
-analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels, max_range=100)
+analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
+                     max_range=100)
 
 # Set Zombie Health
 zombie = z.Health(level=20, health_cap=55, outbreak=False)
@@ -64,23 +67,28 @@ weapon_compare_dic = analysis.compare_multi(weapon_dic_lst=guns, zombie_health=z
 analysis.viz_all(weapon_df_dic=weapon_compare_dic, x_limit=40, ind=5, save_image=False)
 
 # Return a single visualization.
-analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Second', x_limit=40, ind=5, save_image=False)
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Second', x_limit=40, ind=5, 
+             save_image=False)
 ```
 ![Damage Per Second](https://miro.medium.com/max/1280/1*Ygk3yoH5y4Lvx7Th9s5mqw.png)
 ```python
-analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Max Ammo', x_limit=40, ind=5, save_image=False)
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Max Ammo', x_limit=40, ind=5, 
+             save_image=False)
 ```
 ![Damage Per Max Ammo](https://miro.medium.com/max/1280/1*jiqlsA4CpFPwBMHk93DBFw.png)
 ```python
-analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Clip', x_limit=40, ind=5, save_image=False)
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Clip', x_limit=40, ind=5, 
+             save_image=False)
 ```
 ![Damage Per Clip](https://miro.medium.com/max/1280/1*v1flKiPd1OuTpNM8Zda9bw.png)
 ```python
-analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Time To Kill', x_limit=40, ind=5, save_image=False)
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Time To Kill', x_limit=40, ind=5, 
+             save_image=False)
 ```
 ![Time To Kill](https://miro.medium.com/max/1280/1*tmtdPDrGQF4BaydbqdDjhQ.png)
 ```python
-analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Shots To Kill', x_limit=40, ind=5, save_image=False)
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Shots To Kill', x_limit=40, ind=5, 
+             save_image=False)
 ```    
 ![Shots To Kill](https://miro.medium.com/max/1280/1*Cvj_RG31PISq9bNgo1YV5Q.png)
 ```python
