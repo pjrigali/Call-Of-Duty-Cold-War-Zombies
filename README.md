@@ -1,27 +1,27 @@
 # Zombies Module
 
-Zombies Module is a Python library for analyzing weapons in Cold War Zombies.
+Zombies Module is a Python library for analyzing and comparing weapons in Cold War Zombies.
 
-Weapon stats are current through Season 4. Zombie health cap is set to level 43.
+Weapon stats are current through Season 5 (_pre August 16 update_). 
+[Patch Notes](https://www.ravensoftware.com/community/2021/08/call-of-duty-bocw-warzone-season-five-patch-notes)
 
 ## Usage
 
 ```python
-import pandas as pd
 from Utils import health_armour as z
 from Utils import analysis as a
-from Utils import processor as p
-import warnings
-pd.set_option('display.max_columns', None) 
+
 
 # Input your weapon class and perk tiers.
-base = p.Build(weapon_class_levels=['5', '5', '5', '5', '5', '5', '5', '5', '5', '5'],
-               perk_class_levels=['5', '5', '5'])
-aa = a.Analyze()
+weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
+                       'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
+perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
+analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels, max_range=100)
 
-# Set Zombie Health and Armour
-zom = z.Health(level=12, outbreak=False).get_health()
-ar = z.Armour(level=12, outbreak=False).get_armour()
+# Set Zombie Health
+zombie = z.Health(level=20, health_cap=55, outbreak=False)
+zombie_health = zombie.get_health()
+zombie_armour = zombie.get_armour(multiplier=2)
 
 # Set Attachments for weapons
 equipped1 = {
@@ -42,65 +42,73 @@ equipped2 = {
     'Handle': 'Serpent Wrap',
     'Stock': 'KGB Skeletal Stock'}
 
-# Returns a DataFrame comparing selected weapons
-guns = base.process_multi([
-    ['MP5', 'Temp MP5', equipped1, 'common', '0', None, None],
-    ['PPSH', 'Temp PPSH', equipped2, 'common', '0', None, None]])
+# Returns a Dict with the specific weapon stats, adjusted for attachments.
+guns = analysis.process_multi(weapon_dic_lst=[
+    {'weapon': 'MP5', 'nickname': 'Temp MP5', 'equipped_attachments': equipped1, 'rarity': 'common',
+     'pap': '0', 'accuracy': None, 'critical': None},
+    {'weapon': 'PPSH', 'nickname': 'Temp PPSH', 'equipped_attachments': equipped2, 'rarity': 'common',
+     'pap': '0', 'accuracy': None, 'critical': None}])
 
-col_lst = [
-    'Name', 'Temp Name', 'Damage', 'Damage 2', 'Damage 3', 'Range',
-    'Range 2', 'Fire Rate', 'Velocity', 'Armour Damage', 'Melee Quickness',
-    'Movement Speed', 'Sprinting Speed', 'Shooting Speed', 'Sprint to Fire',
-    'Aim Walking', 'ADS', 'Vertical Recoil', 'Horizontal Recoil',
-    'Centering Speed', 'Idle Sway', 'Flinch', 'Hip Fire', 'Mag Capacity',
-    'Reload', 'Ammo Capacity', 'Accuracy', 'Critical', 'Pack', 'Rare',
-    'Shoot To Reload Ratio', 'Movement Ratio', 'Control Ratio', 'Drop Off Ratio']
-
-gun_df = pd.DataFrame(guns)[col_lst].set_index('Temp Name')
-
-compare_lst = []
-for i in guns:
-    compare_lst.append(aa.compare(i, zom, True, False))
+# Convert to a DataFrame.
+gun_df = analysis.build_df(weapon_dic_lst=guns, cols=None)
 ```
 
 ## Visualizations
 
 ```python
-aa.viz(gun_lst=compare_lst, keyword='Damage Per Max Ammo', x_limit=40, ind=5, save_image=False)
-```
-![Damage Per Max Ammo](https://miro.medium.com/max/1280/1*jiqlsA4CpFPwBMHk93DBFw.png)
-```python
-aa.viz(gun_lst=compare_lst, keyword='Damage Per Clip', x_limit=40, ind=5, save_image=False)
-```
-![Damage Per Clip](https://miro.medium.com/max/1280/1*v1flKiPd1OuTpNM8Zda9bw.png)
-```python
-aa.viz(gun_lst=compare_lst, keyword='Damage Per Second', x_limit=40, ind=5, save_image=False)
+# Build Data for Viz.
+weapon_compare_dic = analysis.compare_multi(weapon_dic_lst=guns, zombie_health=zombie_health,
+                                            zombie_armour=zombie_armour, for_viz=True)
+
+# Return all visualizations.
+analysis.viz_all(weapon_df_dic=weapon_compare_dic, x_limit=40, ind=5, save_image=False)
+
+# Return a single visualization.
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Second', x_limit=40, ind=5, save_image=False)
 ```
 ![Damage Per Second](https://miro.medium.com/max/1280/1*Ygk3yoH5y4Lvx7Th9s5mqw.png)
 ```python
-aa.viz(gun_lst=compare_lst, keyword='Time To Kill', x_limit=40, ind=5, save_image=False)
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Max Ammo', x_limit=40, ind=5, save_image=False)
+```
+![Damage Per Max Ammo](https://miro.medium.com/max/1280/1*jiqlsA4CpFPwBMHk93DBFw.png)
+```python
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Clip', x_limit=40, ind=5, save_image=False)
+```
+![Damage Per Clip](https://miro.medium.com/max/1280/1*v1flKiPd1OuTpNM8Zda9bw.png)
+```python
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Time To Kill', x_limit=40, ind=5, save_image=False)
 ```
 ![Time To Kill](https://miro.medium.com/max/1280/1*tmtdPDrGQF4BaydbqdDjhQ.png)
 ```python
-aa.viz(gun_lst=compare_lst, keyword='Shots To Kill', x_limit=40, ind=5, save_image=False)
+analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Shots To Kill', x_limit=40, ind=5, save_image=False)
 ```    
 ![Shots To Kill](https://miro.medium.com/max/1280/1*Cvj_RG31PISq9bNgo1YV5Q.png)
 ```python
-# To get a single weapon stats. Returns a dictionary
-equipped3 = {
-    'Muzzle': 'Agency Suppressor',
-    'Barrel': 'Task Force',
-    'Body': 'Ember Sighting Point',
-    'Magazine': 'Salvo Fast Mag',
-    'Stock': 'Dual Wield'}
+# Return the attachments and their effects for a specific gun
+equipped_mp5 = {'Muzzle': 'Agency Suppressor',
+                'Barrel': 'Task Force',
+                'Body': 'Ember Sighting Point',
+                'Underbarrel': 'Bruiser Grip',
+                'Magazine': 'Salvo Fast Mag',
+                'Handle': 'Serpent Wrap',
+                'Stock': 'Raider Stock'}
 
-t_d = base.process(weapon='Magnum', 
-                   nickname='Temp Magnum', 
-                   equipped_attachments=equipped3, 
-                   rarity='common',
-                   pap='0',
-                   accuracy=False, 
-                   critical=False)[0]
+mp5 = {'weapon': 'MP5', 'nickname': 'Temp MP5', 'equipped_attachments': equipped_mp5, 'rarity': 'common',
+       'pap': '0', 'accuracy': None, 'critical': None}
+mp5_dic = analysis.process(weapon_dic=mp5)
+attach_df = analysis.get_attachments(weapon_dic=mp5_dic, equipped_dic=None)
+
+# Returns the effects as a list  from the attachments
+effects_lst = analysis.get_attachments(weapon_dic=mp5_dic, equipped_dic=equipped_mp5)]
+
+# ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control', '- 25% Effective Damage Range', 
+# '+ 6% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity', '- 25% Max Starting Ammo', 
+# '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control', '+ 30% Increased Salvage Drop Rate',
+# '+ 25% Hip Fire Accuracy', '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time', '+ 40% Melee Quickness', 
+# '+ 3% Movement Speed', '+ 3% Shooting Move Speed', '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed', 
+# '+ 33% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity', 
+# '- 25% Aim Down Sight Time', '+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time', '+ 30% Sprint to Fire Time', 
+# '+ 10% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy']
 ```
 
 ## Contributing
