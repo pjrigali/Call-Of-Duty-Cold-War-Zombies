@@ -44,7 +44,7 @@ class Health:
 
         health_lst = []
         health_amount = 150
-        for num in range(self.health_cap + 1):
+        for num in range(max(self.health_cap, self.level) + 1):
             if 1 < num <= 11:
                 health_amount += 60
             elif 11 < num <= 16:
@@ -57,10 +57,11 @@ class Health:
                 health_amount += 1400
             elif 31 < num <= 36:
                 health_amount += 1750
-            elif 36 < num <= 85:
+            elif 36 < num <= health_cap:
                 health_amount += 2000
-            elif 85 < num:
-                health_amount = 120000
+            elif health_cap < num:
+                pass
+                # health_amount = 120000
             health_lst.append(health_amount)
 
         if outbreak:
