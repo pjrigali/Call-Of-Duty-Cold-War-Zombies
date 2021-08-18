@@ -518,7 +518,7 @@ class Analyze(Build):
 
         """
 
-        return {i['Temp Name']: self.compare(weapon_dic=i, zombie_health=zombie_health, zombie_armour=zombie_armour,
+        return {i['Name']: self.compare(weapon_dic=i, zombie_health=zombie_health, zombie_armour=zombie_armour,
                                              for_viz=for_viz) for i in weapon_dic_lst}
 
     def build_df(self, weapon_dic_lst: List[dict], cols: List[str] = None) -> pd.DataFrame:
@@ -584,12 +584,23 @@ class Analyze(Build):
                 n += 1
 
         cmap = [plt.get_cmap('viridis')(1. * i / n) for i in range(n)]
-        mu = df.mean(axis=1)
+
+        if 'Time' not in keyword:
+            mu = df.mean(axis=1).astype(int)
+        else:
+            mu = df.mean(axis=1).round(1)
+
         labels = []
         count = 0
         for i in df.columns:
-            plt.plot(df[i], label=i, color=cmap[count])
-            labels.append(str(df[i].iloc[ind]))
+
+            if 'Time' not in keyword:
+                val = df[i].astype(int)
+            else:
+                val = df[i].round(1)
+
+            plt.plot(val, label=i, color=cmap[count])
+            labels.append(str(val.iloc[ind]))
             count += 1
         plt.plot(mu, label='Mu', color='tab:orange', linestyle='--', alpha=1)
         labels = labels + [str(round(mu.iloc[ind], 1))]
