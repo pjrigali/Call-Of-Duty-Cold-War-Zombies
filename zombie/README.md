@@ -6,7 +6,7 @@ Weapon stats are current through Season 5 (_pre August 16 update_).
 [Patch Notes](https://www.ravensoftware.com/community/2021/08/call-of-duty-bocw-warzone-season-five-patch-notes)
 
 ## Installation
-    pip install cold-war-zombies
+    pip install cold-war-zombies==3.0.0
 
 ## Usage
 
