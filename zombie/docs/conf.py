@@ -12,7 +12,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('C:\\Users\\Peter\\Desktop\\Personal\\11_Repository\\Call of Duty Zombies\\zombie'))
+sys.path.insert(0, os.path.abspath('../..'))
 
 
 # -- Project information -----------------------------------------------------
@@ -22,7 +22,7 @@ copyright = '2021, Peter Rigali'
 author = 'Peter Rigali'
 
 # The full version, including alpha/beta/rc tags
-release = '3.0.2'
+release = '3.0.3'
 
 
 # -- General configuration ---------------------------------------------------

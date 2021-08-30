@@ -11,7 +11,7 @@ def read_file(*parts):
 
 setup(
     name='cold_war_zombies',
-    version='3.0.2',
+    version='3.0.3',
     packages=['zombie',],
     license='MIT',
     description='A package for comparing weapons in Call of Duty Cold War Zombies',
