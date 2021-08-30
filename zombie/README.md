@@ -6,13 +6,14 @@ Weapon stats are current through Season 5 (_pre August 16 update_).
 [Patch Notes](https://www.ravensoftware.com/community/2021/08/call-of-duty-bocw-warzone-season-five-patch-notes)
 
 ## Installation
-    pip install cold-war-zombies==3.0.0
+    pip install cold-war-zombies
 
 ## Usage
 
 ```python
-from Utils import health_armour as z
-from Utils import analysis as a
+import zombie
+from zombie import health_armour as z
+from zombie import analysis as a
 
 
 # Input your weapon class and perk tiers.
@@ -23,9 +24,9 @@ analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=
                      max_range=100)
 
 # Set Zombie Health
-zombie = z.Health(level=20, health_cap=55, outbreak=False)
-zombie_health = zombie.get_health()
-zombie_armour = zombie.get_armour(multiplier=2)
+zom_health = z.Health(level=20, health_cap=55, outbreak=False)
+zombie_health = zom_health.get_health()
+zombie_armour = zom_health.get_armour(multiplier=2)
 
 # Set Attachments for weapons
 equipped1 = {
