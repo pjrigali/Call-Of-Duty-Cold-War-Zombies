@@ -15,9 +15,9 @@ if __name__ == '__main__':
     analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels, max_range=100)
 
     # Set Zombie Health
-    zombie = z.Health(level=60, health_cap=55, outbreak=False)
-    zombie_health = zombie.get_health()
-    zombie_armour = zombie.get_armour(multiplier=2)
+    zom = z.Health(level=60, health_cap=55, outbreak=False)
+    zombie_health = zom.get_health()
+    zombie_armour = zom.get_armour(multiplier=2)
 
     # Example Loadouts
     # equipped1 = {

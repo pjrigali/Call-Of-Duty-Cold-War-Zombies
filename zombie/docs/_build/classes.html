@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="This chapter describes how to edit, update, and build the Pyramid documentation." name="description" />
+<meta content="Pyramid, Style Guide" name="keywords" />
+
+    <title>Classes &#8212; cold-war-zombies 3.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functions" href="functions.html" />
+    <link rel="prev" title="Intro" href="intro.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="functions.html" title="Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Intro"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cold-war-zombies 3.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Classes</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="classes">
+<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
+<p>This chapter documents the classes used.</p>
+<section id="health">
+<h2>Health<a class="headerlink" href="#health" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie.health_armour.Health">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">zombie.health_armour.</span></span><span class="sig-name descname"><span class="pre">Health</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">health_cap</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">55</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outbreak</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#zombie.health_armour.Health" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Description</strong></p>
+<p>Get zombie health and armour values. Creates a list of zombie health values. Uses desired level and a health cap
+value to compute health level.</p>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt>level<span class="classifier">int</span></dt><dd><p>Desired zombie level to test weapon strength at.</p>
+</dd>
+<dt>health_cap<span class="classifier">int</span></dt><dd><p>The level when zombie health values stop increasing. In season 5 this is level 55. Season 4 was 85.</p>
+</dd>
+<dt>outbreak<span class="classifier">bool, default False</span></dt><dd><p>If level is True, parameter is referencing an outbreak level.</p>
+</dd>
+</dl>
+<p><strong>Returns</strong></p>
+<blockquote>
+<div><p>float</p>
+</div></blockquote>
+<p><strong>Example</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">zombie</span> <span class="kn">import</span> <span class="n">health_armour</span> <span class="k">as</span> <span class="n">z</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zombie</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">Health</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">health_cap</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">outbreak</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zombie_health</span> <span class="o">=</span> <span class="n">zombie</span><span class="o">.</span><span class="n">get_health</span><span class="p">()</span> <span class="c1"># 2450</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zombie_armour</span> <span class="o">=</span> <span class="n">zombie</span><span class="o">.</span><span class="n">get_armour</span><span class="p">(</span><span class="n">multiplier</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 1225</span>
+</pre></div>
+</div>
+<p>The multiplier is what number you would like to divide the health number by to get armour health. Prior to season 4
+this was half the zombies health.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="zombie.health_armour.Health.get_armour">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">get_armour</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#zombie.health_armour.Health.get_armour" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Returns zombie armour value. Multiplier is an int you want to divide the zombie health level by</dt><dd><p>If 2, the armour health will be half the zombie health value.</p>
+</dd>
+</dl>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt>multiplier<span class="classifier">int, default is 2</span></dt><dd><p>Divisor to get armour health value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="zombie.health_armour.Health.get_health">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">get_health</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#zombie.health_armour.Health.get_health" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns zombie health value.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">zombie.analysis.</span></span><span class="sig-name descname"><span class="pre">Analyze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_class_levels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perk_class_levels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_range</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#zombie.analysis.Analyze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs  dicts, pd.DataFrames and visualizations for comparing various weapons.</p>
+<p>Applies buffs from attachments.</p>
+<dl class="simple">
+<dt>weapon_class_levels<span class="classifier">dict, default None</span></dt><dd><p>User input tiers for each weapon class. Use str value betweem 0 and 5.</p>
+</dd>
+<dt>perk_class_levels<span class="classifier">dict, default None</span></dt><dd><p>User input tiers for each perk. Use str value value between 0 and 5.</p>
+</dd>
+<dt>max_range<span class="classifier">int</span></dt><dd><p>User desired maximum distance for the function to compute values for. (In meters)</p>
+</dd>
+</dl>
+<p>By default the values are set to 0. User inputs change these and the effects are applied across the weapons:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">zombie</span> <span class="kn">import</span> <span class="n">analysis</span> <span class="k">as</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weapon_class_levels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Launcher&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Special&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Smg&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Shotgun&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Pistol&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                       <span class="s1">&#39;Marksman&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Sniper&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Lmg&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Assault&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Melee&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">perk_class_levels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;stamin up&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;deadshot&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;death_perception&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analysis</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">Analyze</span><span class="p">(</span><span class="n">weapon_class_levels</span><span class="o">=</span><span class="n">weapon_class_levels</span><span class="p">,</span> <span class="n">perk_class_levels</span><span class="o">=</span><span class="n">perk_class_levels</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                     <span class="n">max_range</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.build_df">
+<span class="sig-name descname"><span class="pre">build_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic_lst</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.build_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a pd.DataFrame with all comparison stats and metrics; for multiple weapons.</p>
+<dl class="simple">
+<dt>weapon_dic_lst<span class="classifier">List[dict]</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+<dt>cols<span class="classifier">List[str], default None</span></dt><dd><p>List of keys to include as output pd.DataFrame columns.</p>
+</dd>
+</dl>
+<p>pd.DataFrame</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.compare">
+<span class="sig-name descname"><span class="pre">compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zombie_health</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zombie_armour</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">for_viz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#zombie.analysis.Analyze.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs the dict or pd.DataFrame with all comparison stats and metrics.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+<dt>zombie_health<span class="classifier">float</span></dt><dd><p>The zombie health value.</p>
+</dd>
+<dt>zombie_armour<span class="classifier">float, default None</span></dt><dd><p>The zombie health value.</p>
+</dd>
+<dt>for_viz<span class="classifier">bool, default False</span></dt><dd><p>Whether or not the data will be used to create plots. If False the function will return a dict.
+If True the function will return a pd.DataFrame.</p>
+</dd>
+</dl>
+<p>dict or pd.DataFrame</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.compare_multi">
+<span class="sig-name descname"><span class="pre">compare_multi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic_lst</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zombie_health</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zombie_armour</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">for_viz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.compare_multi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs the dict with all comparison stats and metrics; for multiple weapons.</p>
+<dl class="simple">
+<dt>weapon_dic_lst<span class="classifier">List[dict]</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+<dt>zombie_health<span class="classifier">float</span></dt><dd><p>The zombie health value.</p>
+</dd>
+<dt>zombie_armour<span class="classifier">float, default None</span></dt><dd><p>The zombie health value.</p>
+</dd>
+<dt>for_viz<span class="classifier">bool, default False</span></dt><dd><p>Whether or not the data will be used to create plots. If False the function will return a dict.
+If True the function will return a pd.DataFrame.</p>
+</dd>
+</dl>
+<p>dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.control_ratio">
+<span class="sig-name descname"><span class="pre">control_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.control_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the control ratio for a specific weapon.</p>
+<p>This is used to compare the controllability of weapon against others. The closer to 1 the better the weapons
+overall control attributes.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+</dl>
+<p>float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.damage_per_clip">
+<span class="sig-name descname"><span class="pre">damage_per_clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damage_range_arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shots_average</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.damage_per_clip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the damage per clip value of a specific weapon over varying distances.</p>
+<dl class="simple">
+<dt>damage_range_arr<span class="classifier">np.ndarray</span></dt><dd><p>The damage at varying distances.</p>
+</dd>
+<dt>shots_average<span class="classifier">np.ndarray</span></dt><dd><p>An np.ndarray() with expected damage output based on accuracy and critical hit percentage.</p>
+</dd>
+</dl>
+<p>np.ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.damage_per_max_ammo">
+<span class="sig-name descname"><span class="pre">damage_per_max_ammo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damage_range_arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.damage_per_max_ammo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the damage per max ammo at varying distances.</p>
+<p>This assumes you were to fire all ammo in the gun and in reserve at a set distance.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+<dt>damage_range_arr<span class="classifier">np.ndarray</span></dt><dd><p>The damage at varying distances.</p>
+</dd>
+</dl>
+<p>np.ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.damage_per_second">
+<span class="sig-name descname"><span class="pre">damage_per_second</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damage_range_arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.damage_per_second" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the damage per second output of a specific weapon over varying distances.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+<dt>damage_range_arr<span class="classifier">np.ndarray</span></dt><dd><p>The damage at varying distances.</p>
+</dd>
+</dl>
+<p>np.ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.damage_range">
+<span class="sig-name descname"><span class="pre">damage_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.damage_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a np.ndarray with the damage output of a weapon at varying distances</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.drop_off_ratio">
+<span class="sig-name descname"><span class="pre">drop_off_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.drop_off_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the damage drop off ratio for a specific weapon.</p>
+<p>This is used to compare the how much damage is lost as targets get farther away.The closer to 0 the better
+the weapons overall control attributes. A higher value means the damage starts out strong build falls off.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+</dl>
+<p>float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.get_attachments">
+<span class="sig-name descname"><span class="pre">get_attachments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equipped_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#zombie.analysis.Analyze.get_attachments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pd.DataFrame if nothing is passed in equipped_dic. If a dict of attachments is passed, the function
+will return a lst of the attachment(s) effects.</p>
+<dl>
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+<dt>equipped_dic<span class="classifier">dict</span></dt><dd><p>A dict of attachment types and selected attachment name.</p>
+<dl class="simple">
+<dt>{‘Muzzle’: ‘Agency Suppressor’,</dt><dd><p>‘Barrel’: ‘Task Force’,
+‘Body’: ‘Ember Sighting Point’,
+‘Underbarrel’: ‘Bruiser Grip’,
+‘Magazine’: ‘Salvo Fast Mag’,
+‘Handle’: ‘Serpent Wrap’,
+‘Stock’: ‘None’}</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>pd.DataFrame or list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.movement_ratio">
+<span class="sig-name descname"><span class="pre">movement_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.movement_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the movement ratio for a specific weapon.</p>
+<p>This is used to compare the mobility of weapon against others. The closer to 1 the better the weapons overall
+movement attributes.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+</dl>
+<p>float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dict for a weapon with all stats. Including attachments, perk and weapon tier effects</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.process_multi">
+<span class="sig-name descname"><span class="pre">process_multi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic_lst</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.process_multi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a List[dict] for multiple weapons with all stats included in process()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.shoot_reload_ratio">
+<span class="sig-name descname"><span class="pre">shoot_reload_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.shoot_reload_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the shoot to reload ratio value of a specific weapon.</p>
+<p>This is used to see how long a weapon can output damage before having to be halted to reload.
+A weapon like the Bullfrog has a high shoot to reload ratio due to its large magazine size.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+</dl>
+<p>float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.shoot_time">
+<span class="sig-name descname"><span class="pre">shoot_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.shoot_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the time spent shooting in seconds.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+</dl>
+<p>float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.shots_to_kill">
+<span class="sig-name descname"><span class="pre">shots_to_kill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damage_range_arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zombie_health</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.shots_to_kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the shots to kill value of a specific weapon over varying distances.</p>
+<dl class="simple">
+<dt>damage_range_arr<span class="classifier">np.ndarray</span></dt><dd><p>The damage at varying distances.</p>
+</dd>
+<dt>zombie_health<span class="classifier">float</span></dt><dd><p>The zombie health value.</p>
+</dd>
+</dl>
+<p>np.ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.time_to_kill">
+<span class="sig-name descname"><span class="pre">time_to_kill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damage_range_arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zombie_health</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.time_to_kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the time to kill value of a specific weapon over varying distances.</p>
+<dl class="simple">
+<dt>weapon_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats.</p>
+</dd>
+<dt>damage_range_arr<span class="classifier">np.ndarray</span></dt><dd><p>The damage at varying distances.</p>
+</dd>
+<dt>zombie_health<span class="classifier">float</span></dt><dd><p>The zombie health value.</p>
+</dd>
+</dl>
+<p>np.ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.viz">
+<span class="sig-name descname"><span class="pre">viz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_df_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ind</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_image</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.viz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a plot related to a phrase for comparing weapons.</p>
+<dl class="simple">
+<dt>weapon_df_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats. {MP5: mp5 DataFrame, …}</p>
+</dd>
+<dt>keyword<span class="classifier">str</span></dt><dd><p>Phrase used to denote a plot type.
+[‘Damage Per Max Ammo’, ‘Damage Per Clip’, ‘Damage Per Second’, ‘Time To Kill’, ‘Shots To Kill’]</p>
+</dd>
+<dt>x_limit<span class="classifier">int</span></dt><dd><p>Maximum limit of x axis in the plot.</p>
+</dd>
+<dt>ind<span class="classifier">int</span></dt><dd><p>Index used to populate the Value legend.</p>
+</dd>
+<dt>save_image<span class="classifier">bool, default False</span></dt><dd><p>If True will save the plot to the working directory.</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="zombie.analysis.Analyze.viz_all">
+<span class="sig-name descname"><span class="pre">viz_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_df_dic</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ind</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_image</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#zombie.analysis.Analyze.viz_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a series of plots related utilizing all phrases for comparing weapons.</p>
+<dl class="simple">
+<dt>weapon_df_dic<span class="classifier">dict</span></dt><dd><p>Dict of specific weapon stats. {MP5: mp5 DataFrame, …}</p>
+</dd>
+<dt>x_limit<span class="classifier">int</span></dt><dd><p>Maximum limit of x axis in the plot.</p>
+</dd>
+<dt>ind<span class="classifier">int</span></dt><dd><p>Index used to populate the Value legend.</p>
+</dd>
+<dt>save_image<span class="classifier">bool, default False</span></dt><dd><p>If True will save the plot to the working directory.</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="build">
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie.processor.Build">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">zombie.processor.</span></span><span class="sig-name descname"><span class="pre">Build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weapon_class_levels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perk_class_levels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#zombie.processor.Build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get weapon stat values.</p>
+<p>Applies buffs from weapon and perk tiers. Then saves the information in a class object.</p>
+<dl class="simple">
+<dt>weapon_class_levels<span class="classifier">dict, default None</span></dt><dd><p>User input tiers for each weapon class. Use str value betweem 0 and 5.</p>
+</dd>
+<dt>perk_class_levels<span class="classifier">dict, default None</span></dt><dd><p>User input tiers for each perk. Use str value value between 0 and 5.</p>
+</dd>
+</dl>
+<p>class object</p>
+<p>By default the values are set to 0. User inputs change these and the effects are applied across the weapons:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">zombie.processor</span> <span class="kn">import</span> <span class="n">Build</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weapon_class_levels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Launcher&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Special&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Smg&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Shotgun&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Pistol&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                       <span class="s1">&#39;Marksman&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Sniper&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Lmg&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Assault&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Melee&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">perk_class_levels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;stamin up&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;deadshot&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;death_perception&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">build</span> <span class="o">=</span> <span class="n">Build</span><span class="p">(</span><span class="n">weapon_class_levels</span><span class="o">=</span><span class="n">weapon_class_levels</span><span class="p">,</span> <span class="n">perk_class_levels</span><span class="o">=</span><span class="n">perk_class_levels</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Classes</a><ul>
+<li><a class="reference internal" href="#health">Health</a></li>
+<li><a class="reference internal" href="#analysis">Analysis</a></li>
+<li><a class="reference internal" href="#build">Build</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Intro</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="functions.html"
+                        title="next chapter">Functions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/classes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="functions.html" title="Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Intro"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cold-war-zombies 3.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Classes</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Peter Rigali.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+    </div>
+  </body>
+</html>

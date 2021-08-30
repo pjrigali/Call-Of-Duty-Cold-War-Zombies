@@ -8,27 +8,27 @@ Created on Thu Apr 22 19:49:29 2021
 
 class Health:
     """
-    Get zombie health and armour values.
+    **Description**
 
-    Creates a list of zombie health values. Uses desired level and a health cap value to compute health level.
+    Get zombie health and armour values. Creates a list of zombie health values. Uses desired level and a health cap
+    value to compute health level.
 
-    Parameters
-    ----------
+    **Parameters**
+
     level : int
         Desired zombie level to test weapon strength at.
     health_cap : int
         The level when zombie health values stop increasing. In season 5 this is level 55. Season 4 was 85.
     outbreak : bool, default False
-        If level parameter is referencing an outbreak level.
+        If level is True, parameter is referencing an outbreak level.
 
-    Returns
-    -------
-    float
+    **Returns**
 
-    Examples
-    --------
+     float
 
-    >>> from Utils import health_armour as z
+    **Example**
+
+    >>> from zombie import health_armour as z
     >>> zombie = z.Health(level=20, health_cap=55, outbreak=False)
     >>> zombie_health = zombie.get_health() # 2450
     >>> zombie_armour = zombie.get_armour(multiplier=2) # 1225
@@ -78,12 +78,22 @@ class Health:
         else:
             self.hp = health_lst[self.level]
 
+    @property
     def get_health(self) -> float:
-        """Returns zombie health value"""
+        """Returns zombie health value."""
 
         return float(self.hp)
 
+    @property
     def get_armour(self, multiplier: int = 2) -> float:
-        """Returns zombie armour value"""
+        """Returns zombie armour value. Multiplier is an int you want to divide the zombie health level by
+            If 2, the armour health will be half the zombie health value.
+
+        **Parameters**
+
+        multiplier : int, default is 2
+            Divisor to get armour health value
+
+        """
 
         return float(self.hp / multiplier)
