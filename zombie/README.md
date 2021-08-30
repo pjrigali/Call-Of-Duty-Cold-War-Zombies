@@ -1,13 +1,12 @@
-# Zombies Module
+# Cold War Zombies
 
-Zombies Module is a Python library for analyzing and comparing weapons in Cold War Zombies.
+This is a package for analyzing and comparing weapons in Cold War Zombies.
 
 Weapon stats are current through Season 5 (_pre August 16 update_). 
 [Patch Notes](https://www.ravensoftware.com/community/2021/08/call-of-duty-bocw-warzone-season-five-patch-notes)
 
-A write up exploring the library can be found here.
-[Write Up](https://medium.com/@peterjrigali/best-weapon-in-zombies-9fddd33735c5)
-
+## Installation
+    pip install cold-war-zombies
 
 ## Usage
 
