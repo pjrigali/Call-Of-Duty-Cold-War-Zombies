@@ -1,7 +1,7 @@
 import os
 from setuptools import setup, find_packages
 
-current_path = os.path.abspath('..')
+current_path = os.path.abspath('.')
 
 
 def read_file(*parts):
@@ -11,7 +11,7 @@ def read_file(*parts):
 
 setup(
     name='cold_war_zombies',
-    version='3.0.3',
+    version='1.0.0',
     packages=["zombie",],
     # packages=['zombie',],
     author='Peter Rigali',
