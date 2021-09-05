@@ -12,9 +12,11 @@ import random
 from zombie.processor import Build
 from zombie.base import damage_range, damage_per_second, damage_per_clip, damage_per_max_ammo, drop_off_ratio
 from zombie.base import shoot_reload_ratio, time_to_kill, shoot_time, shots_to_kill, control_ratio, movement_ratio
+from dataclasses import dataclass
 random.seed(1)
 
 
+@dataclass
 class Analyze(Build):
     """
 

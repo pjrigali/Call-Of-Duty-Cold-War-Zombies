@@ -4,8 +4,10 @@ Created on Thu Apr 22 19:49:29 2021
 
 @author: Peter
 """
+from dataclasses import dataclass
 
 
+@dataclass
 class Health:
     """
 
@@ -69,6 +71,9 @@ class Health:
         else:
             self.hp = health_lst[self.level]
         self.armour = float(int(self.hp / self.multiplier))
+
+    def __repr__(self):
+        return "Zombie Health"
 
     @property
     def get_health(self) -> float:
