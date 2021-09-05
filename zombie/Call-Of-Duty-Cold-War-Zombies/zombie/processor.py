@@ -32,7 +32,7 @@ class Build:
     --------
     By default the values are set to 0. User inputs change these and the effects are applied across the weapons:
 
-    >>> from zombie.processor import Build
+    >>> from zombie import Build
     >>> weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
     >>>                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     >>> perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}

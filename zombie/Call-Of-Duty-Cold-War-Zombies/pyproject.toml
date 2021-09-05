@@ -1,0 +1,16 @@
+[build-system]
+requires = [
+    "numpy==1.21.2",
+    "matplotlib==3.4.3",
+    "pandas==1.3.2",
+    "setuptools>=42",
+    "wheel"
+    ]
+
+# build-backend = "flit_core.buildapi"
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cold-war-zombies"
+authors = [{name = "Peter Rigali", email = "peterjrigali@gmail.com"}]
+dynamic = ["3.0.3", "A package for analysis of Call of Duty Cold War Zombies weapons."]

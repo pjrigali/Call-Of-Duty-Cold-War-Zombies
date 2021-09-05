@@ -1,9 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91711bce-f742-4362-97d0-75ca312b7c37" name="Changes" comment="Updates for readthedocs">
+    <list default="true" id="91711bce-f742-4362-97d0-75ca312b7c37" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/_templates/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/intro.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/pyproject.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Zombie_Module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Zombie_Module.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.readthedocs.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/.readthedocs.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/.buildinfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/.doctrees/classes.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/.doctrees/environment.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/.doctrees/functions.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/.doctrees/glossary.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/.doctrees/index.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/.doctrees/intro.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_sources/classes.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_sources/functions.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_sources/glossary.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_sources/index.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_sources/intro.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/basic.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/classic.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/doctools.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/documentation_options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/file.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/jquery-3.5.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/language_data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/pygments.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/searchtools.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/sidebar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/underscore-1.13.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/_static/underscore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/classes.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/functions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/genindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/glossary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/intro.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/objects.inv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/searchindex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/classes.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/classes.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/glossary.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/glossary.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/intro.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/make.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/docs/make.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/Damage Per Clip.png" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/plots/Damage Per Clip.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/Damage Per Max Ammo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/plots/Damage Per Max Ammo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/Damage Per Second.png" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/plots/Damage Per Second.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/Shots To Kill.png" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/plots/Shots To Kill.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/Time To Kill.png" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/plots/Time To Kill.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zombie/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/zombie/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zombie/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/zombie/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zombie/health_armour.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/zombie/health_armour.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zombie/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zombie/processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/zombie/processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zombie/weapon_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/Call-Of-Duty-Cold-War-Zombies/zombie/weapon_stats.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,6 +78,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1wkqjDCbQlwx3yfrPKJ7ckxCp8L" />
@@ -22,12 +94,21 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../venv/Scripts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/_templates" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Peter\Desktop\Personal\11_Repository\Call of Duty Zombies\zombie\docs\_templates" />
+      <recent name="C:\Users\Peter\Desktop\Personal\11_Repository\Call of Duty Zombies\zombie" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Peter\Desktop\Personal\11_Repository\Call of Duty Zombies\zombie\Call-Of-Duty-Cold-War-Zombies" />
+      <recent name="C:\Users\Peter\Desktop\Personal\11_Repository\Call of Duty Zombies\zombie" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="zombie" type="PythonConfigurationType" factoryName="Python">
@@ -37,13 +118,13 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\Peter\Desktop\Personal\11_Repository\Call of Duty Zombies\zombie\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/zombie" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/zombie/main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Peter\Desktop\Personal\11_Repository\Call of Duty Zombies\zombie\Call-Of-Duty-Cold-War-Zombies\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -63,16 +144,12 @@
       <updated>1629013066751</updated>
       <workItem from="1629013067903" duration="88000" />
       <workItem from="1629013232099" duration="50000" />
-      <workItem from="1630313923885" duration="4087000" />
+      <workItem from="1630445245428" duration="6775000" />
+      <workItem from="1630478343087" duration="871000" />
+      <workItem from="1630479884706" duration="1260000" />
+      <workItem from="1630505303909" duration="29000" />
+      <workItem from="1630815955535" duration="3708000" />
     </task>
-    <task id="LOCAL-00001" summary="Updates for readthedocs">
-      <created>1630317597996</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1630317597996</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,9 +165,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updates for readthedocs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates for readthedocs" />
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/zombie$zombie.coverage" NAME="zombie Coverage Results" MODIFIED="1630824941391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zombie" />
   </component>
 </project>

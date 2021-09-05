@@ -2,8 +2,8 @@ Classes
 *******
 
 .. meta::
-   :description: This chapter describes how to edit, update, and build the Pyramid documentation.
-   :keywords: Pyramid, Style Guide
+   :description: This chapter describes various classes for Analyzing and Visualizing stats.
+   :keywords: Call of Duty, Python, Data Science, zombies
 
 This chapter documents the classes used.
 

@@ -36,11 +36,12 @@ class Health:
     The multiplier is what number you would like to divide the health number by to get armour health. Prior to season 4
     this was half the zombies health.
     """
-    def __init__(self, level: int, health_cap: int = 55, outbreak: bool = False):
+    def __init__(self, level: int, health_cap: int = 55, outbreak: bool = False, multiplier: int = 2):
 
         self.level = level
         self.health_cap = health_cap
         self.outbreak = outbreak
+        self.multiplier = multiplier
 
         health_lst = []
         health_amount = 150
@@ -77,15 +78,15 @@ class Health:
             self.hp = out_health_lst[self.level]
         else:
             self.hp = health_lst[self.level]
+        self.armour = float(int(self.hp / self.multiplier))
 
     @property
     def get_health(self) -> float:
         """Returns zombie health value."""
-
         return float(self.hp)
 
     @property
-    def get_armour(self, multiplier: int = 2) -> float:
+    def get_armour(self) -> float:
         """Returns zombie armour value. Multiplier is an int you want to divide the zombie health level by
             If 2, the armour health will be half the zombie health value.
 
@@ -95,5 +96,10 @@ class Health:
             Divisor to get armour health value
 
         """
+        return float(self.armour)
 
-        return float(self.hp / multiplier)
+    @get_armour.setter
+    def get_armour(self, val):
+        """Setter for updating the multiplier and armour."""
+        self.multiplier = val
+        self.armour = float(int(self.hp / self.multiplier))
