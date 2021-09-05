@@ -10,6 +10,7 @@ from zombie.analysis import Analyze
 
 if __name__ == '__main__':
 
+    # User inputs
     weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                            'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
@@ -20,193 +21,9 @@ if __name__ == '__main__':
     zombie_health = zom.get_health
     zombie_armour = zom.get_armour
 
-
-
     # Example Loadouts
-    # equipped1 = {
-    #     'Muzzle': 'Agency Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'Salvo Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Raider Stock'
-    # }
-    #
-    # equipped2 = {
-    #     'Muzzle': 'GRU Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'VDV Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'KGB Skeletal Stock'
-    # }
-    #
-    # equipped3 = {
-    #     'Muzzle': 'GRU Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'VDV Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'KGB Skeletal Stock'
-    # }
-    #
-    # equipped4 = {
-    #     'Muzzle': 'GRU Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'VDV Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Spetsnaz PKM Stock'
-    # }
-    #
-    # equipped5 = {
-    #     'Muzzle': 'GRU Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'VDV Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Spetsnaz PKM Stock'
-    # }
-    # equipped6 = {
-    #     'Muzzle': 'Full Repeater',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'Salvo Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'SAS Combat Stock'
-    # }
-
-    # equipped1 = {
-    #     'Muzzle': 'Agency Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'Salvo Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Raider Pad'
-    # }
-    #
-    # equipped2 = {
-    #     'Muzzle': 'GRU Suppressor',
-    #     'Barrel': 'RPK',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'VDV Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'KGB Skeletal Stock'
-    # }
-    #
-    # equipped3 = {
-    #     'Muzzle': 'GRU Suppressor',
-    #     'Barrel': 'RPK',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'VDV Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'KGB Skeletal Stock'
-    # }
-    #
-    # equipped4 = {
-    #     'Muzzle': 'Agency Suppressor',
-    #     'Barrel': 'CMV Mil-Spec',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'Salvo Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Raider Stock'
-    # }
-    #
-    # equipped5 = {
-    #     'Muzzle': 'Agency Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'Salvo Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Raider Stock'
-    # }
-    # equipped6 = {
-    #     'Muzzle': 'Agency Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'Salvo Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Raider Stock'
-    # }
-
-
-    #
-    # equipped2 = {
-    #     'Muzzle': 'Agency Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'Salvo Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Raider Stock'
-    # }
-    #
-
-    #
-    # equipped4 = {
-    #     'Muzzle': 'GRU Suppressor',
-    #     'Barrel': 'Task Force',
-    #     'Body': 'Ember Sighting Point',
-    #     'Underbarrel': 'Bruiser Grip',
-    #     'Magazine': 'Salvo Fast Mag',
-    #     'Handle': 'Serpent Wrap',
-    #     'Stock': 'Raider Pad'
-    # }
-
     rarity = 'orange'
     pap = '3'
-    # Returns a Dict with the specific weapon stats, adjusted for attachments.
-    # guns = analysis.process_multi(weapon_dic_lst=[
-    #     {'weapon': 'MP5', 'nickname': 'Temp MP5', 'equipped_attachments': equipped1, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'PPSH', 'nickname': 'Temp PPSH', 'equipped_attachments': equipped2, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'OTS', 'nickname': 'Temp Ots9', 'equipped_attachments': equipped3, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'AK74u', 'nickname': 'Temp AK74u', 'equipped_attachments': equipped4, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'Bullfrog', 'nickname': 'Temp Bullfrog', 'equipped_attachments': equipped5, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'Tec9', 'nickname': 'Temp Tec9', 'equipped_attachments': equipped6, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    # ])
-    # guns = analysis.process_multi(weapon_dic_lst=[
-    #     {'weapon': 'XM4', 'nickname': 'Temp XM4', 'equipped_attachments': equipped1, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'AK47', 'nickname': 'Temp AK47', 'equipped_attachments': equipped2, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'FARA', 'nickname': 'Temp FARA', 'equipped_attachments': equipped3, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'Krig', 'nickname': 'Temp Krig', 'equipped_attachments': equipped4, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'FFAR', 'nickname': 'Temp FFAR', 'equipped_attachments': equipped5, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'EM2', 'nickname': 'Temp EM2', 'equipped_attachments': equipped6, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    # ])
-
-    # guns = analysis.process_multi(weapon_dic_lst=[
-    #     {'weapon': 'M16', 'nickname': 'Temp M16', 'equipped_attachments': equipped1, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'AUG', 'nickname': 'Temp AUG', 'equipped_attachments': equipped2, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'CARV', 'nickname': 'Temp CARV', 'equipped_attachments': equipped3, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    #     {'weapon': 'DMR', 'nickname': 'Temp DMR', 'equipped_attachments': equipped4, 'rarity': rarity,
-    #      'pap': pap, 'accuracy': None, 'critical': None},
-    # ])
 
     M16 = {
         'Muzzle': 'Agency Suppressor',
@@ -276,8 +93,8 @@ if __name__ == '__main__':
          'pap': pap, 'accuracy': None, 'critical': None},
         {'weapon': 'Gallo', 'nickname': 'Temp Gallo', 'equipped_attachments': gallo, 'rarity': rarity,
          'pap': pap, 'accuracy': None, 'critical': None},
-        # {'weapon': 'OTS', 'nickname': 'Temp Ots9', 'equipped_attachments': ots, 'rarity': rarity,
-        #  'pap': pap, 'accuracy': None, 'critical': None},
+        {'weapon': 'OTS', 'nickname': 'Temp Ots9', 'equipped_attachments': ots, 'rarity': rarity,
+         'pap': pap, 'accuracy': None, 'critical': None},
         {'weapon': 'Tec9', 'nickname': 'Temp Tec9', 'equipped_attachments': tec, 'rarity': rarity,
          'pap': pap, 'accuracy': None, 'critical': None},
         {'weapon': 'AMP', 'nickname': 'Temp AMP', 'equipped_attachments': amp, 'rarity': rarity,
