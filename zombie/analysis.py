@@ -75,6 +75,10 @@ class Analyze(Build):
 
     def process_multi(self, weapon_dic_lst: List[dict]) -> List[dict]:
         """Create a List[dict] for multiple weapons with all stats included in process()"""
+
+        if len(weapon_dic_lst) > 6:
+            print(), print('If more than 6 guns included legends will overlap.')
+
         return [self.process(weapon_dic=i) for i in weapon_dic_lst]
 
     def get_attachments(self, weapon_dic: dict, equipped_dic: dict = None):
