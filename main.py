@@ -43,15 +43,6 @@ if __name__ == '__main__':
         'Handle': 'Serpent Wrap',
         'Stock': 'Raider Pad'
     }
-    em2 = {
-        'Muzzle': 'Agency Suppressor',
-        'Barrel': 'Task Force',
-        'Body': 'Ember Sighting Point',
-        'Underbarrel': 'Bruiser Grip',
-        'Magazine': 'Salvo Fast Mag',
-        'Handle': 'Serpent Wrap',
-        'Stock': 'Raider Stock'
-    }
     ots = {
         'Muzzle': 'GRU Suppressor',
         'Barrel': 'Task Force',
@@ -88,8 +79,6 @@ if __name__ == '__main__':
         {'weapon': 'M16', 'nickname': 'Temp M16', 'equipped_attachments': M16, 'rarity': rarity,
          'pap': pap, 'accuracy': None, 'critical': None},
         {'weapon': 'CARV', 'nickname': 'Temp CARV', 'equipped_attachments': carv, 'rarity': rarity,
-         'pap': pap, 'accuracy': None, 'critical': None},
-        {'weapon': 'EM2', 'nickname': 'Temp EM2', 'equipped_attachments': em2, 'rarity': rarity,
          'pap': pap, 'accuracy': None, 'critical': None},
         {'weapon': 'Gallo', 'nickname': 'Temp Gallo', 'equipped_attachments': gallo, 'rarity': rarity,
          'pap': pap, 'accuracy': None, 'critical': None},
