@@ -1,4 +1,5 @@
 # Cold War Zombies
+[![Documentation Status](https://readthedocs.org/projects/call-of-duty-cold-war-zombies/badge/?version=latest)](https://call-of-duty-cold-war-zombies.readthedocs.io/en/latest/?badge=latest)
 
 This is a package for analyzing and comparing weapons in Cold War Zombies.
 
