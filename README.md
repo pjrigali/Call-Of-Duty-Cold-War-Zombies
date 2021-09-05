@@ -14,6 +14,8 @@ Weapon stats are current through Season 5 (_pre August 16 update_).
 ## Usage
 [Read the Docs](https://call-of-duty-cold-war-zombies.readthedocs.io/en/latest/)
 
+[Click for example](https://medium.com/@peterjrigali/best-weapon-in-zombies-9fddd33735c5)
+
 ```python
 import zombie
 from zombie import health_armour as z
