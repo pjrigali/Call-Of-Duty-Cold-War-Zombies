@@ -13,7 +13,6 @@ The package can be accessed via pip install.
 
     pip install cold-war-zombies
 
-
 ## Usage
 [Read the Docs](https://call-of-duty-cold-war-zombies.readthedocs.io/en/latest/)
 

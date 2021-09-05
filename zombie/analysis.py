@@ -16,6 +16,15 @@ from dataclasses import dataclass
 random.seed(1)
 
 
+col_lst = ['Name', 'Temp Name', 'Damage', 'Damage 2', 'Damage 3', 'Range',
+                'Range 2', 'Fire Rate', 'Velocity', 'Armour Damage', 'Melee Quickness',
+                'Movement Speed', 'Sprinting Speed', 'Shooting Speed', 'Sprint to Fire',
+                'Aim Walking', 'ADS', 'Vertical Recoil', 'Horizontal Recoil',
+                'Centering Speed', 'Idle Sway', 'Flinch', 'Hip Fire', 'Mag Capacity',
+                'Reload', 'Ammo Capacity', 'Accuracy', 'Critical', 'Pack', 'Rare',
+                'Shoot To Reload Ratio', 'Movement Ratio', 'Control Ratio', 'Drop Off Ratio']
+
+
 @dataclass
 class Analyze(Build):
     """
@@ -258,7 +267,7 @@ class Analyze(Build):
             data_n.append(dic)
 
         if cols is None:
-            return pd.DataFrame(data_n)[self._build.col_lst].set_index('Temp Name')
+            return pd.DataFrame(data_n)[col_lst].set_index('Temp Name')
         else:
             return pd.DataFrame(data_n)[cols].set_index('Temp Name')
 

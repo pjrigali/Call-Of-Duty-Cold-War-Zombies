@@ -6,7 +6,7 @@ Created on Thu Apr 22 20:18:33 2021
 """
 from zombie.health_armour import Health
 from zombie.analysis import Analyze
-
+from zombie.processor import ModifiedWeapon
 
 if __name__ == '__main__':
 
@@ -98,7 +98,11 @@ if __name__ == '__main__':
                                                 zombie_armour=zombie_armour, for_viz=True)
 
     # Return all visualizations.
-    analysis.viz_all(weapon_df_dic=weapon_compare_dic, x_limit=100, ind=3, save_image=False)
+    # analysis.viz_all(weapon_df_dic=weapon_compare_dic, x_limit=100, ind=3, save_image=False)
+
+    from zombie.processor import Build
+    temp = ModifiedWeapon(weapon_name='M16', _build=Build(weapon_class_levels=weapon_class_levels,
+                                                          perk_class_levels=perk_class_levels), equipped_attachments=M16, rarity=rarity, pap=pap)
 
     gun_df
     # Return a single visualization.
