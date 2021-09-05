@@ -1,7 +1,7 @@
 import os
 from setuptools import setup, find_packages
 
-current_path = os.path.abspath('..')
+current_path = os.path.abspath('../zombie')
 
 
 def read_file(*parts):
