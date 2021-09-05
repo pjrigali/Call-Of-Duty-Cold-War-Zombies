@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 from numpy.random import normal
 from typing import List
-import weapon_stats as w
+import zombie.weapon_stats as w
 
 
 class Build:
@@ -32,7 +32,7 @@ class Build:
     --------
     By default the values are set to 0. User inputs change these and the effects are applied across the weapons:
 
-    >>> from zombie import Build
+    >>> from zombie.processor import Build
     >>> weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
     >>>                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     >>> perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
@@ -90,26 +90,26 @@ class Build:
         self.gun_names = list(self.stats.keys())
         self.rare_level = {'common': 1.00, 'green': 1.50, 'blue': 3.00, 'purple': 6.00, 'orange': 12.00}
         self.pack_level = {'0': 1.00, '1': 2.00, '2': 4.00, '3': 8.00}
-        self.weapon_type_dict = {'Launcher': {'elites': 1.00, 'Armour Damage': 1.00, 'ammo': 1.00},
-                                 'Special': {'elites': 1.00, 'Armour Damage': 1.00, 'ammo': 1.00},
-                                 'Smg': {'Close': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                                 'Shotgun': {'Close': 1.00, 'Crit': 1.00, 'Armour Damage': 1.00},
-                                 'Pistol': {'Close': 1.00, 'Crit': 1.00, 'Armour Damage': 1.00},
-                                 'Marksman': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                                 'Sniper': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                                 'Lmg': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                                 'Assault': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
-                                 'Melee': {'object': 'gun butt', 'Damage': 1.00, 'regen': 0}}
+        self._weapon_type_dict = {'Launcher': {'elites': 1.00, 'Armour Damage': 1.00, 'ammo': 1.00},
+                                  'Special': {'elites': 1.00, 'Armour Damage': 1.00, 'ammo': 1.00},
+                                  'Smg': {'Close': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                  'Shotgun': {'Close': 1.00, 'Crit': 1.00, 'Armour Damage': 1.00},
+                                  'Pistol': {'Close': 1.00, 'Crit': 1.00, 'Armour Damage': 1.00},
+                                  'Marksman': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                  'Sniper': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                  'Lmg': {'Armour Damage': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                  'Assault': {'Long': 1.00, 'Crit': 1.00, 'Attachments': 5},
+                                  'Melee': {'object': 'gun butt', 'Damage': 1.00, 'regen': 0}}
         self.weapon_tier_inputs = {'Launcher': '0', 'Special': '0', 'Smg': '0', 'Shotgun': '0', 'Pistol': '0',
                                    'Marksman': '0', 'Sniper': '0', 'Lmg': '0', 'Assault': '0', 'Melee': '0'}
-        self.perk_dict = {'speed': {'swap': 0, 'field recharge': 0, 'reload': 1.15, 'barr. and myst.': 0,
-                                    'fire and reload': 0},
-                          'stamin up': {'movement': 1.07, 'sprint': 1.07, 'back pedal': 1.00, 'fall damage': 0,
-                                        'aim walking': 1.00, 'equipment': 1.00, 'sprint falloff': 0},
-                          'deadshot': {'scope sway': 0, 'critical1': 1.00, 'armour': 1.00, 'hip fire spread': 1.00,
-                                       'critical': 1.00, 'consecutive': 1},
-                          'death_perception': {'minimap': 0, 'indicators': 0, 'Salvage': 1.00, 'Armour Damage': 1.00,
-                                               'chests': 0}}
+        self._perk_dict = {'speed': {'swap': 0, 'field recharge': 0, 'reload': 1.15, 'barr. and myst.': 0,
+                                     'fire and reload': 0},
+                           'stamin up': {'movement': 1.07, 'sprint': 1.07, 'back pedal': 1.00, 'fall damage': 0,
+                                         'aim walking': 1.00, 'equipment': 1.00, 'sprint falloff': 0},
+                           'deadshot': {'scope sway': 0, 'critical1': 1.00, 'armour': 1.00, 'hip fire spread': 1.00,
+                                        'critical': 1.00, 'consecutive': 1},
+                           'death_perception': {'minimap': 0, 'indicators': 0, 'Salvage': 1.00, 'Armour Damage': 1.00,
+                                                'chests': 0}}
         self.perk_tier_inputs = {'speed': '0', 'stamin up': '0', 'deadshot': '0', 'death_perception': '0'}
         self.col_lst = ['Name', 'Temp Name', 'Damage', 'Damage 2', 'Damage 3', 'Range',
                         'Range 2', 'Fire Rate', 'Velocity', 'Armour Damage', 'Melee Quickness',
@@ -126,7 +126,7 @@ class Build:
             mu1 = np.around(np.mean(acc_n), 3)
             return np.around(normal(mu1, sig1, 2500), 3)
 
-        self.hits = _shot_distribution()
+        self._hits = _shot_distribution()
 
         def _set_weapon_class(weapon_type: str, weapon_tier: str) -> None:
 
@@ -137,7 +137,7 @@ class Build:
                                   '4': {'elites': 1.25, 'Armour Damage': 1.10, 'ammo': 0.75},
                                   '5': {'elites': 1.25, 'Armour Damage': 1.25, 'ammo': 0.75}
                                   }[weapon_tier]
-                self.weapon_type_dict['Launcher'] = self.launchers
+                self._weapon_type_dict['Launcher'] = self.launchers
             elif weapon_type == 'Special':
                 self.specials = {'1': {'elites': 1.10, 'Armour Damage': 1.00, 'ammo': 1.00},
                                  '2': {'elites': 1.10, 'Armour Damage': 1.10, 'ammo': 1.00},
@@ -145,7 +145,7 @@ class Build:
                                  '4': {'elites': 1.25, 'Armour Damage': 1.10, 'ammo': 0.75},
                                  '5': {'elites': 1.25, 'Armour Damage': 1.25, 'ammo': 0.75}
                                  }[weapon_tier]
-                self.weapon_type_dict['Special'] = self.specials
+                self._weapon_type_dict['Special'] = self.specials
             elif weapon_type == 'Smg':
                 self.smgs = {'1': {'Close': 1.10, 'Crit': 1.00, 'Attachments': 1},
                              '2': {'Close': 1.10, 'Crit': 1.10, 'Attachments': 1},
@@ -153,7 +153,7 @@ class Build:
                              '4': {'Close': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                              '5': {'Close': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
                              }[weapon_tier]
-                self.weapon_type_dict['Smg'] = self.smgs
+                self._weapon_type_dict['Smg'] = self.smgs
             elif weapon_type == 'Shotgun':
                 self.shotguns = {'1': {'Close': 1.10, 'Crit': 1.00, 'Armour Damage': 1.00},
                                  '2': {'Close': 1.10, 'Crit': 1.10, 'Armour Damage': 1.00},
@@ -161,7 +161,7 @@ class Build:
                                  '4': {'Close': 1.25, 'Crit': 1.10, 'Armour Damage': 1.10},
                                  '5': {'Close': 1.25, 'Crit': 1.25, 'Armour Damage': 1.10}
                                  }[weapon_tier]
-                self.weapon_type_dict['Shotgun'] = self.shotguns
+                self._weapon_type_dict['Shotgun'] = self.shotguns
             elif weapon_type == 'Pistol':
                 self.pistols = {'1': {'Close': 1.10, 'Crit': 1.00, 'Armour Damage': 1.00},
                                 '2': {'Close': 1.10, 'Crit': 1.10, 'Armour Damage': 1.00},
@@ -169,7 +169,7 @@ class Build:
                                 '4': {'Close': 1.25, 'Crit': 1.10, 'Armour Damage': 1.10},
                                 '5': {'Close': 1.25, 'Crit': 1.25, 'Armour Damage': 1.10}
                                 }[weapon_tier]
-                self.weapon_type_dict['Pistol'] = self.pistols
+                self._weapon_type_dict['Pistol'] = self.pistols
             elif weapon_type == 'Marksman':
                 self.tact = {'1': {'Long': 1.10, 'Crit': 1.00, 'Attachments': 1},
                              '2': {'Long': 1.10, 'Crit': 1.10, 'Attachments': 1},
@@ -177,7 +177,7 @@ class Build:
                              '4': {'Long': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                              '5': {'Long': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
                              }[weapon_tier]
-                self.weapon_type_dict['Marksman'] = self.tact
+                self._weapon_type_dict['Marksman'] = self.tact
             elif weapon_type == 'Sniper':
                 self.snipers = {'1': {'Armour Damage': 1.10, 'Crit': 1.00, 'Attachments': 1},
                                 '2': {'Armour Damage': 1.10, 'Crit': 1.10, 'Attachments': 1},
@@ -185,7 +185,7 @@ class Build:
                                 '4': {'Armour Damage': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                                 '5': {'Armour Damage': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
                                 }[weapon_tier]
-                self.weapon_type_dict['Sniper'] = self.snipers
+                self._weapon_type_dict['Sniper'] = self.snipers
             elif weapon_type == 'Lmg':
                 self.lmgs = {'1': {'Armour Damage': 1.10, 'Crit': 1.00, 'Attachments': 1},
                              '2': {'Armour Damage': 1.10, 'Crit': 1.10, 'Attachments': 1},
@@ -193,7 +193,7 @@ class Build:
                              '4': {'Armour Damage': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                              '5': {'Armour Damage': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
                              }[weapon_tier]
-                self.weapon_type_dict['Lmg'] = self.lmgs
+                self._weapon_type_dict['Lmg'] = self.lmgs
             elif weapon_type == 'Assault':
                 self.assault = {'1': {'Long': 1.10, 'Crit': 1.00, 'Attachments': 1},
                                 '2': {'Long': 1.10, 'Crit': 1.10, 'Attachments': 1},
@@ -201,7 +201,7 @@ class Build:
                                 '4': {'Long': 1.25, 'Crit': 1.10, 'Attachments': 1.6},
                                 '5': {'Long': 1.25, 'Crit': 1.25, 'Attachments': 1.6}
                                 }[weapon_tier]
-                self.weapon_type_dict['Assault'] = self.assault
+                self._weapon_type_dict['Assault'] = self.assault
             elif weapon_type == 'Melee':
                 self.melee = {'1': {'object': 'knife', 'Damage': 1.00, 'regen': 0},
                               '2': {'object': 'knife', 'Damage': 1.10, 'regen': 0},
@@ -209,10 +209,10 @@ class Build:
                               '4': {'object': 'bowie', 'Damage': 1.25, 'regen': 0},
                               '5': {'object': 'bowie', 'Damage': 1.25, 'regen': 1}
                               }[weapon_tier]
-                self.weapon_type_dict['Melee'] = self.melee
+                self._weapon_type_dict['Melee'] = self.melee
             self.weapon_tier_inputs[weapon_type] = weapon_tier
 
-        for i, j in enumerate(self.weapon_type_dict.keys()):
+        for i, j in enumerate(self._weapon_type_dict.keys()):
             _set_weapon_class(j, weapon_class_levels[j])
 
         def _set_perk_class(perk_type: str, perk_tier: str) -> None:
@@ -229,7 +229,7 @@ class Build:
                               '5': {'swap': 1, 'field recharge': 0.80, 'Reload': 0.70, 'barr. and myst.': 1,
                                     'Shooting Speed': 1.07}
                               }[perk_tier]
-                self.perk_dict['speed'] = self.speed
+                self._perk_dict['speed'] = self.speed
             elif perk_type == 'stamin up':
                 self.stamin = {'1': {'Movement Speed': 1.07, 'Sprinting Speed': 1.07, 'back pedal': 1.07,
                                      'fall damage': 0, 'Aim Walking': 1.00, 'equipment': 1.00, 'sprint falloff': 0,
@@ -247,7 +247,7 @@ class Build:
                                      'fall damage': 1, 'Aim Walking': 1.07, 'equipment': 1.07, 'sprint falloff': 1,
                                      'Shooting Speed': 1.07}
                                }[perk_tier]
-                self.perk_dict['stamin up'] = self.stamin
+                self._perk_dict['stamin up'] = self.stamin
             elif perk_type == 'deadshot':
                 self.dead = {'1': {'Idle Sway': 0, 'critical1': 2.00, 'Armour Damage': 1.00, 'Hip Fire': 1.00,
                                    'Crit': 1.00, 'consecutive': 0},
@@ -260,7 +260,7 @@ class Build:
                              '5': {'Idle Sway': 0, 'critical1': 2.00, 'Armour Damage': 1.50, 'Hip Fire': 0.70,
                                    'Crit': 1.10, 'consecutive': 1}
                              }[perk_tier]
-                self.perk_dict['deadshot'] = self.dead
+                self._perk_dict['deadshot'] = self.dead
             elif perk_type == 'death_perception':
                 self.dead = {'1': {'minimap': 0, 'indicators': 0, 'Salvage': 1.00, 'Armour Damage': 1.00, 'chests': 0},
                              '2': {'minimap': 0, 'indicators': 0, 'Salvage': 1.00, 'Armour Damage': 1.00, 'chests': 0},
@@ -268,18 +268,30 @@ class Build:
                              '4': {'minimap': 0, 'indicators': 0, 'Salvage': 1.20, 'Armour Damage': 1.25, 'chests': 0},
                              '5': {'minimap': 0, 'indicators': 0, 'Salvage': 1.20, 'Armour Damage': 1.25, 'chests': 0}
                              }[perk_tier]
-                self.perk_dict['death_perception'] = self.dead
+                self._perk_dict['death_perception'] = self.dead
 
             self.perk_tier_inputs[perk_type] = perk_tier
 
-        for i, j in enumerate(self.perk_dict.keys()):
+        for i, j in enumerate(self._perk_dict.keys()):
             _set_perk_class(j, perk_class_levels[j])
 
-    def get_weapon_classes(self) -> dict:
-        return self.weapon_type_dict
+    def __repr__(self):
+        return "Build"
 
+    @property
+    def get_weapon_classes(self) -> dict:
+        """Returns user input weapon tier levels"""
+        return self._weapon_type_dict
+
+    @property
     def get_perk_classes(self) -> dict:
-        return self.perk_dict
+        """Returns user input perk tier levels"""
+        return self._perk_dict
+
+    @property
+    def hits(self) -> np.ndarray:
+        """Return hit distribution"""
+        return self._hits
 
     @staticmethod
     def _apply_multipliers(weapon_multi: dict, perk_multi: dict, weapon_dic: dict) -> dict:
@@ -608,7 +620,7 @@ class Build:
                 dic_i['Damage 3'] = dic_i['Damage 3'] * self.pack_level[pap] * dic_i['PAP Burst']
                 dic_i['Mag Capacity'] = dic_i['Mag Capacity'] / dic_i['PAP Burst']
 
-        temp_dic = self._apply_multipliers(weapon_multi=self.get_weapon_classes(), perk_multi=self.get_perk_classes(),
+        temp_dic = self._apply_multipliers(weapon_multi=self.get_weapon_classes, perk_multi=self.get_perk_classes,
                                            weapon_dic=dic_i)
 
         if equipped_attachments is not None:

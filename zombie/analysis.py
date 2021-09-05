@@ -9,45 +9,56 @@ import pandas as pd
 from typing import List
 import matplotlib.pyplot as plt
 import random
-from processor import Build
+from zombie.processor import Build
+from zombie.base import damage_range, damage_per_second, damage_per_clip, damage_per_max_ammo, drop_off_ratio
+from zombie.base import shoot_reload_ratio, time_to_kill, shoot_time, shots_to_kill, control_ratio, movement_ratio
 random.seed(1)
 
 
 class Analyze(Build):
     """
-    Constructs  dicts, pd.DataFrames and visualizations for comparing various weapons.
 
+    Constructs  dicts, pd.DataFrames and visualizations for comparing various weapons.
     Applies buffs from attachments.
 
-    Parameters
-    ----------
-    weapon_class_levels : dict, default None
-        User input tiers for each weapon class. Use str value betweem 0 and 5.
-    perk_class_levels : dict, default None
-        User input tiers for each perk. Use str value value between 0 and 5.
-    max_range : int
-        User desired maximum distance for the function to compute values for. (In meters)
-
-    Examples
-    --------
+    :param weapon_class_levels: User input tiers for each weapon class. Use str value betweem 0 and 5.
+    :type weapon_class_levels: dict, default None
+    :param perk_class_levels: User input tiers for each perk. Use str value value between 0 and 5.
+    :type perk_class_levels: dict, default None
+    :param max_range: User desired maximum distance for the function to compute values for. (In meters)
+    :type max_range: int
+    :example:
     By default the values are set to 0. User inputs change these and the effects are applied across the weapons:
 
-    >>> from zombie import analysis as a
+    >>> from zombie.analysis import Analyze
     >>> weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
     >>>                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     >>> perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
-    >>> analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
-    >>>                      max_range=100)
+    >>> analysis = Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
+    >>>                    max_range=100)
 
     """
-
     def __init__(self, weapon_class_levels: dict = None, perk_class_levels: dict = None, max_range: int = 200):
         self._build = Build(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels)
-        self.max_range = max_range
+        self._perk_dict = self._build.get_perk_classes
+        self._weapon_type_dict = self._build.get_weapon_classes
+        self._max_range = max_range
+
+    def __repr__(self):
+        return "Analysis"
+
+    @property
+    def max_range(self) -> int:
+        """Returns user input for max range"""
+        return self._max_range
+
+    @property
+    def hits(self) -> np.ndarray:
+        """Return hit distribution"""
+        return self._build.hits
 
     def process(self, weapon_dic: dict) -> dict:
         """Create a dict for a weapon with all stats. Including attachments, perk and weapon tier effects"""
-
         new_weapon_dic = {}
         for i in ['weapon', 'nickname', 'equipped_attachments', 'rarity', 'pap', 'accuracy', 'critical']:
             if i in weapon_dic.keys():
@@ -62,7 +73,6 @@ class Analyze(Build):
 
     def process_multi(self, weapon_dic_lst: List[dict]) -> List[dict]:
         """Create a List[dict] for multiple weapons with all stats included in process()"""
-
         return [self.process(weapon_dic=i) for i in weapon_dic_lst]
 
     def get_attachments(self, weapon_dic: dict, equipped_dic: dict = None):
@@ -90,12 +100,10 @@ class Analyze(Build):
         pd.DataFrame or list
 
         """
-
         return self._build._get_attachments(weapon_dic=weapon_dic, equipped_dic=equipped_dic)
 
     def _mu_shots(self, weapon_dic: dict) -> np.ndarray:
         """Returns an np.ndarray of multipliers based on accuracy and critical hit percentages"""
-
         ac = weapon_dic['Accuracy']
         dis = self._build.hits
         ind = np.cumsum([1 if i <= ac else 0 for i in dis])
@@ -128,305 +136,6 @@ class Analyze(Build):
         average_shots = np.ceil(np.mean([sum([arr[k - q] for q in mc]) for k, l in enumerate(arr)]))
 
         return average_shots
-
-    def damage_range(self, weapon_dic: dict) -> np.ndarray:
-        """Returns a np.ndarray with the damage output of a weapon at varying distances"""
-
-        m = weapon_dic['Burst']
-        dam1 = weapon_dic['Damage']
-        dam2 = weapon_dic['Damage 2']
-        dam3 = weapon_dic['Damage 3']
-        ran1 = weapon_dic['Range']
-        ran2 = weapon_dic['Range 2']
-        ran = list(range(self.max_range))
-
-        if weapon_dic['Weapon Type'] == 'Shotguns':
-            if ran1 == 5.72:
-                m2 = [1 - (i / 15) for i in range(15)]
-            else:
-                m1 = np.floor((ran1 / 5.72 * 20) - ran1)
-                m2 = [1 - (i / m1) for i in range(m1)]
-
-            dam_lst = [dam1] * (np.floor(ran1)) + [np.floor(dam1 * i) for i in m2]
-            dam_lst = dam_lst + ([0] * len(dam_lst))
-        else:
-            dam_lst = []
-            if ran2 == 0:
-                for i in ran:
-                    if i < ran1:
-                        dam_lst.append(dam1 * m)
-                        continue
-                    else:
-                        dam_lst.append(dam3 * m)
-                        continue
-            else:
-                for i in ran:
-                    if i < ran1:
-                        dam_lst.append(dam1 * m)
-                        continue
-                    elif i < ran2:
-                        dam_lst.append(dam2 * m)
-                        continue
-                    else:
-                        dam_lst.append(dam3 * m)
-
-        return np.array(dam_lst)
-
-    def damage_per_second(self, weapon_dic: dict, damage_range_arr: np.ndarray) -> np.ndarray:
-        """
-        Calculate the damage per second output of a specific weapon over varying distances.
-
-        Parameters
-        ----------
-        weapon_dic : dict
-            Dict of specific weapon stats.
-        damage_range_arr : np.ndarray
-            The damage at varying distances.
-
-        Returns
-        -------
-        np.ndarray
-
-        """
-
-        return np.multiply(np.ceil(weapon_dic['Fire Rate'] / 60), damage_range_arr)
-
-    def time_to_kill(self, weapon_dic: dict, damage_range_arr: np.ndarray, zombie_health: float) -> np.ndarray:
-        """
-        Calculate the time to kill value of a specific weapon over varying distances.
-
-        Parameters
-        ----------
-        weapon_dic : dict
-            Dict of specific weapon stats.
-        damage_range_arr : np.ndarray
-            The damage at varying distances.
-        zombie_health : float
-            The zombie health value.
-
-        Returns
-        -------
-        np.ndarray
-
-        """
-
-        dps = self.damage_per_second(weapon_dic, damage_range_arr)
-        return np.around(np.add(np.divide(zombie_health, dps),
-                                np.divide(range(self.max_range), weapon_dic['Velocity'])), 2)
-
-    def shots_to_kill(self, damage_range_arr: np.ndarray, zombie_health: float) -> np.ndarray:
-        """
-        Calculate the shots to kill value of a specific weapon over varying distances.
-
-        Parameters
-        ----------
-        damage_range_arr : np.ndarray
-            The damage at varying distances.
-        zombie_health : float
-            The zombie health value.
-
-        Returns
-        -------
-        np.ndarray
-
-        """
-
-        return np.around(np.divide(zombie_health, damage_range_arr), 0)
-
-    def shoot_time(self, weapon_dic: dict) -> float:
-        """
-        Calculate the time spent shooting in seconds.
-
-        Parameters
-        ----------
-        weapon_dic : dict
-            Dict of specific weapon stats.
-
-        Returns
-        -------
-        float
-
-        """
-
-        return round(weapon_dic['Mag Capacity'] / (weapon_dic['Fire Rate'] / 60), 2)
-
-    def shoot_reload_ratio(self, weapon_dic: dict) -> float:
-        """
-        Calculate the shoot to reload ratio value of a specific weapon.
-
-        This is used to see how long a weapon can output damage before having to be halted to reload.
-        A weapon like the Bullfrog has a high shoot to reload ratio due to its large magazine size.
-
-        Parameters
-        ----------
-        weapon_dic : dict
-            Dict of specific weapon stats.
-
-        Returns
-        -------
-        float
-
-        """
-
-        return 1 - round(weapon_dic['Reload'] / self.shoot_time(weapon_dic=weapon_dic), 2)
-
-    def damage_per_max_ammo(self, weapon_dic: dict, damage_range_arr: np.ndarray) -> np.ndarray:
-        """
-        Calculate the damage per max ammo at varying distances.
-
-        This assumes you were to fire all ammo in the gun and in reserve at a set distance.
-
-        Parameters
-        ----------
-        weapon_dic : dict
-            Dict of specific weapon stats.
-        damage_range_arr : np.ndarray
-            The damage at varying distances.
-
-        Returns
-        -------
-        np.ndarray
-
-        """
-
-        return np.multiply(np.divide(weapon_dic['Ammo Capacity'], weapon_dic['Burst']), damage_range_arr)
-
-    def damage_per_clip(self, damage_range_arr: np.ndarray, shots_average: np.ndarray) -> np.ndarray:
-        """
-        Calculate the damage per clip value of a specific weapon over varying distances.
-
-        Parameters
-        ----------
-        damage_range_arr : np.ndarray
-            The damage at varying distances.
-        shots_average : np.ndarray
-            An np.ndarray() with expected damage output based on accuracy and critical hit percentage.
-
-        Returns
-        -------
-        np.ndarray
-
-        """
-
-        return np.around([damage_range_arr[i] * shots_average for i, j in enumerate(damage_range_arr)], 0)
-
-    def movement_ratio(self, weapon_dic: dict) -> float:
-        """
-        Calculate the movement ratio for a specific weapon.
-
-        This is used to compare the mobility of weapon against others. The closer to 1 the better the weapons overall
-        movement attributes.
-
-        Parameters
-        ----------
-        weapon_dic : dict
-            Dict of specific weapon stats.
-
-        Returns
-        -------
-        float
-
-        """
-
-        lst = {'Movement Speed': [0, 0, 0],
-               'Sprinting Speed': [0, 0, 0],
-               'Shooting Speed': [0, 0, 0],
-               'Sprint to Fire': [0, 0, 0],
-               'Aim Walking': [0, 0, 0],
-               'ADS': [0, 0, 0]}
-
-        for i in lst.keys():
-            temp_lst = []
-            for j in self._build.gun_names:
-                if i == 'Movement Speed':
-                    temp_lst.append(self._build.stats[j].movement)
-                    continue
-                elif i == 'Sprinting Speed':
-                    temp_lst.append(self._build.stats[j].sprint)
-                    continue
-                elif i == 'Shooting Speed':
-                    temp_lst.append(self._build.stats[j].shoot_speed)
-                    continue
-                elif i == 'Sprint to Fire':
-                    temp_lst.append(self._build.stats[j].sprint_to_fire)
-                    continue
-                elif i == 'Aim Walking':
-                    temp_lst.append(self._build.stats[j].aim_walking)
-                    continue
-                elif i == 'ADS':
-                    temp_lst.append(self._build.stats[j].ads)
-                    continue
-
-            lst[i] = [min(temp_lst), max(temp_lst), weapon_dic[i]]
-
-        ratio = round(sum([(lst[i][2] - lst[i][0]) / (lst[i][1] - lst[i][0]) for i in lst.keys()]) / len(lst.keys()), 2)
-
-        return ratio
-
-    def control_ratio(self, weapon_dic: dict) -> float:
-        """
-        Calculate the control ratio for a specific weapon.
-
-        This is used to compare the controllability of weapon against others. The closer to 1 the better the weapons
-        overall control attributes.
-
-        Parameters
-        ----------
-        weapon_dic : dict
-            Dict of specific weapon stats.
-
-        Returns
-        -------
-        float
-
-        """
-
-        lst = {'Vertical Recoil': [0, 0, 0],
-               'Horizontal Recoil': [0, 0, 0],
-               'Centering Speed': [0, 0, 0],
-               'Hip Fire': [0, 0, 0]}
-
-        for i in lst.keys():
-            temp_lst = []
-            for j in self._build.gun_names:
-                if i == 'Vertical Recoil':
-                    temp_lst.append(self._build.stats[j].vertical_recoil)
-                    continue
-                if i == 'Horizontal Recoil':
-                    temp_lst.append(self._build.stats[j].horizontal_recoil)
-                    continue
-                if i == 'Centering Speed':
-                    temp_lst.append(self._build.stats[j].centering_speed)
-                    continue
-                if i == 'Hip Fire':
-                    temp_lst.append(self._build.stats[j].hip_fire)
-                    continue
-            lst[i] = [min(temp_lst), max(temp_lst), weapon_dic[i]]
-
-        ratio = 1 - round(
-            sum([(lst[i][2] - lst[i][0]) / (lst[i][1] - lst[i][0]) for i in lst.keys()]) / len(lst.keys()), 2)
-
-        return ratio
-
-    def drop_off_ratio(self, weapon_dic: dict) -> float:
-        """
-        Calculate the damage drop off ratio for a specific weapon.
-
-        This is used to compare the how much damage is lost as targets get farther away.The closer to 0 the better
-        the weapons overall control attributes. A higher value means the damage starts out strong build falls off.
-
-        Parameters
-        ----------
-        weapon_dic : dict
-            Dict of specific weapon stats.
-
-        Returns
-        -------
-        float
-
-        """
-
-        return 1 + round((weapon_dic['Damage 3'] - weapon_dic['Damage']) / weapon_dic['Damage'], 2)
 
     def _check_multi(self, damage_range_arr: np.ndarray, weapon_dic: dict) -> np.ndarray:
         close = weapon_dic['Close']
@@ -465,33 +174,30 @@ class Analyze(Build):
         dict or pd.DataFrame
 
         """
-
         mu = self._mu_shots(weapon_dic)
-        damage_range = self._check_multi(damage_range_arr=self.damage_range(weapon_dic=weapon_dic),
-                                         weapon_dic=weapon_dic)
+        _dr = self._check_multi(damage_range_arr=damage_range(weapon_dic=weapon_dic, max_range=self._max_range),
+                                weapon_dic=weapon_dic)
         if zombie_armour:
             zombie_health = zombie_health + zombie_armour
-            damage_range = np.multiply(np.divide(damage_range, 4), weapon_dic['Armour Damage'])
+            _dr = np.multiply(np.divide(_dr, 4), weapon_dic['Armour Damage'])
 
-        temp_dic = {'Damage Per Clip': self.damage_per_clip(damage_range_arr=damage_range, shots_average=mu),
-                    'Damage Per Second': self.damage_per_second(weapon_dic=weapon_dic, damage_range_arr=damage_range),
-                    'Time To Kill': self.time_to_kill(weapon_dic=weapon_dic,
-                                                      damage_range_arr=damage_range,
-                                                      zombie_health=zombie_health),
-                    'Shots To Kill': self.shots_to_kill(damage_range_arr=damage_range, zombie_health=zombie_health),
-                    'Damage Per Max Ammo': self.damage_per_max_ammo(weapon_dic=weapon_dic,
-                                                                    damage_range_arr=damage_range)
+        temp_dic = {'Damage Per Clip': damage_per_clip(damage_range_arr=_dr, shots_average=mu),
+                    'Damage Per Second': damage_per_second(weapon_dic=weapon_dic, damage_range_arr=_dr),
+                    'Time To Kill': time_to_kill(weapon_dic=weapon_dic, damage_range_arr=_dr,
+                                                 zombie_health=zombie_health, max_range=self.max_range),
+                    'Shots To Kill': shots_to_kill(damage_range_arr=_dr, zombie_health=zombie_health),
+                    'Damage Per Max Ammo': damage_per_max_ammo(weapon_dic=weapon_dic,  damage_range_arr=_dr)
                     }
 
         if for_viz:
             return pd.DataFrame.from_dict(temp_dic)
         else:
             temp_dic['Temp Name'] = weapon_dic['Temp Name']
-            temp_dic['Shooting Time'] = self.shoot_time(weapon_dic=weapon_dic)
-            temp_dic['Shoot To Reload Ratio'] = self.shoot_reload_ratio(weapon_dic=weapon_dic)
-            temp_dic['Movement Ratio'] = self.movement_ratio(weapon_dic=weapon_dic)
-            temp_dic['Control Ratio'] = self.control_ratio(weapon_dic=weapon_dic)
-            temp_dic['Drop Off Ratio'] = self.drop_off_ratio(weapon_dic=weapon_dic)
+            temp_dic['Shooting Time'] = shoot_time(weapon_dic=weapon_dic)
+            temp_dic['Shoot To Reload Ratio'] = shoot_reload_ratio(weapon_dic=weapon_dic)
+            temp_dic['Movement Ratio'] = movement_ratio(weapon_dic=weapon_dic, build_weapons=self._build)
+            temp_dic['Control Ratio'] = control_ratio(weapon_dic=weapon_dic, build_weapons=self._build)
+            temp_dic['Drop Off Ratio'] = drop_off_ratio(weapon_dic=weapon_dic)
 
             return temp_dic
 
@@ -517,9 +223,8 @@ class Analyze(Build):
         dict
 
         """
-
         return {i['Name']: self.compare(weapon_dic=i, zombie_health=zombie_health, zombie_armour=zombie_armour,
-                                             for_viz=for_viz) for i in weapon_dic_lst}
+                                        for_viz=for_viz) for i in weapon_dic_lst}
 
     def build_df(self, weapon_dic_lst: List[dict], cols: List[str] = None) -> pd.DataFrame:
         """
@@ -537,14 +242,13 @@ class Analyze(Build):
         pd.DataFrame
 
         """
-
         data_n = []
         for dic in weapon_dic_lst:
-            dic['Shooting Time'] = self.shoot_time(dic)
-            dic['Shoot To Reload Ratio'] = self.shoot_reload_ratio(dic)
-            dic['Movement Ratio'] = self.movement_ratio(dic)
-            dic['Control Ratio'] = self.control_ratio(dic)
-            dic['Drop Off Ratio'] = self.drop_off_ratio(dic)
+            dic['Shooting Time'] = shoot_time(dic)
+            dic['Shoot To Reload Ratio'] = shoot_reload_ratio(dic)
+            dic['Movement Ratio'] = movement_ratio(dic)
+            dic['Control Ratio'] = control_ratio(dic)
+            dic['Drop Off Ratio'] = drop_off_ratio(dic)
             data_n.append(dic)
 
         if cols is None:
@@ -575,7 +279,6 @@ class Analyze(Build):
         None
 
         """
-
         n = 0
         df = pd.DataFrame()
         for i in weapon_df_dic.keys():
@@ -584,6 +287,14 @@ class Analyze(Build):
                 n += 1
 
         cmap = [plt.get_cmap('viridis')(1. * i / n) for i in range(n)]
+
+        if "Time" not in keyword and "Shots" not in keyword:
+            if np.max(np.max(df)) > 100000:
+                df = df / 1000
+                keyword = keyword + ' (in 1,000s)'
+
+        for col in df.columns:
+            df[col] = np.nan_to_num(np.array(df[col]), posinf=0, neginf=0)
 
         if 'Time' not in keyword:
             mu = df.mean(axis=1).astype(int)
@@ -649,6 +360,5 @@ class Analyze(Build):
         None
 
         """
-
         for keyword in ['Damage Per Max Ammo', 'Damage Per Clip', 'Damage Per Second', 'Time To Kill', 'Shots To Kill']:
             self.viz(weapon_df_dic=weapon_df_dic, keyword=keyword, x_limit=x_limit, ind=ind, save_image=save_image)
