@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 from numpy.random import normal
 from typing import List
-import zombie.weapon_stats as w
+import weapon_stats as w
 
 
 class Build:

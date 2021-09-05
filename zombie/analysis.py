@@ -9,7 +9,7 @@ import pandas as pd
 from typing import List
 import matplotlib.pyplot as plt
 import random
-from zombie.processor import Build
+from processor import Build
 random.seed(1)
 
 
