@@ -128,8 +128,8 @@ def time_to_kill(weapon_dic: dict, damage_range_arr: np.ndarray, zombie_health: 
 
     """
     dps = damage_per_second(weapon_dic, damage_range_arr)
-    return np.around(np.add(np.divide(zombie_health, dps),
-                            np.divide(range(max_range), weapon_dic['Velocity'])), 2)
+    temp_lst = [zombie_health / dam if dam != 0 else 0 for dam in dps]
+    return np.around(np.add(temp_lst, np.divide(range(max_range), weapon_dic['Velocity'])), 2)
 
 
 def shots_to_kill(damage_range_arr: np.ndarray, zombie_health: float) -> np.ndarray:
@@ -148,7 +148,7 @@ def shots_to_kill(damage_range_arr: np.ndarray, zombie_health: float) -> np.ndar
     np.ndarray
 
     """
-    return np.around(np.divide(zombie_health, damage_range_arr), 0)
+    return np.around([zombie_health / dam if dam != 0 else 0 for dam in damage_range_arr], 0)
 
 
 def shoot_time(weapon_dic: dict) -> float:
