@@ -18,21 +18,21 @@ Weapon stats are current through Season 5 (_pre August 16 update_).
 
 ```python
 import zombie
-from zombie import health_armour as z
-from zombie import analysis as a
+from zombie.health_armour import Health
+from zombie.analysis import Analyze
 
 
 # Input your weapon class and perk tiers.
 weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
 perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
-analysis = a.Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
+analysis = Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
                      max_range=100)
 
 # Set Zombie Health
-zom_health = z.Health(level=20, health_cap=55, outbreak=False)
-zombie_health = zom_health.get_health()
-zombie_armour = zom_health.get_armour(multiplier=2)
+zom_health = Health(level=20, health_cap=55, outbreak=False, multiplier=2)
+zombie_health = zom_health.get_health
+zombie_armour = zom_health.get_armour
 
 # Set Attachments for weapons
 equipped1 = {
@@ -80,27 +80,27 @@ analysis.viz_all(weapon_df_dic=weapon_compare_dic, x_limit=40, ind=5, save_image
 analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Second', x_limit=40, ind=5, 
              save_image=False)
 ```
-![Damage Per Second](https://miro.medium.com/max/1280/1*Ygk3yoH5y4Lvx7Th9s5mqw.png)
+![Damage Per Second](https://miro.medium.com/max/1280/1*IyfMpo7OxpXGAm4MZd9t7Q.png)
 ```python
 analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Max Ammo', x_limit=40, ind=5, 
              save_image=False)
 ```
-![Damage Per Max Ammo](https://miro.medium.com/max/1280/1*jiqlsA4CpFPwBMHk93DBFw.png)
+![Damage Per Max Ammo](https://miro.medium.com/max/1280/1*eFT7lys6gkZMPO0LsOCQrA.png)
 ```python
 analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Clip', x_limit=40, ind=5, 
              save_image=False)
 ```
-![Damage Per Clip](https://miro.medium.com/max/1280/1*v1flKiPd1OuTpNM8Zda9bw.png)
+![Damage Per Clip](https://miro.medium.com/max/1280/1*Qtxn3jtbH0kRXICa7W2MfQ.png)
 ```python
 analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Time To Kill', x_limit=40, ind=5, 
              save_image=False)
 ```
-![Time To Kill](https://miro.medium.com/max/1280/1*tmtdPDrGQF4BaydbqdDjhQ.png)
+![Time To Kill](https://miro.medium.com/max/1280/1*VFABznePjcEVT_WdIPF5Og.png)
 ```python
 analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Shots To Kill', x_limit=40, ind=5, 
              save_image=False)
 ```    
-![Shots To Kill](https://miro.medium.com/max/1280/1*Cvj_RG31PISq9bNgo1YV5Q.png)
+![Shots To Kill](https://miro.medium.com/max/1280/1*vrw4BIZnm_mPw-V-OeXJwg.png)
 ```python
 # Return the attachments and their effects for a specific gun
 equipped_mp5 = {'Muzzle': 'Agency Suppressor',
