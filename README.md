@@ -9,6 +9,8 @@ Weapon stats are current through Season 5 (_pre August 16 update_).
 ## Installation
     pip install cold-war-zombies
 
+**Currently this project is down from pypi while undergoing final touches**
+
 ## Usage
 [Read the Docs](https://call-of-duty-cold-war-zombies.readthedocs.io/en/latest/)
 
