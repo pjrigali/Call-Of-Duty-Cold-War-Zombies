@@ -1,48 +1,49 @@
 from typing import List, Optional
 import numpy as np
-import zombie.weapon_stats as w
+# import zombie.weapon_stats as w
 from zombie.processor import Build
+from zombie.weapon_stats import _weapon_stats_dic, _gun_names
 
-_stats = {'XM4': w.Xm4,
-          'AK47': w.Ak47,
-          'Krig': w.Krig,
-          'QBZ': w.Qbz,
-          'FFAR': w.Ffar,
-          'Groza': w.Groza,
-          'FARA': w.Fara,
-          'C58': w.C58,
-          'EM2': w.Em2,
-          'MP5': w.Mp5,
-          'Milano': w.Milano,
-          'AK74u': w.Ak74u,
-          'KSP': w.Ksp,
-          'Bullfrog': w.Bullfrog,
-          'Mac 10': w.Mac10,
-          'LC10': w.Lc10,
-          'PPSH': w.Ppsh,
-          'OTS': w.Ots9,
-          'Tec9': w.Tec9,
-          'Type 63': w.Type63,
-          'M16': w.M16,
-          'AUG': w.Aug,
-          'DMR': w.Dmr,
-          'CARV': w.Carv,
-          'Stoner': w.Stoner,
-          'RPD': w.Rpd,
-          'M60': w.M60,
-          'Pellington': w.Pelington,
-          'LW3': w.Lw3,
-          'M82': w.M82,
-          'Swiss': w.Swiss,
-          '1911': w.N1911,
-          'Magnum': w.Magnum,
-          'Diamatti': w.Diamatti,
-          'AMP': w.Amp,
-          'Hauer': w.Hauer,
-          'Gallo': w.Gallo,
-          'Streetsweeper': w.Streetsweeper
-          }
-_gun_names = list(_stats.keys())
+# _stats = {'XM4': w.Xm4,
+#           'AK47': w.Ak47,
+#           'Krig': w.Krig,
+#           'QBZ': w.Qbz,
+#           'FFAR': w.Ffar,
+#           'Groza': w.Groza,
+#           'FARA': w.Fara,
+#           'C58': w.C58,
+#           'EM2': w.Em2,
+#           'MP5': w.Mp5,
+#           'Milano': w.Milano,
+#           'AK74u': w.Ak74u,
+#           'KSP': w.Ksp,
+#           'Bullfrog': w.Bullfrog,
+#           'Mac 10': w.Mac10,
+#           'LC10': w.Lc10,
+#           'PPSH': w.Ppsh,
+#           'OTS': w.Ots9,
+#           'Tec9': w.Tec9,
+#           'Type 63': w.Type63,
+#           'M16': w.M16,
+#           'AUG': w.Aug,
+#           'DMR': w.Dmr,
+#           'CARV': w.Carv,
+#           'Stoner': w.Stoner,
+#           'RPD': w.Rpd,
+#           'M60': w.M60,
+#           'Pellington': w.Pelington,
+#           'LW3': w.Lw3,
+#           'M82': w.M82,
+#           'Swiss': w.Swiss,
+#           '1911': w.N1911,
+#           'Magnum': w.Magnum,
+#           'Diamatti': w.Diamatti,
+#           'AMP': w.Amp,
+#           'Hauer': w.Hauer,
+#           'Gallo': w.Gallo,
+#           'Streetsweeper': w.Streetsweeper
+#           }
+# _gun_names = list(_stats.keys())
 
 
 def damage_range(weapon_dic: dict, max_range: int) -> np.ndarray:
@@ -263,7 +264,7 @@ def movement_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
         weapon_names = weapon_names
 
     if build_weapons is None:
-        stats = _stats
+        stats = _weapon_stats_dic
     else:
         stats = build_weapons.stats
 
@@ -329,7 +330,7 @@ def control_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
         weapon_names = weapon_names
 
     if build_weapons is None:
-        stats = _stats
+        stats = _weapon_stats_dic
     else:
         stats = build_weapons.stats
 

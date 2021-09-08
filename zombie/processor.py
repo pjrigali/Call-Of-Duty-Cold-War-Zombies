@@ -8,7 +8,8 @@ import pandas as pd
 import numpy as np
 from numpy.random import normal
 from typing import List
-import zombie.weapon_stats as w
+# import zombie.weapon_stats as w
+from zombie.weapon_stats import _weapon_stats_dic, _gun_names
 from dataclasses import dataclass
 from typing import Optional
 
@@ -225,46 +226,48 @@ class Build:
         else:
             self.consecutive: bool = False
 
-        self.stats = {'XM4': w.Xm4,
-                      'AK47': w.Ak47,
-                      'Krig': w.Krig,
-                      'QBZ': w.Qbz,
-                      'FFAR': w.Ffar,
-                      'Groza': w.Groza,
-                      'FARA': w.Fara,
-                      'C58': w.C58,
-                      'EM2': w.Em2,
-                      'MP5': w.Mp5,
-                      'Milano': w.Milano,
-                      'AK74u': w.Ak74u,
-                      'KSP': w.Ksp,
-                      'Bullfrog': w.Bullfrog,
-                      'Mac 10': w.Mac10,
-                      'LC10': w.Lc10,
-                      'PPSH': w.Ppsh,
-                      'OTS': w.Ots9,
-                      'Tec9': w.Tec9,
-                      'Type 63': w.Type63,
-                      'M16': w.M16,
-                      'AUG': w.Aug,
-                      'DMR': w.Dmr,
-                      'CARV': w.Carv,
-                      'Stoner': w.Stoner,
-                      'RPD': w.Rpd,
-                      'M60': w.M60,
-                      'Pellington': w.Pelington,
-                      'LW3': w.Lw3,
-                      'M82': w.M82,
-                      'Swiss': w.Swiss,
-                      '1911': w.N1911,
-                      'Magnum': w.Magnum,
-                      'Diamatti': w.Diamatti,
-                      'AMP': w.Amp,
-                      'Hauer': w.Hauer,
-                      'Gallo': w.Gallo,
-                      'Streetsweeper': w.Streetsweeper
-                      }
-        self.gun_names = list(self.stats.keys())
+        self.stats = _weapon_stats_dic
+        # self.stats = {'XM4': w.Xm4,
+        #               'AK47': w.Ak47,
+        #               'Krig': w.Krig,
+        #               'QBZ': w.Qbz,
+        #               'FFAR': w.Ffar,
+        #               'Groza': w.Groza,
+        #               'FARA': w.Fara,
+        #               'C58': w.C58,
+        #               'EM2': w.Em2,
+        #               'MP5': w.Mp5,
+        #               'Milano': w.Milano,
+        #               'AK74u': w.Ak74u,
+        #               'KSP': w.Ksp,
+        #               'Bullfrog': w.Bullfrog,
+        #               'Mac 10': w.Mac10,
+        #               'LC10': w.Lc10,
+        #               'PPSH': w.Ppsh,
+        #               'OTS': w.Ots9,
+        #               'Tec9': w.Tec9,
+        #               'Type 63': w.Type63,
+        #               'M16': w.M16,
+        #               'AUG': w.Aug,
+        #               'DMR': w.Dmr,
+        #               'CARV': w.Carv,
+        #               'Stoner': w.Stoner,
+        #               'RPD': w.Rpd,
+        #               'M60': w.M60,
+        #               'Pellington': w.Pelington,
+        #               'LW3': w.Lw3,
+        #               'M82': w.M82,
+        #               'Swiss': w.Swiss,
+        #               '1911': w.N1911,
+        #               'Magnum': w.Magnum,
+        #               'Diamatti': w.Diamatti,
+        #               'AMP': w.Amp,
+        #               'Hauer': w.Hauer,
+        #               'Gallo': w.Gallo,
+        #               'Streetsweeper': w.Streetsweeper
+        #               }
+        # self.gun_names = list(self.stats.keys())
+        self.gun_names = _gun_names
         self._hits = _shot_distribution(stats=self.stats.values())
 
         self._weapon_type_dict = {}
@@ -639,46 +642,46 @@ class Build:
         return temp_dic
 
 
-_stats = {'XM4': w.Xm4,
-          'AK47': w.Ak47,
-          'Krig': w.Krig,
-          'QBZ': w.Qbz,
-          'FFAR': w.Ffar,
-          'Groza': w.Groza,
-          'FARA': w.Fara,
-          'C58': w.C58,
-          'EM2': w.Em2,
-          'MP5': w.Mp5,
-          'Milano': w.Milano,
-          'AK74u': w.Ak74u,
-          'KSP': w.Ksp,
-          'Bullfrog': w.Bullfrog,
-          'Mac 10': w.Mac10,
-          'LC10': w.Lc10,
-          'PPSH': w.Ppsh,
-          'OTS': w.Ots9,
-          'Tec9': w.Tec9,
-          'Type 63': w.Type63,
-          'M16': w.M16,
-          'AUG': w.Aug,
-          'DMR': w.Dmr,
-          'CARV': w.Carv,
-          'Stoner': w.Stoner,
-          'RPD': w.Rpd,
-          'M60': w.M60,
-          'Pellington': w.Pelington,
-          'LW3': w.Lw3,
-          'M82': w.M82,
-          'Swiss': w.Swiss,
-          '1911': w.N1911,
-          'Magnum': w.Magnum,
-          'Diamatti': w.Diamatti,
-          'AMP': w.Amp,
-          'Hauer': w.Hauer,
-          'Gallo': w.Gallo,
-          'Streetsweeper': w.Streetsweeper
-          }
-_gun_names = list(_stats.keys())
+# _stats = {'XM4': w.Xm4,
+#           'AK47': w.Ak47,
+#           'Krig': w.Krig,
+#           'QBZ': w.Qbz,
+#           'FFAR': w.Ffar,
+#           'Groza': w.Groza,
+#           'FARA': w.Fara,
+#           'C58': w.C58,
+#           'EM2': w.Em2,
+#           'MP5': w.Mp5,
+#           'Milano': w.Milano,
+#           'AK74u': w.Ak74u,
+#           'KSP': w.Ksp,
+#           'Bullfrog': w.Bullfrog,
+#           'Mac 10': w.Mac10,
+#           'LC10': w.Lc10,
+#           'PPSH': w.Ppsh,
+#           'OTS': w.Ots9,
+#           'Tec9': w.Tec9,
+#           'Type 63': w.Type63,
+#           'M16': w.M16,
+#           'AUG': w.Aug,
+#           'DMR': w.Dmr,
+#           'CARV': w.Carv,
+#           'Stoner': w.Stoner,
+#           'RPD': w.Rpd,
+#           'M60': w.M60,
+#           'Pellington': w.Pelington,
+#           'LW3': w.Lw3,
+#           'M82': w.M82,
+#           'Swiss': w.Swiss,
+#           '1911': w.N1911,
+#           'Magnum': w.Magnum,
+#           'Diamatti': w.Diamatti,
+#           'AMP': w.Amp,
+#           'Hauer': w.Hauer,
+#           'Gallo': w.Gallo,
+#           'Streetsweeper': w.Streetsweeper
+#           }
+# _gun_names = list(_stats.keys())
 
 
 @dataclass
@@ -690,7 +693,7 @@ class ModifiedWeapon:
         # super(Build, self).__init__()
         self.perk_class_levels = _build.get_perk_classes
         self.weapon_class_levels = _build.get_weapon_classes
-        d = _stats[weapon_name]
+        d = _weapon_stats_dic[weapon_name]
         self._default_stats = {'Name': d.name,
                                'Temp Name': d.temp_name,
                                'Damage': d.damage_1,
@@ -742,6 +745,7 @@ class ModifiedWeapon:
                                }
 
         self._modified_stats = self._default_stats
+        self._equipped_attachments = equipped_attachments
 
         if nickname is not None:
             self._modified_stats['Temp Name'] = nickname
@@ -771,7 +775,7 @@ class ModifiedWeapon:
                                                        self._modified_stats['PAP Burst']
 
         temp_dic = Build._apply_multipliers(weapon_multi=self.weapon_class_levels, perk_multi=self.perk_class_levels,
-                                           weapon_dic=self._modified_stats)
+                                            weapon_dic=self._modified_stats)
 
         if equipped_attachments is not None:
             effect_lst = Build._get_attachments(weapon_dic=temp_dic, equipped_dic=equipped_attachments)
@@ -796,3 +800,28 @@ class ModifiedWeapon:
     @property
     def modified_stats(self) -> dict:
         return self._modified_stats
+
+    @property
+    def get_attachments(self) -> pd.DataFrame:
+        if self._equipped_attachments:
+            vals = self._modified_stats
+        else:
+            vals = self._default_stats
+
+        location, name, effect = [], [], []
+        for part in ['Muzzle', 'Barrel', 'Body', 'Underbarrel', 'Magazine', 'Handle', 'Stock']:
+            for j in vals[part].keys():
+                location.append(part)
+                name.append(j)
+                effect.append(self.modified_stats[part][j])
+
+        df = pd.DataFrame()
+        df['location'] = location
+        df['name'] = name
+        df['effect'] = effect
+
+        if self._equipped_attachments:
+            df = df.set_index('name').loc[self._equipped_attachments.values()]
+        else:
+            df = df.set_index('location').sort_index()
+        return df
