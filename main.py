@@ -5,8 +5,8 @@ Created on Thu Apr 22 20:18:33 2021
 @author: Peter
 """
 from zombie.health_armour import Health
+from zombie.processor import DamageProfile
 from zombie.analysis import Analyze
-from zombie.processor import ModifiedWeapon
 
 if __name__ == '__main__':
 
@@ -14,12 +14,15 @@ if __name__ == '__main__':
     weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                            'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
-    analysis = Analyze(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels, max_range=100)
+
+    # Core Classes
+    damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
+                                   max_range=100)
 
     # Set Zombie Health
     zom = Health(level=60, health_cap=55, outbreak=False, multiplier=2)
-    zombie_health = zom.get_health
-    zombie_armour = zom.get_armour
+    zombie_health = zom.get_health  # 60,250
+    zombie_armour = zom.get_armour  # 30,125
 
     # Example Loadouts
     rarity = 'orange'
@@ -75,7 +78,7 @@ if __name__ == '__main__':
         'Magazine': 'STANAG Mag',
         'Stock': 'Marathon Stock'
     }
-    guns = analysis.process_multi(weapon_dic_lst=[
+    gun_lst = [
         {'weapon': 'M16', 'nickname': 'Temp M16', 'equipped_attachments': M16, 'rarity': rarity,
          'pap': pap, 'accuracy': None, 'critical': None},
         {'weapon': 'CARV', 'nickname': 'Temp CARV', 'equipped_attachments': carv, 'rarity': rarity,
@@ -88,36 +91,12 @@ if __name__ == '__main__':
          'pap': pap, 'accuracy': None, 'critical': None},
         {'weapon': 'AMP', 'nickname': 'Temp AMP', 'equipped_attachments': amp, 'rarity': rarity,
          'pap': pap, 'accuracy': None, 'critical': None},
-    ])
+    ]
 
-    # Convert to a DataFrame.
-    gun_df = analysis.build_df(weapon_dic_lst=guns, cols=None)
-
-    # Build Data for Viz.
-    weapon_compare_dic = analysis.compare_multi(weapon_dic_lst=guns, zombie_health=zombie_health,
-                                                zombie_armour=zombie_armour, for_viz=True)
-
-    # Return all visualizations.
-    # analysis.viz_all(weapon_df_dic=weapon_compare_dic, x_limit=100, ind=3, save_image=False)
-
-    from zombie.processor import Build
-    temp = ModifiedWeapon(weapon_name='M16', _build=Build(weapon_class_levels=weapon_class_levels,
-                                                          perk_class_levels=perk_class_levels), equipped_attachments=M16, rarity=rarity, pap=pap)
+    # Build Analyze Class
+    analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
 
     gun_df
-    # Return a single visualization.
-    # analysis.viz(weapon_df_dic=weapon_compare_dic, keyword='Damage Per Second', x_limit=40, ind=5, save_image=False)
-
-    # Return the attachments and their effects for a specific gun
-    # mp5 = {'weapon': 'MP5', 'nickname': 'Temp MP5', 'equipped_attachments': equipped1, 'rarity': 'common',
-    #        'pap': '0', 'accuracy': None, 'critical': None}
-    # attach = analysis.process(weapon_dic=mp5)
-    # attach_df = analysis.get_attachments(weapon_dic=attach, equipped_dic=None)
-
-    # Returns the effects as a list  from the attachments
-    # effects_lst = analysis.get_attachments(weapon_dic=attach, equipped_dic=equipped1)
-    # effects_lst
-
 
     # Not Finished
     # data = base.get_attachments(weapon_dic=base.process('AK74u'))
