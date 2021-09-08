@@ -1,49 +1,6 @@
 from typing import List, Optional
 import numpy as np
-# import zombie.weapon_stats as w
-from zombie.processor import Build
 from zombie.weapon_stats import _weapon_stats_dic, _gun_names
-
-# _stats = {'XM4': w.Xm4,
-#           'AK47': w.Ak47,
-#           'Krig': w.Krig,
-#           'QBZ': w.Qbz,
-#           'FFAR': w.Ffar,
-#           'Groza': w.Groza,
-#           'FARA': w.Fara,
-#           'C58': w.C58,
-#           'EM2': w.Em2,
-#           'MP5': w.Mp5,
-#           'Milano': w.Milano,
-#           'AK74u': w.Ak74u,
-#           'KSP': w.Ksp,
-#           'Bullfrog': w.Bullfrog,
-#           'Mac 10': w.Mac10,
-#           'LC10': w.Lc10,
-#           'PPSH': w.Ppsh,
-#           'OTS': w.Ots9,
-#           'Tec9': w.Tec9,
-#           'Type 63': w.Type63,
-#           'M16': w.M16,
-#           'AUG': w.Aug,
-#           'DMR': w.Dmr,
-#           'CARV': w.Carv,
-#           'Stoner': w.Stoner,
-#           'RPD': w.Rpd,
-#           'M60': w.M60,
-#           'Pellington': w.Pelington,
-#           'LW3': w.Lw3,
-#           'M82': w.M82,
-#           'Swiss': w.Swiss,
-#           '1911': w.N1911,
-#           'Magnum': w.Magnum,
-#           'Diamatti': w.Diamatti,
-#           'AMP': w.Amp,
-#           'Hauer': w.Hauer,
-#           'Gallo': w.Gallo,
-#           'Streetsweeper': w.Streetsweeper
-#           }
-# _gun_names = list(_stats.keys())
 
 
 def damage_range(weapon_dic: dict, max_range: int) -> np.ndarray:
@@ -229,8 +186,7 @@ def damage_per_clip(damage_range_arr: np.ndarray, shots_average: np.ndarray) -> 
     return np.around([damage_range_arr[i] * shots_average for i, j in enumerate(damage_range_arr)], 0)
 
 
-def movement_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
-                   build_weapons: Optional[Build] = None) -> float:
+def movement_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None) -> float:
     """
     Calculate the movement ratio for a specific weapon.
 
@@ -243,8 +199,6 @@ def movement_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
         Dict of specific weapon stats.
     weapon_names: list
         List of weapon names, default is None. *Optional*
-    build_weapons: Build
-        Built weapons, with perks and weapon tiers applied.
 
     Returns
     -------
@@ -263,31 +217,26 @@ def movement_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
     else:
         weapon_names = weapon_names
 
-    if build_weapons is None:
-        stats = _weapon_stats_dic
-    else:
-        stats = build_weapons.stats
-
     for i in lst.keys():
         temp_lst = []
         for weapon_name in weapon_names:
             if i == 'Movement Speed':
-                temp_lst.append(stats[weapon_name].movement)
+                temp_lst.append(_weapon_stats_dic[weapon_name].movement)
                 continue
             elif i == 'Sprinting Speed':
-                temp_lst.append(stats[weapon_name].sprint)
+                temp_lst.append(_weapon_stats_dic[weapon_name].sprint)
                 continue
             elif i == 'Shooting Speed':
-                temp_lst.append(stats[weapon_name].shoot_speed)
+                temp_lst.append(_weapon_stats_dic[weapon_name].shoot_speed)
                 continue
             elif i == 'Sprint to Fire':
-                temp_lst.append(stats[weapon_name].sprint_to_fire)
+                temp_lst.append(_weapon_stats_dic[weapon_name].sprint_to_fire)
                 continue
             elif i == 'Aim Walking':
-                temp_lst.append(stats[weapon_name].aim_walking)
+                temp_lst.append(_weapon_stats_dic[weapon_name].aim_walking)
                 continue
             elif i == 'ADS':
-                temp_lst.append(stats[weapon_name].ads)
+                temp_lst.append(_weapon_stats_dic[weapon_name].ads)
                 continue
 
         lst[i] = [min(temp_lst), max(temp_lst), weapon_dic[i]]
@@ -297,8 +246,7 @@ def movement_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
     return ratio
 
 
-def control_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
-                  build_weapons: Optional[Build] = None) -> float:
+def control_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None) -> float:
     """
     Calculate the control ratio for a specific weapon.
 
@@ -311,8 +259,6 @@ def control_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
         Dict of specific weapon stats.
     weapon_names: list
         List of weapon names, default is None. *Optional*
-    build_weapons: Build
-        Built weapons, with perks and weapon tiers applied.
 
     Returns
     -------
@@ -329,25 +275,20 @@ def control_ratio(weapon_dic: dict, weapon_names: Optional[List[str]] = None,
     else:
         weapon_names = weapon_names
 
-    if build_weapons is None:
-        stats = _weapon_stats_dic
-    else:
-        stats = build_weapons.stats
-
     for i in lst.keys():
         temp_lst = []
         for weapon_name in weapon_names:
             if i == 'Vertical Recoil':
-                temp_lst.append(stats[weapon_name].vertical_recoil)
+                temp_lst.append(_weapon_stats_dic[weapon_name].vertical_recoil)
                 continue
             if i == 'Horizontal Recoil':
-                temp_lst.append(stats[weapon_name].horizontal_recoil)
+                temp_lst.append(_weapon_stats_dic[weapon_name].horizontal_recoil)
                 continue
             if i == 'Centering Speed':
-                temp_lst.append(stats[weapon_name].centering_speed)
+                temp_lst.append(_weapon_stats_dic[weapon_name].centering_speed)
                 continue
             if i == 'Hip Fire':
-                temp_lst.append(stats[weapon_name].hip_fire)
+                temp_lst.append(_weapon_stats_dic[weapon_name].hip_fire)
                 continue
         lst[i] = [min(temp_lst), max(temp_lst), weapon_dic[i]]
 
