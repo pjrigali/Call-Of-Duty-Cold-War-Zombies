@@ -12,6 +12,7 @@ Welcome to cold-war-zombies's documentation!
 
    intro
    classes
+   functions
    glossary
 
 Indices and tables
