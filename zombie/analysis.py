@@ -4,13 +4,14 @@ Created on Thu Apr 22 21:08:22 2021
 
 @author: Peter
 """
-from typing import List
+from typing import List, Optional
 from dataclasses import dataclass
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import random
 from zombie.processor import DamageProfile, ModifiedWeapon
+from zombie.health_armour import Health
 from zombie.base import damage_range, damage_per_second, damage_per_clip, damage_per_max_ammo, drop_off_ratio
 from zombie.base import shoot_reload_ratio, time_to_kill, shoot_time, shots_to_kill, control_ratio, movement_ratio
 random.seed(1)
@@ -29,14 +30,22 @@ class Analyze:
     """
 
     Constructs  dicts, pd.DataFrames and visualizations for comparing various weapons.
-    Applies buffs from attachments.
 
     :param damage_profile: DamageProfile class object.
     :type damage_profile: DamageProfile
+    :param zombie_info: Health class object.
+    :type zombie_info: Health
+    :param weapon_dic_lst: List of weapons and weapon info.
+    :type weapon_dic_lst: dict
+    :param columns_lst: Select columns to highlight, default is None. *Optional*
+    :type columns_lst: List[str]
+    :param x_limit: X limit on the graphs, default is 75. *Optional*
+    :type x_limit: int
+    :param viz_index_point: Reference point on the graphs, default is 40. *Optional*
+    :type viz_index_point: int
+    :param save_image: If True, will save the plots, default is False. *Optional*
+    :type save_image: bool
     :example:
-
-    By default the values are set to 0. User inputs change these and the effects are applied across the weapons:
-
     >>> from zombie.processor import DamageProfile
     >>> from zombie.analysis import Analyze
     >>> weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
@@ -47,16 +56,100 @@ class Analyze:
     >>> analysis = Analyze(damage_profile=damage_profile)
 
     """
-    def __init__(self, damage_profile: DamageProfile):
+    def __init__(self, damage_profile: DamageProfile, zombie_info: Health, weapon_dic_lst: List[dict],
+                 columns_lst: Optional[List[str]] = None, x_limit: Optional[int] = 100,
+                 viz_index_point: Optional[int] = 3, save_image: Optional[bool] = False):
         self._DamageProfile = damage_profile
         self._perk_dict = damage_profile.get_perk_classes
         self._weapon_type_dict = damage_profile.get_weapon_classes
         self._max_range = self._DamageProfile.max_range
 
+        self._zombie_health = zombie_info.get_health
+        self._zombie_armour = zombie_info.get_armour
+        self._ModifiedWeapons = self._process_multi(weapon_dic_lst=weapon_dic_lst)
+        self._compare_info_for_plots = self._compare_multi(weapon_dic_lst=self._ModifiedWeapons,
+                                                           zombie_health=self._zombie_health,
+                                                           zombie_armour=self._zombie_armour,
+                                                           for_viz=True)
+
+        if columns_lst is None:
+            self._col_lst = col_lst
+        else:
+            self._col_lst = col_lst
+
+        self._x_limit = x_limit
+        self._viz_index_point = viz_index_point
+        self._save_image = save_image
+
     def __repr__(self):
         return "Analysis"
 
-    def process(self, weapon_dic: dict) -> ModifiedWeapon:
+    @property
+    def weapons_lst(self) -> List[ModifiedWeapon]:
+        """Returns a list of ModifiedWeapons"""
+        return self._ModifiedWeapons
+
+    @property
+    def weapons_df(self) -> pd.DataFrame:
+        """Returns a DataFrame of weapon stats"""
+        data_n = []
+        for dic in self._ModifiedWeapons:
+            dic = dic.modified_stats
+            dic['Shooting Time'] = shoot_time(weapon_dic=dic)
+            dic['Shoot To Reload Ratio'] = shoot_reload_ratio(weapon_dic=dic)
+            dic['Movement Ratio'] = movement_ratio(weapon_dic=dic)
+            dic['Control Ratio'] = control_ratio(weapon_dic=dic)
+            dic['Drop Off Ratio'] = drop_off_ratio(weapon_dic=dic)
+            data_n.append(dic)
+
+        return pd.DataFrame(data_n)[self._col_lst].set_index('Temp Name').T
+
+    @property
+    def damage_per_second_plot(self):
+        """Returns Damage Per Second Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Damage Per Second',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    @property
+    def damage_per_max_ammo_plot(self):
+        """Returns Damage Per Max Ammo Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Damage Per Max Ammo',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    @property
+    def damage_per_clip_plot(self):
+        """Returns Damage Per Clip Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Damage Per Clip',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    @property
+    def time_to_kill_plot(self):
+        """Returns Time To Kill Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Time To Kill',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    @property
+    def shots_to_kill_plot(self):
+        """Returns Shots To Kill Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Shots To Kill',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    def _process(self, weapon_dic: dict) -> ModifiedWeapon:
         """Create a ModifiedWeapon Class for a weapon with all stats. Including attachments,
         perk and weapon tier effects"""
         new_weapon_dic = {}
@@ -73,12 +166,11 @@ class Analyze:
                               weapon_class_levels=self._DamageProfile.get_weapon_classes,
                               perk_class_levels=self._DamageProfile.get_perk_classes)
 
-    def process_multi(self, weapon_dic_lst: List[dict]) -> List[ModifiedWeapon]:
+    def _process_multi(self, weapon_dic_lst: List[dict]) -> List[ModifiedWeapon]:
         """Create a List[ModifiedWeapon] for multiple weapons with all stats included in process()"""
         if len(weapon_dic_lst) > 6:
             print(), print('If more than 6 guns included legends will overlap.')
-
-        return [self.process(weapon_dic=i) for i in weapon_dic_lst]
+        return [self._process(weapon_dic=i) for i in weapon_dic_lst]
 
     def _mu_shots(self, weapon_dic: dict) -> np.ndarray:
         """Returns an np.ndarray of multipliers based on accuracy and critical hit percentages"""
@@ -130,7 +222,8 @@ class Analyze:
 
         return np.array(temp_lst)
 
-    def compare(self, weapon_dic: dict, zombie_health: float, zombie_armour: float = None, for_viz: bool = False):
+    def _compare(self, weapon_dic: dict, zombie_health: Optional[float], zombie_armour: Optional[float],
+                 for_viz: Optional[bool] = False):
         """
         Constructs the dict or pd.DataFrame with all comparison stats and metrics.
 
@@ -151,6 +244,11 @@ class Analyze:
         dict or pd.DataFrame
 
         """
+        if zombie_health is None:
+            zombie_health = self._zombie_health
+        if zombie_armour is None:
+            zombie_armour = self._zombie_armour
+
         mu = self._mu_shots(weapon_dic)
         _dr = self._check_multi(damage_range_arr=damage_range(weapon_dic=weapon_dic, max_range=self._max_range),
                                 weapon_dic=weapon_dic)
@@ -177,8 +275,8 @@ class Analyze:
             temp_dic['Drop Off Ratio'] = drop_off_ratio(weapon_dic=weapon_dic)
             return temp_dic
 
-    def compare_multi(self, weapon_dic_lst: List[ModifiedWeapon], zombie_health: float, zombie_armour: float = None,
-                      for_viz: bool = False) -> dict:
+    def _compare_multi(self, weapon_dic_lst: List[ModifiedWeapon], zombie_health: Optional[float],
+                       zombie_armour: Optional[float] = None, for_viz: Optional[bool] = False) -> dict:
         """
         Constructs the dict with all comparison stats and metrics; for multiple weapons.
 
@@ -199,43 +297,18 @@ class Analyze:
         dict
 
         """
-        return {i.modified_stats['Name']: self.compare(weapon_dic=i.modified_stats,
-                                                       zombie_health=zombie_health,
-                                                       zombie_armour=zombie_armour,
-                                                       for_viz=for_viz) for i in weapon_dic_lst}
+        if zombie_health is None:
+            zombie_health = self._zombie_health
+        if zombie_armour is None:
+            zombie_armour = self._zombie_armour
 
-    def build_df(self, weapon_dic_lst: List[ModifiedWeapon], cols: List[str] = None) -> pd.DataFrame:
-        """
-        Constructs a pd.DataFrame with all comparison stats and metrics; for multiple weapons.
+        return {i.modified_stats['Name']: self._compare(weapon_dic=i.modified_stats,
+                                                        zombie_health=zombie_health,
+                                                        zombie_armour=zombie_armour,
+                                                        for_viz=for_viz) for i in weapon_dic_lst}
 
-        Parameters
-        ----------
-        weapon_dic_lst : List[dict]
-            Dict of specific weapon stats.
-        cols : List[str], default None
-            List of keys to include as output pd.DataFrame columns.
-
-        Returns
-        -------
-        pd.DataFrame
-
-        """
-        data_n = []
-        for dic in weapon_dic_lst:
-            dic = dic.modified_stats
-            dic['Shooting Time'] = shoot_time(weapon_dic=dic)
-            dic['Shoot To Reload Ratio'] = shoot_reload_ratio(weapon_dic=dic)
-            dic['Movement Ratio'] = movement_ratio(weapon_dic=dic)
-            dic['Control Ratio'] = control_ratio(weapon_dic=dic)
-            dic['Drop Off Ratio'] = drop_off_ratio(weapon_dic=dic)
-            data_n.append(dic)
-
-        if cols is None:
-            return pd.DataFrame(data_n)[col_lst].set_index('Temp Name')
-        else:
-            return pd.DataFrame(data_n)[cols].set_index('Temp Name')
-
-    def viz(self, weapon_df_dic: dict, keyword: str, x_limit: int, ind: int, save_image: bool = False) -> None:
+    def viz(self, weapon_df_dic: dict, keyword: str, x_limit: Optional[int] = 75, ind: Optional[int] = 40,
+            save_image: Optional[bool] = False) -> None:
         """
         Constructs a plot related to a phrase for comparing weapons.
 
@@ -316,10 +389,10 @@ class Analyze:
 
         if save_image:
             plt.savefig(keyword)
-
         plt.show()
 
-    def viz_all(self, weapon_df_dic: dict, x_limit: int, ind: int, save_image: bool) -> None:
+    def viz_all(self, weapon_df_dic: dict, x_limit: Optional[int] = 75, ind: Optional[int] = 40,
+                save_image: Optional[bool] = False) -> None:
         """
         Constructs a series of plots related utilizing all phrases for comparing weapons.
 
