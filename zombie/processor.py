@@ -728,6 +728,8 @@ class ModifiedWeapon:
         col = self._modified_stats['Name']
         index_lst = ['Armour Damage', 'Damage', 'Range', 'Velocity', 'ADS', 'Aim Walking', 'Sprint to Fire',
                      'Shooting Speed', 'Sprinting Speed', 'Movement Speed']
+
+        # Set up
         temp_mod = self._modified_values
         temp_def = pd.DataFrame.from_dict(self._default_stats, orient='index', columns=[col]).loc[index_lst, col]
         per = (temp_mod - temp_def) / temp_def
@@ -735,6 +737,8 @@ class ModifiedWeapon:
         N = len(index_lst)
         ind = np.arange(N)
         width = 0.33
+
+        # Build plot
         fig, ax = plt.subplots(figsize=(10, 7))
         rects1 = ax.barh(ind, [1] * N, width, label='Baseline')
         rects2 = ax.barh(ind + width, temp_per, width, label='Modified')
