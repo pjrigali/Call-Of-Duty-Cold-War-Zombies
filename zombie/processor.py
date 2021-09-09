@@ -725,7 +725,7 @@ class ModifiedWeapon:
 
     def ax(self):
         """Returns a Horizontal Bar Plot comparing the weapons default verse modified stats"""
-        col = self._modified_stats['Temp Name']
+        col = self._modified_stats['Name']
         index_lst = ['Armour Damage', 'Damage', 'Range', 'Velocity', 'ADS', 'Aim Walking', 'Sprint to Fire',
                      'Shooting Speed', 'Sprinting Speed', 'Movement Speed']
         temp_mod = self._modified_values
@@ -752,6 +752,15 @@ class ModifiedWeapon:
         ax.set_xlim(left=0, right=2)
         ax.set_title(col, fontsize='xx-large')
         ax.grid(linewidth=0.5, linestyle=(0, (3, 3)), alpha=0.75)
+        plt.legend(loc='upper right')
         plt.gcf().subplots_adjust(left=0.20)
-        ax.legend()
+
+        # Attachment Textbox
+        labels = []
+        for part in ['Muzzle', 'Barrel', 'Body', 'Underbarrel', 'Magazine', 'Handle', 'Stock']:
+            for name in self._modified_stats[part].keys():
+                labels.append(name)
+        props = dict(boxstyle='round', alpha=0.5, facecolor='white', edgecolor='lightgrey')
+        plt.text(x=1.97, y=8.7, s='\n'.join(labels), va='top', ha='right', bbox=props)
+
         plt.show()
