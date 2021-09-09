@@ -6,6 +6,8 @@ Created on Thu Apr 22 21:09:41 2021
 """
 from typing import Optional, List
 from dataclasses import dataclass
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import pandas as pd
 import numpy as np
 from numpy.random import normal
@@ -665,6 +667,12 @@ class ModifiedWeapon:
             temp_dic = final_dic
 
         self._modified_stats = temp_dic
+        col = self._modified_stats['Temp Name']
+        index_lst = ['Armour Damage', 'Damage', 'Range', 'Velocity', 'ADS', 'Aim Walking', 'Sprint to Fire',
+                     'Shooting Speed', 'Sprinting Speed', 'Movement Speed']
+        self._modified_values = pd.DataFrame.from_dict(self._modified_stats,
+                                                       orient='index',
+                                                       columns=[col]).loc[index_lst, col]
 
     def __repr__(self):
         return self._default_stats['Name']
@@ -714,3 +722,36 @@ class ModifiedWeapon:
         else:
             df = df.set_index('location').sort_index()
         return df
+
+    def ax(self):
+        """Returns a Horizontal Bar Plot comparing the weapons default verse modified stats"""
+        col = self._modified_stats['Temp Name']
+        index_lst = ['Armour Damage', 'Damage', 'Range', 'Velocity', 'ADS', 'Aim Walking', 'Sprint to Fire',
+                     'Shooting Speed', 'Sprinting Speed', 'Movement Speed']
+        temp_mod = self._modified_values
+        temp_def = pd.DataFrame.from_dict(self._default_stats, orient='index', columns=[col]).loc[index_lst, col]
+        per = (temp_mod - temp_def) / temp_def
+        temp_per = 1 + (1 * per)
+        N = len(index_lst)
+        ind = np.arange(N)
+        width = 0.33
+        fig, ax = plt.subplots(figsize=(10, 7))
+        rects1 = ax.barh(ind, [1] * N, width, label='Baseline')
+        rects2 = ax.barh(ind + width, temp_per, width, label='Modified')
+        for i, rect in enumerate(rects2):
+            height = rect.xy[1]
+            ax.text(x=temp_per[i] - .05, y=height + width / 2, s=str(round(list(per)[i] * 100, 1)) + ' %', ha='right',
+                    va='center')
+        ax.set_yticks(ind + width / 2)
+        ax.set_yticklabels(index_lst, fontsize='large')
+        ax.vlines(x=1, ymin=min(ind + width / 2) - width, ymax=max(ind + width / 2) + width, colors='r',
+                  linestyles=(0, (3, 3)))
+        x_ticks = np.arange(start=0, stop=2, step=0.25)
+        ax.set_xticks(x_ticks)
+        ax.set_xticklabels([str(i) for i in x_ticks], fontsize='large')
+        ax.set_xlim(left=0, right=2)
+        ax.set_title(col, fontsize='xx-large')
+        ax.grid(linewidth=0.5, linestyle=(0, (3, 3)), alpha=0.75)
+        plt.gcf().subplots_adjust(left=0.20)
+        ax.legend()
+        plt.show()
