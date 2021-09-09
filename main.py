@@ -7,6 +7,7 @@ Created on Thu Apr 22 20:18:33 2021
 from zombie.health_armour import Health
 from zombie.processor import DamageProfile
 from zombie.analysis import Analyze
+import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
 
@@ -97,51 +98,3 @@ if __name__ == '__main__':
     analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
 
     gun_df
-
-    # Not Finished
-    # data = base.get_attachments(weapon_dic=base.process('AK74u'))
-    # effect_lst = []
-    # index_lst = []
-    # for ind, val in enumerate(data['effect']):
-    #     for effect in val:
-    #         if 'Vertical' in effect:
-    #             index_lst.append(ind)
-    #             effect_lst.append(effect)
-    # data_n = data.iloc[index_lst]
-    #
-    # import matplotlib.pyplot as plt
-    # import pandas as pd
-    # import numpy as np
-    #
-    # t = base.stats['AK74u'].vertical_recoil
-    #
-    # num_lst = []
-    # for effect in effect_lst:
-    #     e_i = float(effect.split('%')[0].split(' ')[1]) / 100
-    #     if '+' in effect:
-    #         num_lst.append(t + (t * e_i))
-    #     else:
-    #         num_lst.append(t - (t * e_i))
-    #
-    # people = ['None'] + list(data_n['name'])
-    # y_pos = np.arange(len(people))
-    # # performance = [t] + num_lst
-    # fig, ax = plt.subplots(figsize=(10, 7))
-    #
-    # arr = np.array(num_lst)
-    # tt = [.5] + list(np.around((arr - t) / (np.max(arr) - np.min(arr)).T + 0.50, 3))
-    # performance = tt
-    # ax.barh(y_pos, performance, align='center')
-    # for i, v in enumerate(performance):
-    #     ax.text(v + 5, i, str(int(v)), color='black', fontsize='medium')
-    #
-    # for i, v in enumerate(['None'] + list(data_n['location'])):
-    #     ax.text(5, i, v, color='black', fontsize='xx-large')
-    #
-    # ax.set_yticks(y_pos)
-    # ax.set_yticklabels(people)
-    # ax.invert_yaxis()
-    # ax.set_xlabel('Vertical Recoil')
-    # ax.set_title('AK74u')
-    # plt.show()
-
