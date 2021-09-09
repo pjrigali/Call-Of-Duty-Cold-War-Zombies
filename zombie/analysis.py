@@ -9,6 +9,7 @@ from dataclasses import dataclass
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import cm
 import random
 from zombie.processor import DamageProfile, ModifiedWeapon
 from zombie.health_armour import Health
@@ -90,7 +91,7 @@ class Analyze:
         return self._ModifiedWeapons
 
     @property
-    def weapons_df(self) -> pd.DataFrame:
+    def weapons_modified_df(self) -> pd.DataFrame:
         """Returns a DataFrame of weapon stats"""
         data_n = []
         for dic in self._ModifiedWeapons:
@@ -105,49 +106,18 @@ class Analyze:
         return pd.DataFrame(data_n)[self._col_lst].set_index('Temp Name').T
 
     @property
-    def damage_per_second_plot(self):
-        """Returns Damage Per Second Plot"""
-        return self.viz(weapon_df_dic=self._compare_info_for_plots,
-                        keyword='Damage Per Second',
-                        x_limit=self._x_limit,
-                        ind=self._viz_index_point,
-                        save_image=self._save_image)
-
-    @property
-    def damage_per_max_ammo_plot(self):
-        """Returns Damage Per Max Ammo Plot"""
-        return self.viz(weapon_df_dic=self._compare_info_for_plots,
-                        keyword='Damage Per Max Ammo',
-                        x_limit=self._x_limit,
-                        ind=self._viz_index_point,
-                        save_image=self._save_image)
-
-    @property
-    def damage_per_clip_plot(self):
-        """Returns Damage Per Clip Plot"""
-        return self.viz(weapon_df_dic=self._compare_info_for_plots,
-                        keyword='Damage Per Clip',
-                        x_limit=self._x_limit,
-                        ind=self._viz_index_point,
-                        save_image=self._save_image)
-
-    @property
-    def time_to_kill_plot(self):
-        """Returns Time To Kill Plot"""
-        return self.viz(weapon_df_dic=self._compare_info_for_plots,
-                        keyword='Time To Kill',
-                        x_limit=self._x_limit,
-                        ind=self._viz_index_point,
-                        save_image=self._save_image)
-
-    @property
-    def shots_to_kill_plot(self):
-        """Returns Shots To Kill Plot"""
-        return self.viz(weapon_df_dic=self._compare_info_for_plots,
-                        keyword='Shots To Kill',
-                        x_limit=self._x_limit,
-                        ind=self._viz_index_point,
-                        save_image=self._save_image)
+    def weapons_default_df(self) -> pd.DataFrame:
+        """Returns a DataFrame of weapon stats"""
+        data_n = []
+        for dic in self._ModifiedWeapons:
+            dic = dic.default_stats
+            dic['Shooting Time'] = shoot_time(weapon_dic=dic)
+            dic['Shoot To Reload Ratio'] = shoot_reload_ratio(weapon_dic=dic)
+            dic['Movement Ratio'] = movement_ratio(weapon_dic=dic)
+            dic['Control Ratio'] = control_ratio(weapon_dic=dic)
+            dic['Drop Off Ratio'] = drop_off_ratio(weapon_dic=dic)
+            data_n.append(dic)
+        return pd.DataFrame(data_n)[self._col_lst].set_index('Temp Name').T
 
     def _process(self, weapon_dic: dict) -> ModifiedWeapon:
         """Create a ModifiedWeapon Class for a weapon with all stats. Including attachments,
@@ -414,3 +384,61 @@ class Analyze:
         """
         for keyword in ['Damage Per Max Ammo', 'Damage Per Clip', 'Damage Per Second', 'Time To Kill', 'Shots To Kill']:
             self.viz(weapon_df_dic=weapon_df_dic, keyword=keyword, x_limit=x_limit, ind=ind, save_image=save_image)
+
+    def damage_per_second_plot(self):
+        """Returns Damage Per Second Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Damage Per Second',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    def damage_per_max_ammo_plot(self):
+        """Returns Damage Per Max Ammo Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Damage Per Max Ammo',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    def damage_per_clip_plot(self):
+        """Returns Damage Per Clip Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Damage Per Clip',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    def time_to_kill_plot(self):
+        """Returns Time To Kill Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Time To Kill',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    def shots_to_kill_plot(self):
+        """Returns Shots To Kill Plot"""
+        return self.viz(weapon_df_dic=self._compare_info_for_plots,
+                        keyword='Shots To Kill',
+                        x_limit=self._x_limit,
+                        ind=self._viz_index_point,
+                        save_image=self._save_image)
+
+    def comparison(self):
+        """Returns a bar plot comparing weapons"""
+        dic = {}
+        for i in self._ModifiedWeapons:
+            dic[i.modified_stats['Temp Name']] = i._modified_values
+        temp = pd.DataFrame.from_dict(dic)
+        t = temp.mean(axis=1)
+        tt = 1 + (temp.sub(t, axis=0).div(t, axis=0) * 1)
+        n = len(temp.columns)
+        cmap = [plt.get_cmap('viridis')(1. * i / n) for i in range(n)]
+        colors = dict(zip(temp.columns, cmap))
+        tt.plot.barh(color=colors, figsize=(10, 7), xlim=(np.min(np.min(tt)), 2), legend='reverse')
+        plt.title('Comparison', fontsize='xx-large')
+        plt.vlines(x=1, ymin=-1, ymax=len(temp), color='r', linestyles=(0, (3, 3)))
+        plt.grid(linewidth=0.5, linestyle=(0, (3, 3)), alpha=0.75)
+        plt.gcf().subplots_adjust(left=0.15)
+        plt.show()
