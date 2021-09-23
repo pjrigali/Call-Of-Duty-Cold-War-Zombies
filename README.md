@@ -1,5 +1,8 @@
 # Cold War Zombies
 [![Documentation Status](https://readthedocs.org/projects/call-of-duty-cold-war-zombies/badge/?version=latest)](https://call-of-duty-cold-war-zombies.readthedocs.io/en/latest/?badge=latest)
+[![PyPI](https://img.shields.io/pypi/v/cold-war-zombies?color=brightgreen&logoColor=lightgrey)](https://pypi.org/project/cold-war-zombies/)
+[![Downloads](https://static.pepy.tech/personalized-badge/cold-war-zombies?period=month&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/cold-war-zombies)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/pjrigali/Call-Of-Duty-Cold-War-Zombies?color=blue&label=commits&logoColor=blue)
 
 This is a package for analyzing and comparing weapons in Cold War Zombies.
 
