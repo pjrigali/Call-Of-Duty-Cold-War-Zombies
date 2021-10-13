@@ -1,5 +1,5 @@
 Glossary
-========
+********
 
 .. meta::
    :description: Glossary for cold-war-zombies.
