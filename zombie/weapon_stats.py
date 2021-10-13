@@ -176,13 +176,13 @@ class Assault(Weapon):
     muzzle = {
         'Muzzle Brake': ['+ 4% Vertical Recoil Control'],
         'Flash Guard': ['+ 17.5% Increased Equipment Drop Chance'],
-        'Suppressor': ['+ 22.5% Increased Equipment Drop Chance', '- 15% Effective Damage Range',
-                       '- 15% Bullet Velocity'],
-        'Infantry Compensator': ['+ 12% Vertical Recoil Control', '- 8% Horizontal Recoil Control'],
+        'Suppressor': ['+ 22.5% Increased Equipment Drop Chance', '- 11% Effective Damage Range',
+                       '- 8% Bullet Velocity'],
+        'Infantry Compensator': ['+ 15% Vertical Recoil Control', '- 5% Horizontal Recoil Control'],
         'SOCOM Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 15% Vertical Recoil Control',
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
-                              '- 33% Effective Damage Range', '- 30% Bullet Velocity'],
+                              '- 22% Effective Damage Range', '- 30% Bullet Velocity'],
     }
     barrel = {
         'Extended': ['+ 30% Bullet Velocity'],
@@ -211,7 +211,7 @@ class Assault(Weapon):
                          '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
         'Field Agent Grip': ['+ 3% Vertical Recoil Control', '+ 17% Horizontal Recoil Control',
                              '- 26% Shooting Move Speed'],
-        'SFOD Speed Grip': ['+ 6% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
+        'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
     }
     magazine = {
@@ -219,10 +219,10 @@ class Assault(Weapon):
                 '- 10% Reload Quickness'],
         'Jungle-Style Mag': ['+ 20% Reload Quickness'],
         'Speed Mag': ['+ 33% Magazine Ammo Capacity', '+ 25% Reload Quickness', '+ 33% Max Starting Ammo',
-                      '+ 33% Ammo Capacity', '- 20% Aim Down Sights Time'],
+                      '+ 33% Ammo Capacity'],
         'STANAG Mag': ['+ 67% Magazine Ammo Capacity', '+ 67% Max Starting Ammo', '+ 67% Ammo Capacity',
                        '- 10% Reload Quickness', '- 15% Aim Down Sight Time'],
-        'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
+        'Mini Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 67% Max Starting Ammo',
                            '+ 67% Ammo Capacity', '- 25% Aim Down Sight Time'],
     }
@@ -270,7 +270,7 @@ class Xm4(Assault):
         'SOCOM Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 15% Vertical Recoil Control',
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
-                              '- 22% Effective Damage Range', '- 30% Bullet Velocity'],
+                              '- 22% Effective Damage Range', '- 15% Bullet Velocity'],
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -288,8 +288,8 @@ class Xm4(Assault):
                       '+ 17% Ammo Capacity'],
         'STANAG Mag': ['+ 67% Magazine Ammo Capacity', '+ 67% Max Starting Ammo', '+ 67% Ammo Capacity',
                        '- 10% Reload Quickness', '- 15% Aim Down Sight Time'],
-        'Mini Clamp': ['+ 50% Reload Quickness', '+ 11% Max Starting Ammo', '+ 10% Aim Down Sight Time',
-                       '- 17% Ammo Capacity', '- 17% Magazine Ammo Capacity'],
+        'BOPS Clamp': ['- 17% Magazine Ammo Capacity', '+ 50% Reload Quickness', '+ 11% Max Starting Ammo',
+                       '- 17% Ammo Capacity', '+ 10% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 50% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 50% Max Starting Ammo',
                            '+ 50% Ammo Capacity', '- 12% Aim Down Sight Time'],
     }
@@ -321,7 +321,7 @@ class Ak47(Assault):
         'KGB Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 10% Vertical Recoil Control',
                            '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 6% Vertical Recoil Control',
-                           '- 27% Effective Damage Range', '- 30% Bullet Velocity'],
+                           '- 27% Effective Damage Range', '- 15% Bullet Velocity'],
     }
     barrel = {
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
@@ -348,9 +348,8 @@ class Ak47(Assault):
         'Patrol Grip': ['+ 6% Sprinting Move Speed'],
         'Bruiser Grip': ['+ 40% Melee Quickness', '+ 3% Movement Speed', '+ 3% Shooting Move Speed',
                          '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
-        'Spetsnaz Grip': ['+ 3% Vertical Recoil Control', '+ 17% Horizontal Recoil Control',
-                          '- 26% Shooting Move Speed'],
-        'Spetsnaz Speed Grip': ['+ 6% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
+        'Spetsnaz Grip': ['+ 18% Horizontal Recoil Control', '- 26% Shooting Move Speed'],
+        'Spetsnaz Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
     }
     magazine = {
@@ -411,10 +410,10 @@ class Krig(Assault):
         'SOCOM Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 15% Vertical Recoil Control',
                              '- 10% Shooting Move Speed', '- 15% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
-                              '- 25% Effective Damage Range', '- 30% Bullet Velocity'],
+                              '- 25% Effective Damage Range', '- 15% Bullet Velocity'],
     }
     barrel = {
-        'Contour': ['+ 10% Strafe Speed', '- 12% Bullet Velocity', '+ 15% Aim Walking Movement Speed'],
+        'Contour': ['+ 5% Strafe Speed', '- 13% Bullet Velocity', '+ 15% Aim Walking Movement Speed'],
         'Ranger': ['+ 126% Bullet Velocity', '- 20% Aim Walking Movement Speed'],
         'Cavalry Lancer': ['+ 50% Armour Damage'],
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
@@ -430,7 +429,7 @@ class Krig(Assault):
                          '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
         'Field Agent Grip': ['+ 5% Vertical Recoil Control', '+ 20% Horizontal Recoil Control',
                              '- 26% Shooting Move Speed'],
-        'SFOD Speed Grip': ['+ 6% Sprinting Move Speed', '+ 16% Horizontal Recoil Control', '- 6% Movement Speed',
+        'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 16% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
     }
     stock = {
@@ -471,7 +470,7 @@ class Qbz(Assault):
         'SOCOM Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 13% Vertical Recoil Control',
                              '- 10% Shooting Move Speed', '- 12% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
-                              '- 33% Effective Damage Range', '- 30% Bullet Velocity'],
+                              '- 33% Effective Damage Range', '- 15% Bullet Velocity'],
     }
     barrel = {
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
@@ -486,7 +485,7 @@ class Qbz(Assault):
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
         'Infiltrator Grip': ['+ 5% Movement Speed', '+ 5% Shooting Move Speed', '+ 5% Aim Walking Movement Speed'],
-        'Patrol Grip': ['+ 6% Sprinting Move Speed'],
+        'Patrol Grip': ['+ 4% Sprinting Move Speed', '+ 3% Sprint to Fire Time'],
         'Bruiser Grip': ['+ 40% Melee Quickness', '+ 3% Movement Speed', '+ 3% Shooting Move Speed',
                          '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
         'Field Agent Grip': ['+ 3% Vertical Recoil Control', '+ 16% Horizontal Recoil Control',
@@ -530,7 +529,7 @@ class Ffar(Assault):
         'SOCOM Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 17% Vertical Recoil Control',
                              '- 10% Shooting Move Speed', '- 8% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
-                              '- 20% Effective Damage Range', '- 30% Bullet Velocity'],
+                              '- 20% Effective Damage Range', '- 15% Bullet Velocity'],
     }
     barrel = {
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
@@ -539,8 +538,8 @@ class Ffar(Assault):
         'Reinforced Heavy': ['+ 100% Effective Damage Range', '+ 40% Bullet Velocity', '- 4% Sprinting Move Speed',
                              '- 20% Aim Walking Movement Speed'],
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
-        'Task Force': ['+ 4% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity',
-                       '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'Task Force': ['+ 7% Damage', '+ 20% Effective Damage Range', '+ 50% Bullet Velocity',
+                       '- 25% Max Starting Ammo', '- 15% Vertical Recoil Control', '- 10% Horizontal Recoil Control'],
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -550,7 +549,7 @@ class Ffar(Assault):
                          '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
         'Field Agent Grip': ['+ 6% Vertical Recoil Control', '+ 16% Horizontal Recoil Control',
                              '- 26% Shooting Move Speed'],
-        'SFOD Speed Grip': ['+ 6% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
+        'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
     }
     magazine = {
@@ -561,7 +560,7 @@ class Ffar(Assault):
                       '+ 52% Ammo Capacity', '- 10% Aim Down Sights Time'],
         'STANAG Mag': ['+ 76% Magazine Ammo Capacity', '+ 76% Max Starting Ammo', '+ 76% Ammo Capacity',
                        '- 10% Reload Quickness', '- 15% Aim Down Sight Time'],
-        'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
+        'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 76% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 76% Max Starting Ammo',
                            '+ 76% Ammo Capacity', '- 25% Aim Down Sight Time'],
     }
@@ -600,7 +599,7 @@ class Groza(Assault):
         'KGB Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 20% Vertical Recoil Control',
                            '- 10% Shooting Move Speed', '- 15% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
-                           '- 33% Effective Damage Range', '- 30% Bullet Velocity'],
+                           '- 33% Effective Damage Range', '- 15% Bullet Velocity'],
     }
     barrel = {
         'Contour M2': ['+ 10% Strafe Speed', '- 10% Effective Damage Range', '+ 15% Aim Walking Movement Speed'],
@@ -627,9 +626,9 @@ class Groza(Assault):
         'Patrol Grip': ['+ 6% Sprinting Move Speed'],
         'Bruiser Grip': ['+ 40% Melee Quickness', '+ 3% Movement Speed', '+ 3% Shooting Move Speed',
                          '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
-        'Spetsnaz Grip': ['+ 7% Vertical Recoil Control', '+ 17% Horizontal Recoil Control',
+        'Spetsnaz Grip': ['+ 15% Vertical Recoil Control', '+ 25% Horizontal Recoil Control',
                           '- 26% Shooting Move Speed'],
-        'Spetsnaz Speed Grip': ['+ 6% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
+        'Spetsnaz Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
     }
     magazine = {
@@ -688,11 +687,11 @@ class Fara(Assault):
         'Spetsnaz Compensator': ['+ 12% Vertical Recoil Control', '- 8% Horizontal Recoil Control'],
         'KGB Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 16% Vertical Recoil Control',
                            '- 10% Shooting Move Speed', '- 12% Horizontal Recoil Control'],
-        'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
-                           '- 32% Effective Damage Range', '- 30% Bullet Velocity'],
+        'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 6% Vertical Recoil Control',
+                           '- 32% Effective Damage Range', '- 15% Bullet Velocity'],
     }
     barrel = {
-        'Contour': ['+ 10% Strafe Speed', '- 18% Bullet Velocity', '+ 15% Aim Walking Movement Speed'],
+        'Contour': ['+ 5% Strafe Speed', '- 18% Bullet Velocity', '+ 15% Aim Walking Movement Speed'],
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
         'Cavalry Lancer': ['+ 50% Armour Damage'],
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
@@ -717,7 +716,7 @@ class Fara(Assault):
                          '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
         'Spetsnaz Grip': ['+ 2% Vertical Recoil Control', '+ 18% Horizontal Recoil Control',
                           '- 26% Shooting Move Speed'],
-        'Spetsnaz Speed Grip': ['+ 6% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
+        'Spetsnaz Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
     }
     magazine = {
@@ -779,7 +778,7 @@ class C58(Assault):
         'SOCOM Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 15% Vertical Recoil Control',
                              '- 10% Shooting Move Speed', '- 12% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
-                              '- 17% Effective Damage Range', '- 30% Bullet Velocity'],
+                              '- 17% Effective Damage Range', '- 15% Bullet Velocity'],
     }
     barrel = {
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
@@ -860,8 +859,8 @@ class Em2(Assault):
         'Reinforced Heavy': ['+ 100% Effective Damage Range', '+ 40% Bullet Velocity', '- 4% Sprinting Move Speed',
                              '- 20% Aim Walking Movement Speed'],
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
-        'Task Force': ['+ 6% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity',
-                       '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'Task Force': ['+ 7% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity',
+                       '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 25% Horizontal Recoil Control'],
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -891,6 +890,78 @@ class Em2(Assault):
         'Marathon Stock': ['+ 10% Sprint to Fire Time'],
         'Duster Stock': ['+ 5% Slide Speed'],
         'CQB Pad': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
+        'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
+        'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+    }
+
+
+class Grav(Assault):
+    name = 'Grav'
+    temp_name = 'Base Grav'
+    damage_1 = 32.0
+    damage_3 = 28.0
+    range_1 = 50.8
+    fire_rate = 750.0
+    velocity = 743.0
+    shoot_speed = 9.18
+    ads = 300.0
+    vertical_recoil = 360.0
+    horizontal_recoil = 30.0
+    centering_speed = 11.0
+    reload = 2.5
+    gun_acc_value = 0.52
+    gun_critical_value = 0.76
+    critical = 4.5
+    mag_capacity = 35
+    muzzle = {
+        'Muzzle Brake': ['+ 4% Vertical Recoil Control'],
+        'Flash Guard': ['+ 17.5% Increased Equipment Drop Chance'],
+        'Suppressor': ['+ 22.5% Increased Equipment Drop Chance', '- 15% Effective Damage Range',
+                       '- 8% Bullet Velocity'],
+        'Infantry Compensator': ['+ 12% Vertical Recoil Control', '- 8% Horizontal Recoil Control'],
+        'SOCOM Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 17% Vertical Recoil Control',
+                             '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
+        'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 10% Vertical Recoil Control',
+                              '- 30% Effective Damage Range', '- 15% Bullet Velocity'],
+    }
+    barrel = {
+        'Extended': ['+ 30% Bullet Velocity'],
+        'Ranger': ['+ 100% Bullet Velocity', '- 20% Aim Walking Movement Speed'],
+        'Cavalry Lancer': ['+ 50% Armour Damage'],
+        'Reinforced Heavy': ['+ 33% Effective Damage Range', '+ 40% Bullet Velocity', '- 4% Sprinting Move Speed',
+                             '- 20% Aim Walking Movement Speed', '+ 50% Armour Damage', '- 7% Horizontal Recoil Control'],
+        'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
+        'Task Force': ['+ 6% Damage', '+ 40% Effective Damage Range', '+ 40% Bullet Velocity', '- 5% Fire Rate',
+                       '- 33% Max Starting Ammo', '- 15% Vertical Recoil Control', '- 12% Horizontal Recoil Control'],
+    }
+    under_barrel = {
+        'Fore grip': ['+ 15% Horizontal Recoil Control'],
+        'Infiltrator Grip': ['+ 5% Movement Speed', '+ 5% Shooting Move Speed', '+ 5% Aim Walking Movement Speed'],
+        'Patrol Grip': ['+ 6% Sprinting Move Speed'],
+        'Bruiser Grip': ['+ 40% Melee Quickness', '+ 3% Movement Speed', '+ 3% Shooting Move Speed',
+                         '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
+        'Field Agent Grip': ['+ 3% Vertical Recoil Control', '+ 17% Horizontal Recoil Control',
+                             '- 26% Shooting Move Speed'],
+        'SFOD Speed Grip': ['+ 10% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
+                            '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+    }
+    magazine = {
+        'RND': ['+ 43% Magazine Ammo Capacity', '+ 43% Max Starting Ammo', '+ 43% Ammo Capacity',
+                '- 10% Reload Quickness'],
+        'Jungle-Style Mag': ['+ 20% Reload Quickness'],
+        'Speed Mag': ['+ 14% Magazine Ammo Capacity', '+ 25% Reload Quickness', '+ 14% Max Starting Ammo',
+                      '+ 14% Ammo Capacity'],
+        'RK7 30': ['+ 6% Damage', '- 14% Magazine Ammo Capacity', '- 14% Max Starting Ammo', '- 14% Ammo Capacity',
+                   '- 10% Reload Quickness', '- 15% Aim Down Sight Time'],
+        'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
+        'Salvo Fast Mag': ['+ 50% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 50% Max Starting Ammo',
+                           '+ 50% Ammo Capacity', '- 25% Aim Down Sight Time'],
+    }
+    stock = {
+        'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
+        'Marathon Stock': ['+ 10% Sprint to Fire Time'],
+        'Duster Stock': ['+ 5% Slide Speed'],
+        'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
     }
@@ -3118,6 +3189,57 @@ class Streetsweeper(Shotgun):
     }
 
 
+class Ironhide(Shotgun):
+    name = 'Ironhide'
+    temp_name = 'Base Ironhide'
+    damage_1 = 160.0
+    range_1 = 12.7
+    fire_rate = 63.0
+    vertical_recoil = 500.0
+    horizontal_recoil = 150.0
+    centering_speed = 2.5
+    mag_capacity = 6.0
+    reload = 5.0
+    starting_ammo = 18.0
+    ammo_capacity = 36.0
+    gun_acc_value = 0.45
+    gun_critical_value = 0.42
+    muzzle = {
+        'Duckbill Choke': ['+ 50% Wider Pellet Spread'],
+        'Flash Cone': ['+ 17.5% Increased Equipment Drop Chance'],
+        'Sound Suppressor': ['+ 22.5% Increased Equipment Drop Chance', '- 11% Effective Damage Range'],
+        'Infantry V-Choke': ['+ 33% Tighter Pellet Spread'],
+        'SOCOM Blast Mitigator': ['+ 30% Increased Equipment Drop Chance', '- 15% Shooting Move Speed',
+                                  '- 20% Sprint to Fire Time'],
+        'Agency Choke': ['+ 35% Increased Equipment Drop Chance', '+ 20% Hip Fire Accuracy',
+                         '+ 25% Tighter Pellet Spread', '- 15% Sprint to Fire Time', '- 17% Effective Damage Range'],
+    }
+    barrel = {
+        'Extended': ['+ 12% Effective Damage Range'],
+        'Ranger': ['+ 33% Effective Damage Range', '- 35% Aim Walking Movement Speed'],
+        'Cavalry Lancer': ['+ 50% Armour Damage'],
+        'Reinforced Heavy': ['+ 12% Effective Damage Range', '+ 13% Fire Rate', '- 4% Sprinting Move Speed',
+                             '- 15% Aim Walking Movement Speed'],
+        'Hammer Forge': ['+ 13% Fire Rate', '- 5% Sprinting Move Speed'],
+        'Task Force': ['+ 10% Damage', '- 17% Effective Damage Range'],
+    }
+    magazine = {
+        'RND': ['+ 17% Magazine Ammo Capacity', '+ 17% Max Starting Ammo', '+ 17% Ammo Capacity',
+                '- 2% Reload Quickness'],
+        'STANAG Mag': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
+                       '- 14% Reload Quickness'],
+    }
+    stock = {
+        'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
+        'Shotgun Stock': ['+ 10% Sprint to Fire Time'],
+        'Duster Stock': ['+ 5% Slide Speed'],
+        'No Stock': ['+ 40% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
+        'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 20% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
+        'Marathon Stock': ['+ 4% Sprinting Move Speed', '+ 10% Shooting Move Speed', '+ 25% Sprint to Fire Time',
+                           '+ 10% Aim Walking Movement Speed', '- 20% Hip Fire Accuracy'],
+    }
+
+
 _weapon_stats_dic = {
     'XM4': Xm4,
     'AK47': Ak47,
@@ -3128,6 +3250,7 @@ _weapon_stats_dic = {
     'FARA': Fara,
     'C58': C58,
     'EM2': Em2,
+    'Grav': Grav,
     'MP5': Mp5,
     'Milano': Milano,
     'AK74u': Ak74u,
