@@ -7,7 +7,7 @@
 
 This is a package for analyzing and comparing weapons in Cold War Zombies.
 
-Weapon stats are current through Season 5 (_pre August 16 update_). 
+Weapon stats are current through Season 6 (_October 13th_). 
 [Patch Notes](https://www.ravensoftware.com/community/2021/08/call-of-duty-bocw-warzone-season-five-patch-notes)
 
 ## Installation
@@ -87,6 +87,11 @@ The *Analyze* class will return the following plots:
 ![Damage Per Clip](https://miro.medium.com/max/1280/1*Qtxn3jtbH0kRXICa7W2MfQ.png)
 ![Time To Kill](https://miro.medium.com/max/1280/1*VFABznePjcEVT_WdIPF5Og.png) 
 ![Shots To Kill](https://miro.medium.com/max/1280/1*vrw4BIZnm_mPw-V-OeXJwg.png)
+
+## Changelog
+* 1.0.0 - Base package.
+* 1.0.1 - Add Classes and Viz
+* 1.0.2 - Adds Grav, Ironhide, and updates inline with season 6.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
