@@ -8,7 +8,6 @@
 This is a package for analyzing and comparing weapons in Cold War Zombies.
 
 Weapon stats are current through Season 6 (_October 13th_). 
-[Patch Notes](https://www.ravensoftware.com/community/2021/08/call-of-duty-bocw-warzone-season-five-patch-notes)
 
 ## Installation
 [Pypi Documentation](https://pypi.org/project/cold-war-zombies/)
