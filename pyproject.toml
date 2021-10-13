@@ -13,4 +13,4 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cold-war-zombies"
 authors = [{name = "Peter Rigali", email = "peterjrigali@gmail.com"}]
-dynamic = ["1.0.1", "A package for analysis of Call of Duty Cold War Zombies weapons."]
+dynamic = ["1.0.2", "A package for analysis of Call of Duty Cold War Zombies weapons."]
