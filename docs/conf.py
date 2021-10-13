@@ -6,8 +6,8 @@ sys.path.insert(0, os.path.abspath('..'))
 project = 'cold-war-zombies'
 copyright = '2021, Peter Rigali'
 author = 'Peter Rigali'
-release = '1.0.1'
-version = '1.0.1'
+release = '1.0.2'
+version = '1.0.2'
 
 source_suffix = {
     '.rst': 'restructuredtext',

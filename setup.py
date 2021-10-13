@@ -11,7 +11,7 @@ def read_file(*parts):
 
 setup(
     name='cold_war_zombies',
-    version='1.0.1',
+    version='1.0.2',
     packages=["zombie",],
     # packages=['zombie',],
     author='Peter Rigali',
