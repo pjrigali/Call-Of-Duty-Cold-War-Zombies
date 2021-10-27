@@ -8,7 +8,7 @@ import streamlit as st
 st.title('Call-Of-Duty-Cold-War-Zombies')
 st.markdown('*This is a demo of the Cold-War-Zombies package.*')
 st.subheader('Select Zombie Level:')
-zom_level = st.slider('Round Value', 0, 100, 1)
+zom_level = st.slider('Round Value', 1, 100, 1)
 
 st.sidebar.title("How to Use:")
 st.sidebar.markdown("1. Select the desired zombie round")
@@ -18,8 +18,8 @@ st.sidebar.markdown("4. View comparison tables below")
 st.sidebar.title("Weapons")
 st.sidebar.markdown("*All weapons are included up until mid-season 6.*")
 
+gun_lst = []
 if zom_level > 0:
-    gun_lst = []
     st.subheader('Select Weapons for Analysis')
     weapon_lst = st.multiselect('Weapons', list(_weapon_stats_dic.keys()))
     for weapon in weapon_lst:
