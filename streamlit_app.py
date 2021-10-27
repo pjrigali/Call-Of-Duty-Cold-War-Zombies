@@ -5,6 +5,9 @@ from zombie.weapon_stats import _weapon_stats_dic
 import streamlit as st
 
 st.header('Call-Of-Duty-Cold-War-Zombies')
+zom_level = st.slider('Round Number', 1, 100, 1)
+
+
 first_weapon = st.selectbox('First Weapon', list(_weapon_stats_dic.keys()))
 first_weapon_muzzle = st.selectbox('First Weapon Muzzle', list(_weapon_stats_dic[first_weapon].muzzle.keys()))
 first_weapon_barrel = st.selectbox('First Weapon Barrel', list(_weapon_stats_dic[first_weapon].barrel.keys()))
@@ -25,11 +28,10 @@ fw_attachments = {
 }
 
 
-second_weapon = st.selectbox('Second Weapon', list(_weapon_stats_dic.keys()))
-third_weapon = st.selectbox('Third Weapon', list(_weapon_stats_dic.keys()))
+# second_weapon = st.selectbox('Second Weapon', list(_weapon_stats_dic.keys()))
+# third_weapon = st.selectbox('Third Weapon', list(_weapon_stats_dic.keys()))
 rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
 pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
-zom_level = st.slider('Round Number', 1, 100, 1)
 
 weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
@@ -46,5 +48,6 @@ gun_lst = [
 
 # Build Analyze Class
 analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
+st.line_chart(data=analysis._compare_info_for_plots['Damage Per Second'])
 
 
