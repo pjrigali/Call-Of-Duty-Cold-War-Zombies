@@ -38,8 +38,8 @@ second_weapon_ubarrel = st.selectbox('Second Weapon Underbarrel', list(_weapon_s
 second_weapon_mag = st.selectbox('Second Weapon Magazine', list(_weapon_stats_dic[second_weapon].magazine.keys()))
 second_weapon_handle = st.selectbox('Second Weapon Handle', list(_weapon_stats_dic[second_weapon].handle.keys()))
 second_weapon_stock = st.selectbox('Second Weapon Stock', list(_weapon_stats_dic[second_weapon].stock.keys()))
-second_rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
-second_pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
+second_rarity = st.selectbox('Second Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
+second_pap = st.selectbox('Second Weapon Pack-a-punch level', ['0', '1', '2', '3'])
 sw_attachments = {
     'Muzzle': second_weapon_muzzle,
     'Barrel': second_weapon_barrel,
@@ -53,8 +53,8 @@ sw_attachments = {
 
 
 # third_weapon = st.selectbox('Third Weapon', list(_weapon_stats_dic.keys()))
-rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
-pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
+# rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
+# pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
 
 weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
