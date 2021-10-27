@@ -28,8 +28,27 @@ fw_attachments = {
     'Stock': first_weapon_stock
 }
 
+second_weapon = st.selectbox('Second Weapon', list(_weapon_stats_dic.keys()))
+second_weapon_muzzle = st.selectbox('Second Weapon Muzzle', list(_weapon_stats_dic[first_weapon].muzzle.keys()))
+second_weapon_barrel = st.selectbox('Second Weapon Barrel', list(_weapon_stats_dic[first_weapon].barrel.keys()))
+second_weapon_body = st.selectbox('Second Weapon Body', list(_weapon_stats_dic[first_weapon].body.keys()))
+second_weapon_ubarrel = st.selectbox('Second Weapon Underbarrel', list(_weapon_stats_dic[first_weapon].under_barrel.keys()))
+second_weapon_mag = st.selectbox('Second Weapon Magazine', list(_weapon_stats_dic[first_weapon].magazine.keys()))
+second_weapon_handle = st.selectbox('Second Weapon Handle', list(_weapon_stats_dic[first_weapon].handle.keys()))
+second_weapon_stock = st.selectbox('Second Weapon Stock', list(_weapon_stats_dic[first_weapon].stock.keys()))
 
-# second_weapon = st.selectbox('Second Weapon', list(_weapon_stats_dic.keys()))
+sw_attachments = {
+    'Muzzle': first_weapon_muzzle,
+    'Barrel': first_weapon_barrel,
+    'Body': first_weapon_body,
+    'Underbarrel': first_weapon_ubarrel,
+    'Magazine': first_weapon_mag,
+    'Handle': first_weapon_handle,
+    'Stock': first_weapon_stock
+}
+
+
+
 # third_weapon = st.selectbox('Third Weapon', list(_weapon_stats_dic.keys()))
 rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
 pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
@@ -43,8 +62,10 @@ damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_cla
 zom = Health(level=zom_level, health_cap=55, outbreak=False, multiplier=2)
 
 gun_lst = [
-    {'weapon': first_weapon, 'nickname': 'Temp '+first_weapon, 'equipped_attachments': fw_attachments, 'rarity': rarity,
-     'pap': pap, 'accuracy': None, 'critical': None}
+    {'weapon': first_weapon, 'nickname': 'Temp ' + first_weapon, 'equipped_attachments': fw_attachments,
+     'rarity': rarity, 'pap': pap, 'accuracy': None, 'critical': None},
+    {'weapon': second_weapon, 'nickname': 'Temp ' + second_weapon, 'equipped_attachments': sw_attachments,
+     'rarity': rarity, 'pap': pap, 'accuracy': None, 'critical': None},
 ]
 
 # Build Analyze Class
