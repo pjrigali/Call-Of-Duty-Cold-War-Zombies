@@ -130,6 +130,7 @@ for weapon in weapon_lst:
     if weapon != 'None':
         dps_df[weapon] = analysis._compare_info_for_plots[weapon]['Damage Per Second']
 st.line_chart(data=dps_df)
+st.caption('Damage Value vs Range (Meters)')
 
 st.subheader('Time to Kill (Seconds)')
 ttk_df = pd.DataFrame()
