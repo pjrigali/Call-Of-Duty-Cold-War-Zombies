@@ -17,6 +17,8 @@ first_weapon_ubarrel = st.selectbox('First Weapon Underbarrel', list(_weapon_sta
 first_weapon_mag = st.selectbox('First Weapon Magazine', list(_weapon_stats_dic[first_weapon].magazine.keys()))
 first_weapon_handle = st.selectbox('First Weapon Handle', list(_weapon_stats_dic[first_weapon].handle.keys()))
 first_weapon_stock = st.selectbox('First Weapon Stock', list(_weapon_stats_dic[first_weapon].stock.keys()))
+first_rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
+first_pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
 
 fw_attachments = {
     'Muzzle': first_weapon_muzzle,
@@ -36,7 +38,8 @@ second_weapon_ubarrel = st.selectbox('Second Weapon Underbarrel', list(_weapon_s
 second_weapon_mag = st.selectbox('Second Weapon Magazine', list(_weapon_stats_dic[second_weapon].magazine.keys()))
 second_weapon_handle = st.selectbox('Second Weapon Handle', list(_weapon_stats_dic[second_weapon].handle.keys()))
 second_weapon_stock = st.selectbox('Second Weapon Stock', list(_weapon_stats_dic[second_weapon].stock.keys()))
-
+second_rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
+second_pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
 sw_attachments = {
     'Muzzle': second_weapon_muzzle,
     'Barrel': second_weapon_barrel,
@@ -63,9 +66,9 @@ zom = Health(level=zom_level, health_cap=55, outbreak=False, multiplier=2)
 
 gun_lst = [
     {'weapon': first_weapon, 'nickname': 'Temp ' + first_weapon, 'equipped_attachments': fw_attachments,
-     'rarity': rarity, 'pap': pap, 'accuracy': None, 'critical': None},
+     'rarity': first_rarity, 'pap': first_pap, 'accuracy': None, 'critical': None},
     {'weapon': second_weapon, 'nickname': 'Temp ' + second_weapon, 'equipped_attachments': sw_attachments,
-     'rarity': rarity, 'pap': pap, 'accuracy': None, 'critical': None},
+     'rarity': second_rarity, 'pap': second_pap, 'accuracy': None, 'critical': None},
 ]
 
 # Build Analyze Class
