@@ -11,7 +11,10 @@ st.subheader('Select Zombie Level')
 zom_level = st.slider('Round Value', 1, 100, 1)
 
 st.sidebar.title("How to")
-st.sidebar.title("How to")
+st.sidebar.text("First Select the desired zombie round")
+st.sidebar.title("Weapons")
+st.sidebar.text("All weapons are included up until mid-season 6.")
+
 # side.text('gjgjgjjgjg')
 
 
