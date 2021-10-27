@@ -73,7 +73,7 @@ analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_ls
 
 chart_df = pd.DataFrame()
 for weapon in [first_weapon, second_weapon]:
-    chart_df[weapon] = analysis._compare_info_for_plots[first_weapon]['Damage Per Second']
+    chart_df[weapon] = analysis._compare_info_for_plots[weapon]['Damage Per Second']
 st.line_chart(data=chart_df)
 
 
