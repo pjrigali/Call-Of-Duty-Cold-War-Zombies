@@ -19,13 +19,9 @@ st.sidebar.title("Weapons:")
 st.sidebar.markdown("*All weapons are included up until mid-season 6.*")
 
 st.header('Set Weapon and Perk Tier:')
-st.markdown('If use defaults is selected, then all tiers will be maxed out at 5.')
-default = st.selectbox('Default', ['Yes', 'No'])
-if default == 'Yes':
-    weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
-                           'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
-    perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
-else:
+default = st.selectbox('Default', ['Max Out', 'Weapons', 'Perks'])
+if default == 'Weapons':
+    st.markdown('If set to Weapons: the user can input weapon tier levels.')
     launcher = st.selectbox('Launcher tier', ['1', '2', '3', '4', '5'])
     special = st.selectbox('Special tier', ['1', '2', '3', '4', '5'])
     smg = st.selectbox('Smg tier', ['1', '2', '3', '4', '5'])
@@ -37,12 +33,21 @@ else:
     assault = st.selectbox('Assault tier', ['1', '2', '3', '4', '5'])
     weapon_class_levels = {'Launcher': launcher, 'Special': special, 'Smg': smg, 'Shotgun': shotgun, 'Pistol': pistol,
                            'Marksman': marksman, 'Sniper': sniper, 'Lmg': lmg, 'Assault': assault, 'Melee': '5'}
-
+    perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
+elif default == 'Perks':
+    st.markdown('If set to Perks, the user can input the perk tier levels')
+    weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
+                           'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     speed = st.selectbox('Speed Cola tier', ['1', '2', '3', '4', '5'])
     stam = st.selectbox('Stamin Up tier', ['1', '2', '3', '4', '5'])
     dead = st.selectbox('Deadshot tier', ['1', '2', '3', '4', '5'])
     death = st.selectbox('Death Perception tier', ['1', '2', '3', '4', '5'])
     perk_class_levels = {'speed': speed, 'stamin up': stam, 'deadshot': dead, 'death_perception': death}
+else:
+    st.markdown('If set to Max Out, each tier will be maxed out for weapons and perks.')
+    weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
+                           'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
+    perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
 damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
                                max_range=100)
 
