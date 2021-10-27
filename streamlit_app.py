@@ -11,7 +11,7 @@ st.subheader('Select Zombie Level')
 zom_level = st.slider('Round Value', 1, 100, 1)
 
 add_selectbox = st.sidebar.title("Using")
-add_selectbox.write('gjgjgjjgjg')
+add_selectbox.markdown('gjgjgjjgjg')
 
 
 gun_lst = []
