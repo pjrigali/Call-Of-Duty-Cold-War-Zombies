@@ -183,6 +183,7 @@ class Assault(Weapon):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 22% Effective Damage Range', '- 30% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 30% Bullet Velocity'],
@@ -193,6 +194,7 @@ class Assault(Weapon):
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 7% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 33% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 20% Hip Fire Accuracy'],
@@ -202,6 +204,7 @@ class Assault(Weapon):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -213,6 +216,7 @@ class Assault(Weapon):
                              '- 26% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -225,6 +229,7 @@ class Assault(Weapon):
         'Mini Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 67% Max Starting Ammo',
                            '+ 67% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -234,6 +239,7 @@ class Assault(Weapon):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -242,6 +248,7 @@ class Assault(Weapon):
         'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -271,6 +278,7 @@ class Xm4(Assault):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 22% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -279,6 +287,7 @@ class Xm4(Assault):
         'Buffer Tube': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -292,6 +301,7 @@ class Xm4(Assault):
                        '- 17% Ammo Capacity', '+ 10% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 50% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 50% Max Starting Ammo',
                            '+ 50% Ammo Capacity', '- 12% Aim Down Sight Time'],
+        'None': ['None']
     }
 
 
@@ -322,6 +332,7 @@ class Ak47(Assault):
                            '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 6% Vertical Recoil Control',
                            '- 27% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
@@ -332,6 +343,7 @@ class Ak47(Assault):
         'Liberator': ['+ 100% Bullet Velocity', '- 20% Aim Walking Movement Speed'],
         'RPK': ['+ 8% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity', '- 33% Max Starting Ammo',
                 '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 20% Hip Fire Accuracy'],
@@ -341,6 +353,7 @@ class Ak47(Assault):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -351,6 +364,7 @@ class Ak47(Assault):
         'Spetsnaz Grip': ['+ 18% Horizontal Recoil Control', '- 26% Shooting Move Speed'],
         'Spetsnaz Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -363,6 +377,7 @@ class Ak47(Assault):
         'GRU Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'VDV Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 67% Max Starting Ammo',
                          '+ 67% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -372,6 +387,7 @@ class Ak47(Assault):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'GRU Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                              '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -382,6 +398,7 @@ class Ak47(Assault):
                                '- 15% Hip Fire Accuracy'],
         'KGB Skeletal Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed',
                                '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -411,6 +428,7 @@ class Krig(Assault):
                              '- 10% Shooting Move Speed', '- 15% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 25% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Contour': ['+ 5% Strafe Speed', '- 13% Bullet Velocity', '+ 15% Aim Walking Movement Speed'],
@@ -420,6 +438,7 @@ class Krig(Assault):
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
         'CMV Mil-Spec': ['+ 6% Damage', '+ 5% Strafe Speed', '- 33% Max Starting Ammo', '- 40% Effective Damage Range',
                          '+ 20% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 17% Horizontal Recoil Control'],
@@ -431,6 +450,7 @@ class Krig(Assault):
                              '- 26% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 16% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -439,6 +459,7 @@ class Krig(Assault):
         'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -471,6 +492,7 @@ class Qbz(Assault):
                              '- 10% Shooting Move Speed', '- 12% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 33% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
@@ -481,6 +503,7 @@ class Qbz(Assault):
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 6% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 33% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -492,6 +515,7 @@ class Qbz(Assault):
                              '- 26% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 4% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 3% Movement Speed',
                             '- 3% Shooting Move Speed', '- 3% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -500,6 +524,7 @@ class Qbz(Assault):
         'CQB Pad': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -530,6 +555,7 @@ class Ffar(Assault):
                              '- 10% Shooting Move Speed', '- 8% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 20% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
@@ -540,6 +566,7 @@ class Ffar(Assault):
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 7% Damage', '+ 20% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 15% Vertical Recoil Control', '- 10% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -551,6 +578,7 @@ class Ffar(Assault):
                              '- 26% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 52% Magazine Ammo Capacity', '+ 52% Max Starting Ammo', '+ 52% Ammo Capacity',
@@ -563,6 +591,7 @@ class Ffar(Assault):
         'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 76% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 76% Max Starting Ammo',
                            '+ 76% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -571,6 +600,7 @@ class Ffar(Assault):
         'CQB Pad': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -600,6 +630,7 @@ class Groza(Assault):
                            '- 10% Shooting Move Speed', '- 15% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                            '- 33% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Contour M2': ['+ 10% Strafe Speed', '- 10% Effective Damage Range', '+ 15% Aim Walking Movement Speed'],
@@ -610,6 +641,7 @@ class Groza(Assault):
         'GRU Composite': ['+ 25% Effective Damage Range', '+ 25% Bullet Velocity'],
         'CMV Mil-Spec': ['+ 6% Damage', '+ 5% Strafe Speed', '- 33% Max Starting Ammo', '- 40% Effective Damage Range',
                          '+ 20% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 20% Hip Fire Accuracy'],
@@ -619,6 +651,7 @@ class Groza(Assault):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -630,6 +663,7 @@ class Groza(Assault):
                           '- 26% Shooting Move Speed'],
         'Spetsnaz Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -642,6 +676,7 @@ class Groza(Assault):
         'GRU Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'VDV Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 67% Max Starting Ammo',
                          '+ 67% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -651,6 +686,7 @@ class Groza(Assault):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'GRU Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                              '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -660,6 +696,7 @@ class Groza(Assault):
         'Spetsnaz PKM Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed',
                                '- 15% Hip Fire Accuracy'],
         'KGB Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -689,6 +726,7 @@ class Fara(Assault):
                            '- 10% Shooting Move Speed', '- 12% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 6% Vertical Recoil Control',
                            '- 32% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Contour': ['+ 5% Strafe Speed', '- 18% Bullet Velocity', '+ 15% Aim Walking Movement Speed'],
@@ -698,6 +736,7 @@ class Fara(Assault):
         'Liberator': ['+ 100% Bullet Velocity', '- 20% Aim Walking Movement Speed'],
         'RPK': ['+ 3% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity', '- 33% Max Starting Ammo',
                 '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 20% Hip Fire Accuracy'],
@@ -707,6 +746,7 @@ class Fara(Assault):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -718,6 +758,7 @@ class Fara(Assault):
                           '- 26% Shooting Move Speed'],
         'Spetsnaz Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -730,6 +771,7 @@ class Fara(Assault):
         'GRU Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'VDV Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 67% Max Starting Ammo',
                          '+ 67% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -739,6 +781,7 @@ class Fara(Assault):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'GRU Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                              '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -748,6 +791,7 @@ class Fara(Assault):
         'Raider Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'KGB Skeletal Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed',
                                '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -779,6 +823,7 @@ class C58(Assault):
                              '- 10% Shooting Move Speed', '- 12% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 17% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
@@ -789,6 +834,7 @@ class C58(Assault):
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 8% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 12% Horizontal Recoil Control'],
@@ -800,6 +846,7 @@ class C58(Assault):
                              '- 26% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 12% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 75% Magazine Ammo Capacity', '+ 75% Max Starting Ammo', '+ 75% Ammo Capacity',
@@ -812,6 +859,7 @@ class C58(Assault):
         'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 50% Magazine Ammo Capacity', '+ 28% Reload Quickness', '+ 50% Max Starting Ammo',
                            '+ 50% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -820,6 +868,7 @@ class C58(Assault):
         'CQB Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -851,6 +900,7 @@ class Em2(Assault):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 10% Vertical Recoil Control',
                               '- 33% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Ultralight': ['+ 5% Strafe Speed', '+ 10% Aim Walking Movement Speed'],
@@ -861,6 +911,7 @@ class Em2(Assault):
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 7% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 25% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -872,6 +923,7 @@ class Em2(Assault):
                              '- 26% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 50% Magazine Ammo Capacity', '+ 50% Max Starting Ammo', '+ 50% Ammo Capacity',
@@ -884,6 +936,7 @@ class Em2(Assault):
         'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 50% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 50% Max Starting Ammo',
                            '+ 50% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -892,6 +945,7 @@ class Em2(Assault):
         'CQB Pad': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -923,6 +977,7 @@ class Grav(Assault):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 10% Vertical Recoil Control',
                               '- 30% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 30% Bullet Velocity'],
@@ -933,6 +988,7 @@ class Grav(Assault):
         'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 6% Damage', '+ 40% Effective Damage Range', '+ 40% Bullet Velocity', '- 5% Fire Rate',
                        '- 33% Max Starting Ammo', '- 15% Vertical Recoil Control', '- 12% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -944,6 +1000,7 @@ class Grav(Assault):
                              '- 26% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 10% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 43% Magazine Ammo Capacity', '+ 43% Max Starting Ammo', '+ 43% Ammo Capacity',
@@ -956,6 +1013,7 @@ class Grav(Assault):
         'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 50% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 50% Max Starting Ammo',
                            '+ 50% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -964,6 +1022,7 @@ class Grav(Assault):
         'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -988,6 +1047,7 @@ class Smg(Weapon):
         'Rifled': ['+ 25% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 6% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 15% Hip Fire Accuracy'],
@@ -997,6 +1057,7 @@ class Smg(Weapon):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 25% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -1006,6 +1067,7 @@ class Smg(Weapon):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -1037,6 +1099,7 @@ class Mp5(Smg):
                              '- 10% Shooting Move Speed', '- 7% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 15% Hip Fire Accuracy'],
@@ -1046,6 +1109,7 @@ class Mp5(Smg):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 25% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 14% Horizontal Recoil Control'],
@@ -1058,6 +1122,7 @@ class Mp5(Smg):
                              '- 30% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 3% Sprinting Move Speed', '+ 14% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -1070,6 +1135,7 @@ class Mp5(Smg):
         'SAS Mag Clamp': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 33% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 33% Max Starting Ammo',
                            '+ 33% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1078,6 +1144,7 @@ class Mp5(Smg):
         'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 15% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1110,6 +1177,7 @@ class Milano(Smg):
                              '- 10% Shooting Move Speed', '- 15% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 15% Hip Fire Accuracy'],
@@ -1119,6 +1187,7 @@ class Milano(Smg):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 24% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 12% Horizontal Recoil Control'],
@@ -1131,6 +1200,7 @@ class Milano(Smg):
                              '- 30% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 3% Sprinting Move Speed', '+ 12% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 41% Magazine Ammo Capacity', '+ 41% Max Starting Ammo', '+ 41% Ammo Capacity',
@@ -1143,6 +1213,7 @@ class Milano(Smg):
         'SAS Mag Clamp': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 72% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 72% Max Starting Ammo',
                            '+ 72% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1151,6 +1222,7 @@ class Milano(Smg):
         'Duster Stock': ['+ 5% Slide Speed'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 15% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1185,6 +1257,7 @@ class Ak74u(Smg):
                            '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                            '- 33% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 40% Bullet Velocity'],
@@ -1195,6 +1268,7 @@ class Ak74u(Smg):
         'Liberator': ['+ 100% Bullet Velocity', '- 25% Aim Walking Movement Speed'],
         'Task Force': ['+ 8% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 15% Hip Fire Accuracy'],
@@ -1204,6 +1278,7 @@ class Ak74u(Smg):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 25% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 18% Horizontal Recoil Control'],
@@ -1216,6 +1291,7 @@ class Ak74u(Smg):
                           '- 30% Shooting Move Speed'],
         'Spetsnaz Speed Grip': ['+ 3% Sprinting Move Speed', '+ 18% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -1228,6 +1304,7 @@ class Ak74u(Smg):
         'GRU Mag Clamp': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'VDV Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 67% Max Starting Ammo',
                          '+ 67% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -1237,6 +1314,7 @@ class Ak74u(Smg):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'GRU Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                              '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1247,6 +1325,7 @@ class Ak74u(Smg):
                                '- 15% Hip Fire Accuracy'],
         'KGB Skeletal Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed',
                                '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1277,6 +1356,7 @@ class Ksp(Smg):
                              '- 10% Shooting Move Speed', '- 12% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     under_barrel = {
         'Front Grip': ['+ 15% Horizontal Recoil Control'],
@@ -1289,6 +1369,7 @@ class Ksp(Smg):
                              '- 30% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 3% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 40% Magazine Ammo Capacity', '+ 40% Max Starting Ammo', '+ 40% Ammo Capacity',
@@ -1301,6 +1382,7 @@ class Ksp(Smg):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 60% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 60% Max Starting Ammo',
                            '+ 60% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1309,6 +1391,7 @@ class Ksp(Smg):
         'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 15% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1341,6 +1424,7 @@ class Bullfrog(Smg):
                            '- 10% Shooting Move Speed', '- 15% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                            '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 40% Bullet Velocity'],
@@ -1351,6 +1435,7 @@ class Bullfrog(Smg):
         'Liberator': ['+ 100% Bullet Velocity', '- 25% Aim Walking Movement Speed'],
         'Task Force': ['+ 3% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity',
                        '- 33% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 15% Hip Fire Accuracy'],
@@ -1360,6 +1445,7 @@ class Bullfrog(Smg):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 26% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -1372,6 +1458,7 @@ class Bullfrog(Smg):
                           '- 30% Shooting Move Speed'],
         'VDV Speed Grip': ['+ 3% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                            '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 30% Magazine Ammo Capacity', '+ 30% Max Starting Ammo', '+ 30% Ammo Capacity',
@@ -1384,6 +1471,7 @@ class Bullfrog(Smg):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'VDV Fast Mag': ['+ 70% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 70% Max Starting Ammo',
                          '+ 70% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -1393,6 +1481,7 @@ class Bullfrog(Smg):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'GRU Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                              '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1403,6 +1492,7 @@ class Bullfrog(Smg):
                                '- 15% Hip Fire Accuracy'],
         'KGB Skeletal Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed',
                                '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1436,6 +1526,7 @@ class Mac10(Smg):
                              '- 10% Shooting Move Speed', '- 15% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 40% Bullet Velocity'],
@@ -1446,6 +1537,7 @@ class Mac10(Smg):
         'Rifled': ['+ 25% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 4% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity',
                        '- 33% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 4% Vertical Recoil Control', '+ 12% Horizontal Recoil Control'],
@@ -1459,6 +1551,7 @@ class Mac10(Smg):
         'SFOD Speed Grip': ['+ 3% Sprinting Move Speed', '+ 10% Horizontal Recoil Control',
                             '+ 10% Vertical Recoil Control', '- 6% Movement Speed', '- 6% Shooting Move Speed',
                             '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 34% Magazine Ammo Capacity', '+ 34% Max Starting Ammo', '+ 34% Ammo Capacity',
@@ -1471,6 +1564,7 @@ class Mac10(Smg):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 66% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 66% Max Starting Ammo',
                            '+ 66% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1479,6 +1573,7 @@ class Mac10(Smg):
         'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 15% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1510,6 +1605,7 @@ class Lc10(Smg):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                               '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 40% Bullet Velocity'],
@@ -1520,6 +1616,7 @@ class Lc10(Smg):
         'Rifled': ['+ 25% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 7% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -1532,6 +1629,7 @@ class Lc10(Smg):
                              '- 30% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 3% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 32% Magazine Ammo Capacity', '+ 32% Max Starting Ammo', '+ 32% Ammo Capacity',
@@ -1544,6 +1642,7 @@ class Lc10(Smg):
         'Vandal Speed Loader': ['+ 44% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 53% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 53% Max Starting Ammo',
                            '+ 53% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1552,6 +1651,7 @@ class Lc10(Smg):
         'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 15% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1584,6 +1684,7 @@ class Ppsh(Smg):
                            '- 10% Shooting Move Speed', '- 5% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                            '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 40% Bullet Velocity'],
@@ -1594,6 +1695,7 @@ class Ppsh(Smg):
         'Rifled': ['+ 25% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 4% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 18% Horizontal Recoil Control'],
@@ -1606,6 +1708,7 @@ class Ppsh(Smg):
                           '- 30% Shooting Move Speed'],
         'Spetsnaz Speed Grip': ['+ 3% Sprinting Move Speed', '+ 18% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 72% Magazine Ammo Capacity', '+ 72% Max Starting Ammo', '+ 72% Ammo Capacity',
@@ -1618,6 +1721,7 @@ class Ppsh(Smg):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'VDV Fast Mag': ['+ 56% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 56% Max Starting Ammo',
                          '+ 56% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -1627,6 +1731,7 @@ class Ppsh(Smg):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'GRU Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                              '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1637,6 +1742,7 @@ class Ppsh(Smg):
                                '- 15% Hip Fire Accuracy'],
         'KGB Skeletal Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed',
                                '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1669,6 +1775,7 @@ class Ots9(Smg):
                            '- 10% Shooting Move Speed', '- 5% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                            '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 40% Bullet Velocity'],
@@ -1679,6 +1786,7 @@ class Ots9(Smg):
         'Rifled': ['+ 25% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 6% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 14% Horizontal Recoil Control'],
@@ -1691,6 +1799,7 @@ class Ots9(Smg):
                           '- 30% Shooting Move Speed'],
         'Spetsnaz Speed Grip': ['+ 3% Sprinting Move Speed', '+ 14% Horizontal Recoil Control', '- 6% Movement Speed',
                                 '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 50% Magazine Ammo Capacity', '+ 50% Max Starting Ammo', '+ 50% Ammo Capacity',
@@ -1703,6 +1812,7 @@ class Ots9(Smg):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'VDV Fast Mag': ['+ 60% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 60% Max Starting Ammo',
                          '+ 60% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1713,6 +1823,7 @@ class Ots9(Smg):
                            '- 15% Hip Fire Accuracy'],
         'KGB Skeletal Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed',
                                '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1744,6 +1855,7 @@ class Tec9(Smg):
         'SOCOM Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 17% Vertical Recoil Control',
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Full Repeater': ['- 5% Horizontal Recoil Control', '- 25% Effective Damage Range', '+ 45% Fire Rate'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 40% Bullet Velocity'],
@@ -1754,6 +1866,7 @@ class Tec9(Smg):
         'Rifled': ['+ 25% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 6% Damage', '+ 50% Effective Damage Range', '+ 75% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 15% Horizontal Recoil Control'],
@@ -1766,6 +1879,7 @@ class Tec9(Smg):
                              '- 30% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 3% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 43% Magazine Ammo Capacity', '+ 43% Max Starting Ammo', '+ 43% Ammo Capacity',
@@ -1778,6 +1892,7 @@ class Tec9(Smg):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 57% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 57% Max Starting Ammo',
                            '+ 57% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -1786,6 +1901,7 @@ class Tec9(Smg):
         'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 15% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 10% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1807,6 +1923,7 @@ class Marksman(Weapon):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Front Grip': ['+ 30% Horizontal Recoil Control'],
@@ -1818,6 +1935,7 @@ class Marksman(Weapon):
                              '- 16% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 6% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 50% Magazine Ammo Capacity', '+ 50% Max Starting Ammo', '+ 50% Ammo Capacity',
@@ -1830,6 +1948,7 @@ class Marksman(Weapon):
         'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 80% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 80% Max Starting Ammo',
                            '+ 80% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -1839,6 +1958,7 @@ class Marksman(Weapon):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -1873,6 +1993,7 @@ class Type63(Marksman):
                            '- 10% Shooting Move Speed', '- 12% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 7% Vertical Recoil Control',
                            '- 33% Effective Damage Range', '- 30% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Rapid Fire': ['+ 8% Rate of Fire'],
@@ -1882,6 +2003,7 @@ class Type63(Marksman):
         'Match Grade': ['+ 100% Bullet Velocity', '- 6% Sprinting Move Speed'],
         'Task Force': ['+ 9% Damage', '+ 100% Effective Damage Range', '+ 60% Bullet Velocity',
                        '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 18% Hip Fire Accuracy'],
@@ -1891,6 +2013,7 @@ class Type63(Marksman):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Front Grip': ['+ 30% Horizontal Recoil Control'],
@@ -1902,6 +2025,7 @@ class Type63(Marksman):
                           '- 16% Shooting Move Speed'],
         'VDV Speed Grip': ['+ 3% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                            '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 20% Magazine Ammo Capacity', '+ 20% Max Starting Ammo', '+ 20% Ammo Capacity',
@@ -1914,6 +2038,7 @@ class Type63(Marksman):
         'GRU Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'VDV Fast Mag': ['+ 40% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 40% Max Starting Ammo',
                          '+ 40% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -1923,6 +2048,7 @@ class Type63(Marksman):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'GRU Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                              '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -1932,6 +2058,7 @@ class Type63(Marksman):
         'Spetsnaz PKM Stock': ['+ 10% Shooting Move Speed', '+ 50% Aim Walking Movement Speed',
                                '- 15% Hip Fire Accuracy'],
         'KGB Pad': ['+ 30% Sprint to Fire Time', '+ 45% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -1967,6 +2094,7 @@ class M16(Marksman):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 15% Vertical Recoil Control',
                               '- 30% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Rapid Fire': ['+ 7% Rate of Fire'],
@@ -1976,6 +2104,7 @@ class M16(Marksman):
         'Match Grade': ['+ 100% Bullet Velocity', '- 6% Sprinting Move Speed'],
         'Task Force': ['+ 14% Damage', '+ 50% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 65% Aim Walking Movement Speed'],
@@ -1985,6 +2114,7 @@ class M16(Marksman):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 78% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -2019,6 +2149,7 @@ class Aug(Marksman):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 15% Vertical Recoil Control',
                               '- 30% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Rapid Fire': ['+ 9% Rate of Fire'],
@@ -2028,6 +2159,7 @@ class Aug(Marksman):
         'Match Grade': ['+ 100% Bullet Velocity', '- 6% Sprinting Move Speed'],
         'Task Force': ['+ 12% Damage', '+ 40% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -2037,6 +2169,7 @@ class Aug(Marksman):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 60% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -2072,6 +2205,7 @@ class Dmr(Marksman):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 15% Vertical Recoil Control',
                            '- 30% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Rapid Fire': ['+ 9% Rate of Fire'],
@@ -2081,6 +2215,7 @@ class Dmr(Marksman):
         'Match Grade': ['+ 100% Bullet Velocity', '- 6% Sprinting Move Speed'],
         'Task Force': ['+ 24% Damage', '+ 100% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 20% Vertical Recoil Control', '- 15% Horizontal Recoil Control'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 60% Magazine Ammo Capacity', '+ 60% Max Starting Ammo', '+ 60% Ammo Capacity',
@@ -2093,6 +2228,7 @@ class Dmr(Marksman):
         'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 76% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 76% Max Starting Ammo',
                            '+ 76% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -2102,6 +2238,7 @@ class Dmr(Marksman):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 50% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -2137,6 +2274,7 @@ class Carv(Marksman):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 15% Vertical Recoil Control',
                               '- 30% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Rapid Fire': ['+ 8% Rate of Fire'],
@@ -2146,6 +2284,7 @@ class Carv(Marksman):
         'Match Grade': ['+ 100% Bullet Velocity', '- 6% Sprinting Move Speed'],
         'Task Force': ['+ 8% Damage', '+ 33% Effective Damage Range', '+ 50% Bullet Velocity',
                        '- 10% Vertical Recoil Control', '- 10% Horizontal Recoil Control'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
@@ -2155,6 +2294,7 @@ class Carv(Marksman):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 50% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 20% Magazine Ammo Capacity', '+ 20% Max Starting Ammo', '+ 20% Ammo Capacity',
@@ -2167,6 +2307,7 @@ class Carv(Marksman):
         'SAS Mag Clamp': ['+ 35% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 67% Max Starting Ammo',
                            '+ 67% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
 
 
@@ -2196,6 +2337,7 @@ class Lmg(Weapon):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 12% Vertical Recoil Control',
                               '- 30% Effective Damage Range', '- 25% Bullet Velocity'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 20% Hip Fire Accuracy'],
@@ -2205,6 +2347,7 @@ class Lmg(Weapon):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 20% Horizontal Recoil Control'],
@@ -2216,6 +2359,7 @@ class Lmg(Weapon):
                              '- 9% Shooting Move Speed'],
         'SFOD Speed Grip': ['+ 12% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 4% Movement Speed',
                             '- 4% Shooting Move Speed', '- 4% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -2225,6 +2369,7 @@ class Lmg(Weapon):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -2253,6 +2398,7 @@ class Stoner(Lmg):
         'Match Grade': ['+ 50% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 8% Damage', '+ 100% Effective Damage Range', '+ 41% Bullet Velocity',
                        '- 38% Max Starting Ammo', '- 7% Ammo Capacity', '- 7% Magazine Ammo Capacity'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -2267,6 +2413,7 @@ class Stoner(Lmg):
                                 '- 5% Sprinting Move Speed'],
         'Salvo Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 25% Reload Quickness', '+ 67% Max Starting Ammo',
                            '+ 67% Ammo Capacity', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 40% Aim Walking Movement Speed'],
@@ -2276,6 +2423,7 @@ class Stoner(Lmg):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 75% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -2308,6 +2456,7 @@ class Rpd(Lmg):
                            '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 12% Vertical Recoil Control',
                            '- 30% Effective Damage Range', '- 25% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Cut Down': ['+ 25% Shooting Move Speed'],
@@ -2318,6 +2467,7 @@ class Rpd(Lmg):
         'Match Grade': ['+ 50% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 5% Damage', '+ 100% Effective Damage Range', '+ 44% Bullet Velocity',
                        '- 39% Max Starting Ammo', '- 8% Ammo Capacity', '- 8% Magazine Ammo Capacity'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 20% Hip Fire Accuracy'],
@@ -2327,6 +2477,7 @@ class Rpd(Lmg):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Fore grip': ['+ 20% Horizontal Recoil Control'],
@@ -2338,6 +2489,7 @@ class Rpd(Lmg):
                           '- 9% Shooting Move Speed'],
         'VDV Speed Grip': ['+ 12% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 4% Movement Speed',
                            '- 4% Shooting Move Speed', '- 4% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 50% Magazine Ammo Capacity', '+ 50% Max Starting Ammo', '+ 50% Ammo Capacity',
@@ -2352,6 +2504,7 @@ class Rpd(Lmg):
                                 '- 5% Sprinting Move Speed'],
         'Salvo Fast Mag': ['+ 100% Magazine Ammo Capacity', '+ 33% Reload Quickness', '+ 100% Max Starting Ammo',
                            '+ 100% Ammo Capacity', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -2361,6 +2514,7 @@ class Rpd(Lmg):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'GRU Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                              '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 40% Aim Walking Movement Speed'],
@@ -2371,6 +2525,7 @@ class Rpd(Lmg):
                                '- 15% Hip Fire Accuracy'],
         'KGB Skeletal Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed',
                                '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -2398,6 +2553,7 @@ class M60(Lmg):
         'Match Grade': ['+ 50% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 10% Damage', '+ 100% Effective Damage Range', '+ 39% Bullet Velocity',
                        '- 38% Max Starting Ammo', '- 7% Ammo Capacity', '- 7% Magazine Ammo Capacity'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -2412,6 +2568,7 @@ class M60(Lmg):
                                 '- 5% Sprinting Move Speed'],
         'Salvo Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 30% Reload Quickness', '+ 67% Max Starting Ammo',
                            '+ 67% Ammo Capacity', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 40% Aim Walking Movement Speed'],
@@ -2421,6 +2578,7 @@ class M60(Lmg):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 75% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -2451,6 +2609,7 @@ class Mg82(Lmg):
         'Match Grade': ['+ 50% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 10% Damage', '+ 100% Effective Damage Range', '+ 38% Bullet Velocity',
                        '- 38% Max Starting Ammo', '- 7% Ammo Capacity', '- 7% Magazine Ammo Capacity'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 25% Magazine Ammo Capacity', '+ 25% Max Starting Ammo', '+ 25% Ammo Capacity',
@@ -2465,6 +2624,7 @@ class Mg82(Lmg):
                                 '- 5% Sprinting Move Speed'],
         'Salvo Fast Mag': ['+ 50% Magazine Ammo Capacity', '+ 45% Reload Quickness', '+ 50% Max Starting Ammo',
                            '+ 50% Ammo Capacity', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 40% Aim Walking Movement Speed'],
@@ -2474,6 +2634,7 @@ class Mg82(Lmg):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 75% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -2505,6 +2666,7 @@ class Sniper(Weapon):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 40% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     under_barrel = {
         'Front Grip': ['+ 30% Vertical Recoil Control', '+ 30% Horizontal Recoil Control'],
@@ -2515,6 +2677,7 @@ class Sniper(Weapon):
         'Bipod': ['+ 50% Vertical Recoil Control', '+ 50% Horizontal Recoil Control', '- 5% Sprinting Move Speed'],
         'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 25% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 40% Magazine Ammo Capacity', '+ 40% Max Starting Ammo', '+ 40% Ammo Capacity',
@@ -2527,6 +2690,7 @@ class Sniper(Weapon):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 80% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 80% Max Starting Ammo',
                            '+ 80% Ammo Capacity', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 5% Aim Down Sight Time'],
@@ -2536,6 +2700,7 @@ class Sniper(Weapon):
         'Serpent Wrap': ['+ 10% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 5% Aim Down Sight Time', '+ 25% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 15% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -2561,6 +2726,7 @@ class Pelington(Sniper):
                               '- 40% Shooting Move Speed', '- 25% Aim Down Sight Time'],
         'Wrapped Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 8% Vertical Recoil Control',
                                '+ 29% Idle Sway Control', '- 20% Aim Down Sight Time', '- 25% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 17% Bullet Velocity'],
@@ -2571,6 +2737,7 @@ class Pelington(Sniper):
         'Ultralight': ['+ 10% Strafe Speed', '- 20% Bullet Velocity'],
         'Tiger Team': ['+ 14% Reload Quickness', '+ 20% Damage', '+ 13% Fire Rate', '+ 30% Bullet Velocity',
                        '- 20% Magazine Ammo Capacity', '- 36% Max Starting Ammo', '- 20% Ammo Capacity'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 40% Magazine Ammo Capacity', '+ 40% Max Starting Ammo', '+ 40% Ammo Capacity',
@@ -2583,6 +2750,7 @@ class Pelington(Sniper):
         'Vandal Speed Loader': ['+ 37% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 80% Magazine Ammo Capacity', '+ 5% Reload Quickness', '+ 80% Max Starting Ammo',
                            '+ 80% Ammo Capacity', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 25% Aim Walking Movement Speed'],
@@ -2592,6 +2760,7 @@ class Pelington(Sniper):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 72% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 5% Aim Down Sight Time'],
@@ -2601,6 +2770,7 @@ class Pelington(Sniper):
         'Serpent Wrap': ['+ 10% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 5% Aim Down Sight Time', '+ 25% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 15% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -2625,6 +2795,7 @@ class Lw3(Sniper):
                               '- 40% Shooting Move Speed', '- 25% Aim Down Sight Time'],
         'Wrapped Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 8% Vertical Recoil Control',
                                '+ 21% Idle Sway Control', '- 20% Aim Down Sight Time', '- 25% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 18% Bullet Velocity'],
@@ -2634,6 +2805,7 @@ class Lw3(Sniper):
         'Hammer Forge': ['+ 30% Fire Rate', '- 15% Idle Sway Control'],
         'Tiger Team': ['+ 20% Damage', '+ 21% Fire Rate', '+ 27% Bullet Velocity', '- 20% Magazine Ammo Capacity',
                        '- 40% Max Starting Ammo', '- 20% Ammo Capacity'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 25% Aim Walking Movement Speed'],
@@ -2643,6 +2815,7 @@ class Lw3(Sniper):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 50% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 5% Aim Down Sight Time'],
@@ -2652,6 +2825,7 @@ class Lw3(Sniper):
         'Serpent Wrap': ['+ 10% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 5% Aim Down Sight Time', '+ 25% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 15% Shooting Movement Speed', '- 18% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -2675,6 +2849,7 @@ class M82(Sniper):
                               '- 40% Shooting Move Speed', '- 25% Aim Down Sight Time'],
         'Wrapped Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 8% Vertical Recoil Control',
                                '+ 25% Idle Sway Control', '- 20% Aim Down Sight Time', '- 25% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 13% Bullet Velocity'],
@@ -2684,6 +2859,7 @@ class M82(Sniper):
         'Ultralight': ['+ 10% Strafe Speed', '- 15% Bullet Velocity'],
         'Tiger Team': ['+ 20% Damage', '+ 24% Fire Rate', '+ 20% Bullet Velocity', '- 20% Magazine Ammo Capacity',
                        '- 40% Max Starting Ammo', '- 20% Ammo Capacity'],
+        'None': ['None']
     }
     under_barrel = {
         'Front Grip': ['+ 10% Vertical Recoil Control', '+ 10% Horizontal Recoil Control'],
@@ -2694,6 +2870,7 @@ class M82(Sniper):
         'Bipod': ['+ 20% Vertical Recoil Control', '+ 20% Horizontal Recoil Control', '- 5% Sprinting Move Speed'],
         'SFOD Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
                             '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 25% Aim Walking Movement Speed'],
@@ -2703,6 +2880,7 @@ class M82(Sniper):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 50% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Pad': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 5% Aim Down Sight Time'],
@@ -2712,6 +2890,7 @@ class M82(Sniper):
         'Serpent Wrap': ['+ 10% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 5% Aim Down Sight Time', '+ 25% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 15% Shooting Movement Speed', '- 18% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -2739,6 +2918,7 @@ class Swiss(Sniper):
                               '- 40% Shooting Move Speed', '- 25% Aim Down Sight Time'],
         'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 8% Vertical Recoil Control',
                            '+ 30% Idle Sway Control', '- 20% Aim Down Sight Time', '- 25% Bullet Velocity'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 16% Bullet Velocity'],
@@ -2748,6 +2928,7 @@ class Swiss(Sniper):
         'Ultralight': ['+ 10% Strafe Speed', '- 20% Bullet Velocity'],
         'Tiger Team': ['+ 20% Damage', '+ 33% Fire Rate', '+ 23% Bullet Velocity', '- 17% Magazine Ammo Capacity',
                        '- 38% Max Starting Ammo', '- 17% Ammo Capacity'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -2760,6 +2941,7 @@ class Swiss(Sniper):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 50% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 50% Max Starting Ammo',
                            '+ 50% Ammo Capacity', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 25% Aim Walking Movement Speed'],
@@ -2769,6 +2951,7 @@ class Swiss(Sniper):
         'SAS Combat Stock': ['+ 10% Shooting Move Speed', '+ 50% Aim Walking Movement Speed',
                              '- 15% Hip Fire Accuracy'],
         'Raider Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 5% Aim Down Sight Time'],
@@ -2778,6 +2961,7 @@ class Swiss(Sniper):
         'Serpent Wrap': ['+ 10% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 5% Aim Down Sight Time', '+ 25% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 15% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -2803,6 +2987,7 @@ class Pistol(Weapon):
                              '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
         'Agency Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 8% Vertical Recoil Control',
                               '- 25% Effective Damage Range'],
+        'None': ['None']
     }
     body = {
         'Steady Aim Laser': ['+ 15% Hip Fire Accuracy'],
@@ -2812,6 +2997,7 @@ class Pistol(Weapon):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 25% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -2821,9 +3007,11 @@ class Pistol(Weapon):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
     stock = {
-        'Dual Wield': ['+ 100% Damage']
+        'Dual Wield': ['+ 100% Damage'],
+        'None': ['None']
     }
 
 
@@ -2855,6 +3043,7 @@ class N1911(Pistol):
         'Tac Ops': ['+ 60% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 12% Damage', '+ 40% Effective Damage Range', '+ 120% Bullet Velocity',
                        '- 33% Max Starting Ammo', '- 30% Vertical Recoil Control', '- 20% Horizontal Recoil Control'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 50% Magazine Ammo Capacity', '+ 50% Max Starting Ammo', '+ 50% Ammo Capacity',
@@ -2867,6 +3056,7 @@ class N1911(Pistol):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 75% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 75% Max Starting Ammo',
                            '+ 75% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
 
 
@@ -2900,6 +3090,7 @@ class Magnum(Pistol):
                        '- 33% Horizontal Recoil Control'],
         'Task Force': ['+ 17% Damage', '+ 40% Effective Damage Range', '+ 120% Bullet Velocity',
                        '- 25% Max Starting Ammo', '- 30% Vertical Recoil Control', '- 20% Horizontal Recoil Control'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 50% Magazine Ammo Capacity', '+ 50% Max Starting Ammo', '+ 50% Ammo Capacity',
@@ -2912,6 +3103,7 @@ class Magnum(Pistol):
         'Vandal Speed Loader': ['+ 68% Reload Quickness', '+ 25% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 100% Magazine Ammo Capacity', '+ 65% Reload Quickness', '+ 100% Max Starting Ammo',
                            '+ 100% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
 
 
@@ -2943,6 +3135,7 @@ class Diamatti(Pistol):
         'Tac Ops': ['+ 60% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 13% Damage', '+ 40% Effective Damage Range', '+ 120% Bullet Velocity',
                        '- 33% Max Starting Ammo', '- 30% Vertical Recoil Control', '- 20% Horizontal Recoil Control'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 60% Magazine Ammo Capacity', '+ 60% Max Starting Ammo', '+ 60% Ammo Capacity',
@@ -2955,6 +3148,7 @@ class Diamatti(Pistol):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 100% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 100% Max Starting Ammo',
                            '+ 100% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
 
 
@@ -2987,6 +3181,7 @@ class Amp(Pistol):
         'Takedown': ['+ 60% Effective Damage Range', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 3% Damage', '+ 40% Effective Damage Range', '+ 120% Bullet Velocity',
                        '- 33% Max Starting Ammo', '- 30% Vertical Recoil Control', '- 20% Horizontal Recoil Control'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
@@ -2999,6 +3194,7 @@ class Amp(Pistol):
         'Vandal Speed Loader': ['+ 40% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
         'Salvo Fast Mag': ['+ 47% Magazine Ammo Capacity', '+ 40% Reload Quickness', '+ 47% Max Starting Ammo',
                            '+ 47% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
     }
 
 
@@ -3025,6 +3221,7 @@ class Shotgun(Weapon):
         'Tiger Team Spotlight': ['+ 22.5% Increased Salvage Drop Rate', '- 10% Sprint to Fire Time'],
         'Ember Sighting Point': ['+ 30% Increased Salvage Drop Rate', '+ 30% Hip Fire Accuracy',
                                  '- 10% Sprint to Fire Time', '- 10% Aim Down Sight Time'],
+        'None': ['None']
     }
     handle = {
         'Speed Tape': ['+ 10% Aim Down Sight Time'],
@@ -3034,6 +3231,7 @@ class Shotgun(Weapon):
         'Serpent Wrap': ['+ 25% Aim Down Sight Time', '- 10% Sprint to Fire Time'],
         'Airborne Elastic Wrap': ['+ 30% Aim Down Sight Time', '+ 90% Flinch Resistance', '+ Aim While Going Prone',
                                   '- 10% Shooting Movement Speed', '- 15% Sprint to Fire Time'],
+        'None': ['None']
     }
 
 
@@ -3061,6 +3259,7 @@ class Hauer(Shotgun):
                                   '- 20% Sprint to Fire Time'],
         'Agency Choke': ['+ 35% Increased Equipment Drop Chance', '+ 10% Hip Fire Accuracy',
                          '+ 55% Tighter Pellet Spread', '- 15% Sprint to Fire Time', '- 17% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 12% Effective Damage Range'],
@@ -3070,11 +3269,13 @@ class Hauer(Shotgun):
                              '- 15% Aim Walking Movement Speed'],
         'Hammer Forge': ['+ 6% Fire Rate', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 15% Damage', '- 7% Effective Damage Range'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 20% Magazine Ammo Capacity', '+ 20% Max Starting Ammo', '+ 20% Ammo Capacity'],
         'STANAG Mag': ['+ 60% Magazine Ammo Capacity', '+ 60% Max Starting Ammo', '+ 60% Ammo Capacity',
                        '- 25% Reload Quickness'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -3084,6 +3285,7 @@ class Hauer(Shotgun):
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 20% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Marathon Stock': ['+ 4% Sprinting Move Speed', '+ 10% Shooting Move Speed', '+ 25% Sprint to Fire Time',
                            '+ 10% Aim Walking Movement Speed', '- 20% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -3111,6 +3313,7 @@ class Gallo(Shotgun):
                                   '- 20% Sprint to Fire Time'],
         'Agency Choke': ['+ 35% Increased Equipment Drop Chance', '+ 10% Hip Fire Accuracy',
                          '+ 50% Tighter Pellet Spread', '- 15% Sprint to Fire Time', '- 18% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 12% Effective Damage Range'],
@@ -3120,12 +3323,14 @@ class Gallo(Shotgun):
                              '- 15% Aim Walking Movement Speed'],
         'Hammer Forge': ['+ 15% Fire Rate', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 52% Damage', '- 13% Effective Damage Range'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 29% Magazine Ammo Capacity', '+ 29% Max Starting Ammo', '+ 29% Ammo Capacity',
                 '- 5% Reload Quickness'],
         'STANAG Mag': ['+ 71% Magazine Ammo Capacity', '+ 71% Max Starting Ammo', '+ 71% Ammo Capacity',
                        '- 34% Reload Quickness'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -3135,6 +3340,7 @@ class Gallo(Shotgun):
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 20% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Marathon Stock': ['+ 4% Sprinting Move Speed', '+ 10% Shooting Move Speed', '+ 25% Sprint to Fire Time',
                            '+ 10% Aim Walking Movement Speed', '- 20% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -3162,6 +3368,7 @@ class Streetsweeper(Shotgun):
                                   '- 20% Sprint to Fire Time'],
         'Agency Choke': ['+ 35% Increased Equipment Drop Chance', '+ 10% Hip Fire Accuracy',
                          '+ 55% Tighter Pellet Spread', '- 15% Sprint to Fire Time', '- 17% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 13% Effective Damage Range'],
@@ -3171,12 +3378,14 @@ class Streetsweeper(Shotgun):
                              '- 15% Aim Walking Movement Speed'],
         'Hammer Forge': ['+ 9% Fire Rate', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 27% Damage', '- 13% Effective Damage Range'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 25% Magazine Ammo Capacity', '+ 25% Max Starting Ammo', '+ 25% Ammo Capacity',
                 '- 11% Reload Quickness'],
         'STANAG Mag': ['+ 50% Magazine Ammo Capacity', '+ 50% Max Starting Ammo', '+ 50% Ammo Capacity',
                        '- 32% Reload Quickness'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -3186,6 +3395,7 @@ class Streetsweeper(Shotgun):
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 20% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Marathon Stock': ['+ 4% Sprinting Move Speed', '+ 10% Shooting Move Speed', '+ 25% Sprint to Fire Time',
                            '+ 10% Aim Walking Movement Speed', '- 20% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
@@ -3213,6 +3423,7 @@ class Ironhide(Shotgun):
                                   '- 20% Sprint to Fire Time'],
         'Agency Choke': ['+ 35% Increased Equipment Drop Chance', '+ 20% Hip Fire Accuracy',
                          '+ 25% Tighter Pellet Spread', '- 15% Sprint to Fire Time', '- 17% Effective Damage Range'],
+        'None': ['None']
     }
     barrel = {
         'Extended': ['+ 12% Effective Damage Range'],
@@ -3222,12 +3433,14 @@ class Ironhide(Shotgun):
                              '- 15% Aim Walking Movement Speed'],
         'Hammer Forge': ['+ 13% Fire Rate', '- 5% Sprinting Move Speed'],
         'Task Force': ['+ 10% Damage', '- 17% Effective Damage Range'],
+        'None': ['None']
     }
     magazine = {
         'RND': ['+ 17% Magazine Ammo Capacity', '+ 17% Max Starting Ammo', '+ 17% Ammo Capacity',
                 '- 2% Reload Quickness'],
         'STANAG Mag': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
                        '- 14% Reload Quickness'],
+        'None': ['None']
     }
     stock = {
         'Tactical Stock': ['+ 10% Aim Walking Movement Speed'],
@@ -3237,6 +3450,7 @@ class Ironhide(Shotgun):
         'SAS Combat Stock': ['+ 5% Shooting Move Speed', '+ 20% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
         'Marathon Stock': ['+ 4% Sprinting Move Speed', '+ 10% Shooting Move Speed', '+ 25% Sprint to Fire Time',
                            '+ 10% Aim Walking Movement Speed', '- 20% Hip Fire Accuracy'],
+        'None': ['None']
     }
 
 
