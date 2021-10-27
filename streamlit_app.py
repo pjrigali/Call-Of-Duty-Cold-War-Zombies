@@ -7,11 +7,15 @@ import streamlit as st
 
 st.title('Call-Of-Duty-Cold-War-Zombies')
 st.markdown('*This is a demo of the Cold-War-Zombies package.*')
-st.subheader('Select Zombie Level')
+st.subheader('Select Zombie Level:')
 zom_level = st.slider('Round Value', 1, 100, 1)
 
-st.sidebar.title("How to")
-st.sidebar.markdown("First Select the desired zombie round")
+st.sidebar.title("How to Use:")
+st.sidebar.markdown("1. Select the desired zombie round")
+st.sidebar.markdown("2. Select desired weapons for comparison")
+st.sidebar.markdown("3. Select the desired weapon attachments")
+st.sidebar.markdown("4. View comparison tables below")
+
 st.sidebar.title("Weapons")
 st.sidebar.text("All weapons are included up until mid-season 6.")
 
@@ -22,7 +26,7 @@ gun_lst = []
 st.subheader('Select Weapons for Analysis')
 weapon_lst = st.multiselect('Weapons', list(_weapon_stats_dic.keys()))
 for weapon in weapon_lst:
-    st.subheader(weapon + ' Attachments')
+    st.subheader(weapon + ' Attachments:')
     weapon_muzzle = st.selectbox(weapon + ' Weapon Muzzle', ['None'] + list(_weapon_stats_dic[weapon].muzzle.keys()))
     weapon_barrel = st.selectbox(weapon + ' Weapon Barrel', ['None'] + list(_weapon_stats_dic[weapon].barrel.keys()))
     weapon_body = st.selectbox(weapon + ' Weapon Body', ['None'] + list(_weapon_stats_dic[weapon].body.keys()))
@@ -53,21 +57,44 @@ damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_cla
                                max_range=100)
 zom = Health(level=zom_level, health_cap=55, outbreak=False, multiplier=2)
 
-# Build Analyze Class
-if len(gun_lst) >= 1:
-    analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
-    st.subheader('Damage Per Second')
-    dps_df = pd.DataFrame()
-    for weapon in weapon_lst:
-        if weapon != 'None':
-            dps_df[weapon] = analysis._compare_info_for_plots[weapon]['Damage Per Second']
-    st.line_chart(data=dps_df)
-    st.caption('Damage Value vs Range (Meters)')
+st.header('Visualizations:')
+plots = st.multiselect('Plots to Display',  ['Damage Per Max Ammo', 'Damage Per Clip', 'Damage Per Second',
+                                             'Time To Kill', 'Shots To Kill'])
 
-    st.subheader('Time to Kill (Seconds)')
-    ttk_df = pd.DataFrame()
-    for weapon in weapon_lst:
-        if weapon != 'None':
-            ttk_df[weapon] = analysis._compare_info_for_plots[weapon]['Time To Kill']
-    st.line_chart(data=ttk_df)
-    st.caption('Seconds vs Range (Meters)')
+# Build Analyze Class
+if len(gun_lst) >= 1 and len(plots) >= 1:
+    analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
+
+    for plot in plots:
+            st.subheader(plot)
+            dps_df = pd.DataFrame()
+            for weapon in weapon_lst:
+                if weapon != 'None':
+                    dps_df[weapon] = analysis._compare_info_for_plots[weapon][plot]
+            st.line_chart(data=dps_df)
+            if 'Damage' in plot:
+                st.caption('Damage Value vs Range (Meters)')
+            elif 'Time' in plot:
+                st.caption('Seconds vs Range (Meters)')
+            elif 'Shots' in plot:
+                st.caption('Shots vs Range (Meters)')
+            elif 'Ratio' in plot:
+                st.caption('Ratio vs Range (Meters)')
+
+    # if 'Time To Kill' in plots:
+    #     st.subheader('Time to Kill (Seconds)')
+    #     ttk_df = pd.DataFrame()
+    #     for weapon in weapon_lst:
+    #         if weapon != 'None':
+    #             ttk_df[weapon] = analysis._compare_info_for_plots[weapon]['Time To Kill']
+    #     st.line_chart(data=ttk_df)
+    #     st.caption('Seconds vs Range (Meters)')
+    #
+    # if
+    # st.subheader('Time to Kill (Seconds)')
+    # ttk_df = pd.DataFrame()
+    # for weapon in weapon_lst:
+    #     if weapon != 'None':
+    #         ttk_df[weapon] = analysis._compare_info_for_plots[weapon]['Time To Kill']
+    # st.line_chart(data=ttk_df)
+    # st.caption('Seconds vs Range (Meters)')
