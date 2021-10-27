@@ -38,13 +38,13 @@ second_weapon_handle = st.selectbox('Second Weapon Handle', list(_weapon_stats_d
 second_weapon_stock = st.selectbox('Second Weapon Stock', list(_weapon_stats_dic[second_weapon].stock.keys()))
 
 sw_attachments = {
-    'Muzzle': first_weapon_muzzle,
-    'Barrel': first_weapon_barrel,
-    'Body': first_weapon_body,
-    'Underbarrel': first_weapon_ubarrel,
-    'Magazine': first_weapon_mag,
-    'Handle': first_weapon_handle,
-    'Stock': first_weapon_stock
+    'Muzzle': second_weapon_muzzle,
+    'Barrel': second_weapon_barrel,
+    'Body': second_weapon_body,
+    'Underbarrel': second_weapon_ubarrel,
+    'Magazine': second_weapon_mag,
+    'Handle': second_weapon_handle,
+    'Stock': second_weapon_stock
 }
 
 
