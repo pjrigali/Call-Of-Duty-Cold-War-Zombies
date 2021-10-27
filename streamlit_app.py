@@ -10,10 +10,9 @@ st.markdown('*This is a demo of the Cold-War-Zombies package.*')
 st.subheader('Select Zombie Level')
 zom_level = st.slider('Round Value', 1, 100, 1)
 
-add_selectbox = st.sidebar.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone")
-)
+add_selectbox = st.sidebar.header(
+    "How would you like to be contacted?")
+
 gun_lst = []
 st.subheader('Select Weapons for Analysis')
 weapon_lst = st.multiselect('Weapons', list(_weapon_stats_dic.keys()))
