@@ -6,8 +6,9 @@ import streamlit as st
 
 st.header('Call-Of-Duty-Cold-War-Zombies')
 first_weapon = st.multiselect('First Weapon', list(_weapon_stats_dic.keys()))
-t = list(_weapon_stats_dic['MP5'].muzzle.keys())
-first_weapon_muzzle = st.multiselect('First Weapon Muzzle', t)
+fwm = list(_weapon_stats_dic[first_weapon].muzzle.keys())
+
+first_weapon_muzzle = st.multiselect('First Weapon Muzzle', fwm)
 
 # M16 = {
 #     'Muzzle': 'Agency Suppressor',
