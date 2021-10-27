@@ -10,6 +10,7 @@ st.markdown('*This is a demo of the Cold-War-Zombies package.*')
 
 st.sidebar.title("Description:")
 st.sidebar.markdown("This is a web application version of the Cold-War-Zombies python package.")
+st.sidebar.markdown("The python version allows you to have multiples of the same weapon.")
 st.sidebar.title("How to Use:")
 st.sidebar.markdown("1. Select the desired zombie round")
 st.sidebar.markdown("2. Select desired weapons for comparison")
