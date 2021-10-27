@@ -10,16 +10,17 @@ st.markdown('*This is a demo of the Cold-War-Zombies package.*')
 st.subheader('Select Zombie Level')
 zom_level = st.slider('Round Value', 1, 100, 1)
 
+add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+)
 gun_lst = []
 st.subheader('Select Weapons for Analysis')
 weapon_lst = st.multiselect('Weapons', list(_weapon_stats_dic.keys()))
 for weapon in weapon_lst:
     st.subheader(weapon + ' Attachments')
-    my_bar = st.progress(0)
     weapon_muzzle = st.selectbox(weapon + ' Weapon Muzzle', ['None'] + list(_weapon_stats_dic[weapon].muzzle.keys()))
-    my_bar.progress(1)
     weapon_barrel = st.selectbox(weapon + ' Weapon Barrel', ['None'] + list(_weapon_stats_dic[weapon].barrel.keys()))
-    my_bar.progress(2)
     weapon_body = st.selectbox(weapon + ' Weapon Body', ['None'] + list(_weapon_stats_dic[weapon].body.keys()))
     weapon_ubarrel = st.selectbox(weapon + ' Weapon Underbarrel', ['None'] + list(_weapon_stats_dic[weapon].under_barrel.keys()))
     weapon_mag = st.selectbox(weapon + ' Weapon Magazine', ['None'] + list(_weapon_stats_dic[weapon].magazine.keys()))
