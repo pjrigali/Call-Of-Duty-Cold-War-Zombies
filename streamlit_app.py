@@ -2,11 +2,23 @@ from zombie.health_armour import Health
 from zombie.processor import DamageProfile
 from zombie.analysis import Analyze
 from zombie.weapon_stats import _weapon_stats_dic
-
 import streamlit as st
 
 st.header('Call-Of-Duty-Cold-War-Zombies')
 first_weapon = st.multiselect('First Weapon', list(_weapon_stats_dic.keys()))
+first_weapon_muzzle = st.multiselect('First Weapon Muzzle', list(_weapon_stats_dic[first_weapon].muzzle.keys()))
+
+# M16 = {
+#     'Muzzle': 'Agency Suppressor',
+#     'Barrel': 'Task Force',
+#     'Body': 'Ember Sighting Point',
+#     'Underbarrel': 'Bruiser Grip',
+#     'Magazine': 'Salvo Fast Mag',
+#     'Handle': 'Serpent Wrap',
+#     'Stock': 'Raider Pad'
+# }
+
+
 second_weapon = st.multiselect('Second Weapon', list(_weapon_stats_dic.keys()))
 third_weapon = st.multiselect('Third Weapon', list(_weapon_stats_dic.keys()))
 rarity = st.multiselect('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
