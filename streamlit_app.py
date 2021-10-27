@@ -18,6 +18,7 @@ st.sidebar.markdown("4. View comparison tables below")
 st.sidebar.title("Weapons:")
 st.sidebar.markdown("*All weapons are included up until mid-season 6.*")
 
+# Set Tiers
 st.header('Set Weapon and Perk Tier:')
 default = st.selectbox('Default', ['Max Out', 'Weapons', 'Perks'])
 if default == 'Weapons':
@@ -44,19 +45,19 @@ elif default == 'Perks':
     death = st.selectbox('Death Perception tier', ['1', '2', '3', '4', '5'])
     perk_class_levels = {'speed': speed, 'stamin up': stam, 'deadshot': dead, 'death_perception': death}
 else:
-    st.markdown('If set to Max Out, each tier will be maxed out for weapons and perks.')
+    st.markdown('If set to Max Out, each tier will be maxed out for all weapons and perks.')
     weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                            'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
     perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
 damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
                                max_range=100)
 
+# Build Zombie Health
 st.subheader('Select Zombie Level:')
 zom_level = st.slider('Round Value', 1, 100, 1)
 zom = Health(level=zom_level, health_cap=55, outbreak=False, multiplier=2)
 
-
-
+# Select Weapons
 gun_lst = []
 st.subheader('Select Weapons for Analysis')
 weapon_lst = st.multiselect('Weapons', list(_weapon_stats_dic.keys()))
@@ -106,21 +107,3 @@ if len(gun_lst) >= 1:
                 st.caption('Shots vs Range (Meters)')
             elif 'Ratio' in plot:
                 st.caption('Ratio vs Range (Meters)')
-
-    # if 'Time To Kill' in plots:
-    #     st.subheader('Time to Kill (Seconds)')
-    #     ttk_df = pd.DataFrame()
-    #     for weapon in weapon_lst:
-    #         if weapon != 'None':
-    #             ttk_df[weapon] = analysis._compare_info_for_plots[weapon]['Time To Kill']
-    #     st.line_chart(data=ttk_df)
-    #     st.caption('Seconds vs Range (Meters)')
-    #
-    # if
-    # st.subheader('Time to Kill (Seconds)')
-    # ttk_df = pd.DataFrame()
-    # for weapon in weapon_lst:
-    #     if weapon != 'None':
-    #         ttk_df[weapon] = analysis._compare_info_for_plots[weapon]['Time To Kill']
-    # st.line_chart(data=ttk_df)
-    # st.caption('Seconds vs Range (Meters)')
