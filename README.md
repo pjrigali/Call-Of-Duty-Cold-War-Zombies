@@ -4,6 +4,7 @@
 [![PyPI](https://img.shields.io/pypi/v/cold-war-zombies?color=brightgreen&logoColor=lightgrey)](https://pypi.org/project/cold-war-zombies/)
 [![Downloads](https://static.pepy.tech/personalized-badge/cold-war-zombies?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/cold-war-zombies)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/pjrigali/Call-Of-Duty-Cold-War-Zombies?color=blue&label=commits&logoColor=blue)](https://github.com/pjrigali)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/pjrigali/call-of-duty-cold-war-zombies/main)
 
 This is a package for analyzing and comparing weapons in Cold War Zombies.
 
