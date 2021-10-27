@@ -9,46 +9,48 @@ st.header('Call-Of-Duty-Cold-War-Zombies')
 zom_level = st.slider('Round Number', 1, 100, 1)
 
 
-first_weapon = st.selectbox('First Weapon', list(_weapon_stats_dic.keys()))
-first_weapon_muzzle = st.selectbox('First Weapon Muzzle', list(_weapon_stats_dic[first_weapon].muzzle.keys()))
-first_weapon_barrel = st.selectbox('First Weapon Barrel', list(_weapon_stats_dic[first_weapon].barrel.keys()))
-first_weapon_body = st.selectbox('First Weapon Body', list(_weapon_stats_dic[first_weapon].body.keys()))
-first_weapon_ubarrel = st.selectbox('First Weapon Underbarrel', list(_weapon_stats_dic[first_weapon].under_barrel.keys()))
-first_weapon_mag = st.selectbox('First Weapon Magazine', list(_weapon_stats_dic[first_weapon].magazine.keys()))
-first_weapon_handle = st.selectbox('First Weapon Handle', list(_weapon_stats_dic[first_weapon].handle.keys()))
-first_weapon_stock = st.selectbox('First Weapon Stock', list(_weapon_stats_dic[first_weapon].stock.keys()))
-first_rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
-first_pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
+first_weapon = st.selectbox('First Weapon', ['None'] + list(_weapon_stats_dic.keys()))
+if first_weapon != 'None':
+    first_weapon_muzzle = st.selectbox('First Weapon Muzzle', ['None'] + list(_weapon_stats_dic[first_weapon].muzzle.keys()))
+    first_weapon_barrel = st.selectbox('First Weapon Barrel', ['None'] + list(_weapon_stats_dic[first_weapon].barrel.keys()))
+    first_weapon_body = st.selectbox('First Weapon Body', ['None'] + list(_weapon_stats_dic[first_weapon].body.keys()))
+    first_weapon_ubarrel = st.selectbox('First Weapon Underbarrel', ['None'] + list(_weapon_stats_dic[first_weapon].under_barrel.keys()))
+    first_weapon_mag = st.selectbox('First Weapon Magazine', ['None'] + list(_weapon_stats_dic[first_weapon].magazine.keys()))
+    first_weapon_handle = st.selectbox('First Weapon Handle', ['None'] + list(_weapon_stats_dic[first_weapon].handle.keys()))
+    first_weapon_stock = st.selectbox('First Weapon Stock', ['None'] + list(_weapon_stats_dic[first_weapon].stock.keys()))
+    first_rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
+    first_pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
 
-fw_attachments = {
-    'Muzzle': first_weapon_muzzle,
-    'Barrel': first_weapon_barrel,
-    'Body': first_weapon_body,
-    'Underbarrel': first_weapon_ubarrel,
-    'Magazine': first_weapon_mag,
-    'Handle': first_weapon_handle,
-    'Stock': first_weapon_stock
-}
+    fw_attachments = {
+        'Muzzle': first_weapon_muzzle,
+        'Barrel': first_weapon_barrel,
+        'Body': first_weapon_body,
+        'Underbarrel': first_weapon_ubarrel,
+        'Magazine': first_weapon_mag,
+        'Handle': first_weapon_handle,
+        'Stock': first_weapon_stock
+    }
 
-second_weapon = st.selectbox('Second Weapon', list(_weapon_stats_dic.keys()))
-second_weapon_muzzle = st.selectbox('Second Weapon Muzzle', list(_weapon_stats_dic[second_weapon].muzzle.keys()))
-second_weapon_barrel = st.selectbox('Second Weapon Barrel', list(_weapon_stats_dic[second_weapon].barrel.keys()))
-second_weapon_body = st.selectbox('Second Weapon Body', list(_weapon_stats_dic[second_weapon].body.keys()))
-second_weapon_ubarrel = st.selectbox('Second Weapon Underbarrel', list(_weapon_stats_dic[second_weapon].under_barrel.keys()))
-second_weapon_mag = st.selectbox('Second Weapon Magazine', list(_weapon_stats_dic[second_weapon].magazine.keys()))
-second_weapon_handle = st.selectbox('Second Weapon Handle', list(_weapon_stats_dic[second_weapon].handle.keys()))
-second_weapon_stock = st.selectbox('Second Weapon Stock', list(_weapon_stats_dic[second_weapon].stock.keys()))
-second_rarity = st.selectbox('Second Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
-second_pap = st.selectbox('Second Weapon Pack-a-punch level', ['0', '1', '2', '3'])
-sw_attachments = {
-    'Muzzle': second_weapon_muzzle,
-    'Barrel': second_weapon_barrel,
-    'Body': second_weapon_body,
-    'Underbarrel': second_weapon_ubarrel,
-    'Magazine': second_weapon_mag,
-    'Handle': second_weapon_handle,
-    'Stock': second_weapon_stock
-}
+second_weapon = st.selectbox('Second Weapon', ['None'] + list(_weapon_stats_dic.keys()))
+if second_weapon != 'None':
+    second_weapon_muzzle = st.selectbox('Second Weapon Muzzle', ['None'] + list(_weapon_stats_dic[second_weapon].muzzle.keys()))
+    second_weapon_barrel = st.selectbox('Second Weapon Barrel', ['None'] + list(_weapon_stats_dic[second_weapon].barrel.keys()))
+    second_weapon_body = st.selectbox('Second Weapon Body', ['None'] + list(_weapon_stats_dic[second_weapon].body.keys()))
+    second_weapon_ubarrel = st.selectbox('Second Weapon Underbarrel', ['None'] + list(_weapon_stats_dic[second_weapon].under_barrel.keys()))
+    second_weapon_mag = st.selectbox('Second Weapon Magazine', ['None'] + list(_weapon_stats_dic[second_weapon].magazine.keys()))
+    second_weapon_handle = st.selectbox('Second Weapon Handle', ['None'] + list(_weapon_stats_dic[second_weapon].handle.keys()))
+    second_weapon_stock = st.selectbox('Second Weapon Stock', ['None'] + list(_weapon_stats_dic[second_weapon].stock.keys()))
+    second_rarity = st.selectbox('Second Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
+    second_pap = st.selectbox('Second Weapon Pack-a-punch level', ['0', '1', '2', '3'])
+    sw_attachments = {
+        'Muzzle': second_weapon_muzzle,
+        'Barrel': second_weapon_barrel,
+        'Body': second_weapon_body,
+        'Underbarrel': second_weapon_ubarrel,
+        'Magazine': second_weapon_mag,
+        'Handle': second_weapon_handle,
+        'Stock': second_weapon_stock
+    }
 
 
 
@@ -59,24 +61,37 @@ sw_attachments = {
 weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
                        'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
 perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
-
 damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
                                max_range=100)
 zom = Health(level=zom_level, health_cap=55, outbreak=False, multiplier=2)
 
-gun_lst = [
-    {'weapon': first_weapon, 'nickname': 'Temp ' + first_weapon, 'equipped_attachments': fw_attachments,
-     'rarity': first_rarity, 'pap': first_pap, 'accuracy': None, 'critical': None},
-    {'weapon': second_weapon, 'nickname': 'Temp ' + second_weapon, 'equipped_attachments': sw_attachments,
-     'rarity': second_rarity, 'pap': second_pap, 'accuracy': None, 'critical': None},
-]
+gun_lst = []
+for ind, weapon in enumerate([first_weapon, second_weapon]):
+    if weapon != 'None':
+        if ind == 0:
+            val = {'weapon': first_weapon, 'nickname': 'Temp ' + first_weapon, 'equipped_attachments': fw_attachments,
+                   'rarity': first_rarity, 'pap': first_pap, 'accuracy': None, 'critical': None}
+        elif ind == 1:
+            val = {'weapon': second_weapon, 'nickname': 'Temp ' + second_weapon, 'equipped_attachments': sw_attachments,
+                   'rarity': second_rarity, 'pap': second_pap, 'accuracy': None, 'critical': None}
+        else:
+            continue
+        gun_lst.append(val)
+
+# gun_lst = [
+#     {'weapon': first_weapon, 'nickname': 'Temp ' + first_weapon, 'equipped_attachments': fw_attachments,
+#      'rarity': first_rarity, 'pap': first_pap, 'accuracy': None, 'critical': None},
+#     {'weapon': second_weapon, 'nickname': 'Temp ' + second_weapon, 'equipped_attachments': sw_attachments,
+#      'rarity': second_rarity, 'pap': second_pap, 'accuracy': None, 'critical': None},
+# ]
 
 # Build Analyze Class
 analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
 
 chart_df = pd.DataFrame()
 for weapon in [first_weapon, second_weapon]:
-    chart_df[weapon] = analysis._compare_info_for_plots[weapon]['Damage Per Second']
+    if weapon != 'None':
+        chart_df[weapon] = analysis._compare_info_for_plots[weapon]['Damage Per Second']
 st.line_chart(data=chart_df)
 
 
