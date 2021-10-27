@@ -16,17 +16,17 @@ weapon_lst = st.multiselect('Weapons', list(_weapon_stats_dic.keys()))
 for weapon in weapon_lst:
     st.subheader(weapon + ' Attachments')
     my_bar = st.progress(0)
-    for ran in range(1, 9):
-        my_bar.progress(ran)
-        weapon_muzzle = st.selectbox(weapon + ' Weapon Muzzle', ['None'] + list(_weapon_stats_dic[weapon].muzzle.keys()))
-        weapon_barrel = st.selectbox(weapon + ' Weapon Barrel', ['None'] + list(_weapon_stats_dic[weapon].barrel.keys()))
-        weapon_body = st.selectbox(weapon + ' Weapon Body', ['None'] + list(_weapon_stats_dic[weapon].body.keys()))
-        weapon_ubarrel = st.selectbox(weapon + ' Weapon Underbarrel', ['None'] + list(_weapon_stats_dic[weapon].under_barrel.keys()))
-        weapon_mag = st.selectbox(weapon + ' Weapon Magazine', ['None'] + list(_weapon_stats_dic[weapon].magazine.keys()))
-        weapon_handle = st.selectbox(weapon + ' Weapon Handle', ['None'] + list(_weapon_stats_dic[weapon].handle.keys()))
-        weapon_stock = st.selectbox(weapon + ' Weapon Stock', ['None'] + list(_weapon_stats_dic[weapon].stock.keys()))
-        rarity = st.selectbox(weapon + ' Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
-        pap = st.selectbox(weapon + ' Weapon Pack-a-punch level', ['0', '1', '2', '3'])
+    weapon_muzzle = st.selectbox(weapon + ' Weapon Muzzle', ['None'] + list(_weapon_stats_dic[weapon].muzzle.keys()))
+    my_bar.progress(1)
+    weapon_barrel = st.selectbox(weapon + ' Weapon Barrel', ['None'] + list(_weapon_stats_dic[weapon].barrel.keys()))
+    my_bar.progress(2)
+    weapon_body = st.selectbox(weapon + ' Weapon Body', ['None'] + list(_weapon_stats_dic[weapon].body.keys()))
+    weapon_ubarrel = st.selectbox(weapon + ' Weapon Underbarrel', ['None'] + list(_weapon_stats_dic[weapon].under_barrel.keys()))
+    weapon_mag = st.selectbox(weapon + ' Weapon Magazine', ['None'] + list(_weapon_stats_dic[weapon].magazine.keys()))
+    weapon_handle = st.selectbox(weapon + ' Weapon Handle', ['None'] + list(_weapon_stats_dic[weapon].handle.keys()))
+    weapon_stock = st.selectbox(weapon + ' Weapon Stock', ['None'] + list(_weapon_stats_dic[weapon].stock.keys()))
+    rarity = st.selectbox(weapon + ' Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
+    pap = st.selectbox(weapon + ' Weapon Pack-a-punch level', ['0', '1', '2', '3'])
 
     attachments = {
         'Muzzle': weapon_muzzle,
