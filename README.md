@@ -9,6 +9,8 @@ This is a package for analyzing and comparing weapons in Cold War Zombies.
 
 Weapon stats are current through Season 6 (_October 13th_). 
 
+A demo of the package can be found here: [Demo](https://share.streamlit.io/pjrigali/call-of-duty-cold-war-zombies/main)
+
 ## Installation
 [Pypi Documentation](https://pypi.org/project/cold-war-zombies/)
 
