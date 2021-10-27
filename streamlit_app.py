@@ -48,6 +48,6 @@ gun_lst = [
 
 # Build Analyze Class
 analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
-st.line_chart(data=analysis._compare_info_for_plots['Damage Per Second'])
+st.line_chart(data=analysis._compare_info_for_plots[first_weapon]['Damage Per Second'])
 
 
