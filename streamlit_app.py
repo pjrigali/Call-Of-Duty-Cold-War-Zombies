@@ -29,13 +29,13 @@ fw_attachments = {
 }
 
 second_weapon = st.selectbox('Second Weapon', list(_weapon_stats_dic.keys()))
-second_weapon_muzzle = st.selectbox('Second Weapon Muzzle', list(_weapon_stats_dic[first_weapon].muzzle.keys()))
-second_weapon_barrel = st.selectbox('Second Weapon Barrel', list(_weapon_stats_dic[first_weapon].barrel.keys()))
-second_weapon_body = st.selectbox('Second Weapon Body', list(_weapon_stats_dic[first_weapon].body.keys()))
-second_weapon_ubarrel = st.selectbox('Second Weapon Underbarrel', list(_weapon_stats_dic[first_weapon].under_barrel.keys()))
-second_weapon_mag = st.selectbox('Second Weapon Magazine', list(_weapon_stats_dic[first_weapon].magazine.keys()))
-second_weapon_handle = st.selectbox('Second Weapon Handle', list(_weapon_stats_dic[first_weapon].handle.keys()))
-second_weapon_stock = st.selectbox('Second Weapon Stock', list(_weapon_stats_dic[first_weapon].stock.keys()))
+second_weapon_muzzle = st.selectbox('Second Weapon Muzzle', list(_weapon_stats_dic[second_weapon].muzzle.keys()))
+second_weapon_barrel = st.selectbox('Second Weapon Barrel', list(_weapon_stats_dic[second_weapon].barrel.keys()))
+second_weapon_body = st.selectbox('Second Weapon Body', list(_weapon_stats_dic[second_weapon].body.keys()))
+second_weapon_ubarrel = st.selectbox('Second Weapon Underbarrel', list(_weapon_stats_dic[second_weapon].under_barrel.keys()))
+second_weapon_mag = st.selectbox('Second Weapon Magazine', list(_weapon_stats_dic[second_weapon].magazine.keys()))
+second_weapon_handle = st.selectbox('Second Weapon Handle', list(_weapon_stats_dic[second_weapon].handle.keys()))
+second_weapon_stock = st.selectbox('Second Weapon Stock', list(_weapon_stats_dic[second_weapon].stock.keys()))
 
 sw_attachments = {
     'Muzzle': first_weapon_muzzle,
