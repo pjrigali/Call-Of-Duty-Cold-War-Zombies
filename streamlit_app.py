@@ -124,12 +124,14 @@ analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_ls
 #         chart_df[weapon] = analysis._compare_info_for_plots[weapon]['Damage Per Second']
 # st.line_chart(data=chart_df)
 
+st.subheader('Damage Per Second')
 dps_df = pd.DataFrame()
 for weapon in weapon_lst:
     if weapon != 'None':
         dps_df[weapon] = analysis._compare_info_for_plots[weapon]['Damage Per Second']
 st.line_chart(data=dps_df)
 
+st.subheader('Time to Kill (Seconds)')
 ttk_df = pd.DataFrame()
 for weapon in weapon_lst:
     if weapon != 'None':
