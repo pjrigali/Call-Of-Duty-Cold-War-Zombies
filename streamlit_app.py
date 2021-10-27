@@ -7,16 +7,50 @@ import streamlit as st
 
 st.title('Call-Of-Duty-Cold-War-Zombies')
 st.markdown('*This is a demo of the Cold-War-Zombies package.*')
-st.subheader('Select Zombie Level:')
-zom_level = st.slider('Round Value', 1, 100, 1)
 
+st.sidebar.title("Description:")
+st.sidebar.markdown("This is a web application version of the Cold-War-Zombies python package.")
 st.sidebar.title("How to Use:")
 st.sidebar.markdown("1. Select the desired zombie round")
 st.sidebar.markdown("2. Select desired weapons for comparison")
 st.sidebar.markdown("3. Select the desired weapon attachments")
 st.sidebar.markdown("4. View comparison tables below")
-st.sidebar.title("Weapons")
+st.sidebar.title("Weapons:")
 st.sidebar.markdown("*All weapons are included up until mid-season 6.*")
+
+st.header('Set Weapon and Perk Tier:')
+st.markdown('If use defaults is selected, then all tiers will be maxed out at 5.')
+default = st.selectbox('Default', ['Yes', 'No'])
+if default == 'Yes':
+    weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
+                           'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
+    perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
+else:
+    launcher = st.selectbox('Launcher tier', ['1', '2', '3', '4', '5'])
+    special = st.selectbox('Special tier', ['1', '2', '3', '4', '5'])
+    smg = st.selectbox('Smg tier', ['1', '2', '3', '4', '5'])
+    shotgun = st.selectbox('Shotgun tier', ['1', '2', '3', '4', '5'])
+    pistol = st.selectbox('Pistol tier', ['1', '2', '3', '4', '5'])
+    marksman = st.selectbox('Marksman tier', ['1', '2', '3', '4', '5'])
+    sniper = st.selectbox('Sniper tier', ['1', '2', '3', '4', '5'])
+    lmg = st.selectbox('Lmg tier', ['1', '2', '3', '4', '5'])
+    assault = st.selectbox('Assault tier', ['1', '2', '3', '4', '5'])
+    weapon_class_levels = {'Launcher': launcher, 'Special': special, 'Smg': smg, 'Shotgun': shotgun, 'Pistol': pistol,
+                           'Marksman': marksman, 'Sniper': sniper, 'Lmg': lmg, 'Assault': assault, 'Melee': '5'}
+
+    speed = st.selectbox('Speed Cola tier', ['1', '2', '3', '4', '5'])
+    stam = st.selectbox('Stamin Up tier', ['1', '2', '3', '4', '5'])
+    dead = st.selectbox('Deadshot tier', ['1', '2', '3', '4', '5'])
+    death = st.selectbox('Death Perception tier', ['1', '2', '3', '4', '5'])
+    perk_class_levels = {'speed': speed, 'stamin up': stam, 'deadshot': dead, 'death_perception': death}
+damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
+                               max_range=100)
+
+st.subheader('Select Zombie Level:')
+zom_level = st.slider('Round Value', 1, 100, 1)
+zom = Health(level=zom_level, health_cap=55, outbreak=False, multiplier=2)
+
+
 
 gun_lst = []
 st.subheader('Select Weapons for Analysis')
@@ -44,13 +78,6 @@ for weapon in weapon_lst:
     val = {'weapon': weapon, 'nickname': 'Temp ' + weapon, 'equipped_attachments': attachments,
            'rarity': rarity, 'pap': pap, 'accuracy': None, 'critical': None}
     gun_lst.append(val)
-
-weapon_class_levels = {'Launcher': '5', 'Special': '5', 'Smg': '5', 'Shotgun': '5', 'Pistol': '5',
-                       'Marksman': '5', 'Sniper': '5', 'Lmg': '5', 'Assault': '5', 'Melee': '5'}
-perk_class_levels = {'speed': '5', 'stamin up': '5', 'deadshot': '5', 'death_perception': '5'}
-damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_class_levels=perk_class_levels,
-                               max_range=100)
-zom = Health(level=zom_level, health_cap=55, outbreak=False, multiplier=2)
 
 # Build Analyze Class
 if len(gun_lst) >= 1:
