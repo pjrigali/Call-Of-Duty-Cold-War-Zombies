@@ -3494,5 +3494,6 @@ _weapon_stats_dic = {
     'Hauer': Hauer,
     'Gallo': Gallo,
     'Streetsweeper': Streetsweeper,
+    'Ironhide': Ironhide,
 }
 _gun_names = list(_weapon_stats_dic.keys())
