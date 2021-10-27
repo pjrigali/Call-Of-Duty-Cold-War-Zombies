@@ -15,11 +15,8 @@ st.sidebar.markdown("1. Select the desired zombie round")
 st.sidebar.markdown("2. Select desired weapons for comparison")
 st.sidebar.markdown("3. Select the desired weapon attachments")
 st.sidebar.markdown("4. View comparison tables below")
-
 st.sidebar.title("Weapons")
-st.sidebar.text("All weapons are included up until mid-season 6.")
-
-# side.text('gjgjgjjgjg')
+st.sidebar.markdown("*All weapons are included up until mid-season 6.*")
 
 
 gun_lst = []
@@ -36,7 +33,6 @@ for weapon in weapon_lst:
     weapon_stock = st.selectbox(weapon + ' Weapon Stock', ['None'] + list(_weapon_stats_dic[weapon].stock.keys()))
     rarity = st.selectbox(weapon + ' Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
     pap = st.selectbox(weapon + ' Weapon Pack-a-punch level', ['0', '1', '2', '3'])
-
     attachments = {
         'Muzzle': weapon_muzzle,
         'Barrel': weapon_barrel,
@@ -57,14 +53,13 @@ damage_profile = DamageProfile(weapon_class_levels=weapon_class_levels, perk_cla
                                max_range=100)
 zom = Health(level=zom_level, health_cap=55, outbreak=False, multiplier=2)
 
-st.header('Visualizations:')
-plots = st.multiselect('Plots to Display',  ['Damage Per Max Ammo', 'Damage Per Clip', 'Damage Per Second',
-                                             'Time To Kill', 'Shots To Kill'])
-
 # Build Analyze Class
-if len(gun_lst) >= 1 and len(plots) >= 1:
+if len(gun_lst) >= 1:
     analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
 
+    st.header('Visualizations:')
+    plots = st.multiselect('Plots to Display', ['Damage Per Max Ammo', 'Damage Per Clip', 'Damage Per Second',
+                                                'Time To Kill', 'Shots To Kill'])
     for plot in plots:
             st.subheader(plot)
             dps_df = pd.DataFrame()
