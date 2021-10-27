@@ -10,8 +10,9 @@ st.markdown('*This is a demo of the Cold-War-Zombies package.*')
 st.subheader('Select Zombie Level')
 zom_level = st.slider('Round Value', 1, 100, 1)
 
-st.sidebar.title("Using")
-# add_selectbox.markdown('gjgjgjjgjg')
+side = st.sidebar()
+side.title("How to")
+side.text('gjgjgjjgjg')
 
 
 gun_lst = []
