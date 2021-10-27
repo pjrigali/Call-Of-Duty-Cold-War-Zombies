@@ -52,18 +52,20 @@ zom_level = st.slider('Round Number', 1, 100, 1)
 #         'Stock': second_weapon_stock
 #     }
 
+count = 1
 gun_lst = []
 weapon_lst = st.multiselect('Weapons', list(_weapon_stats_dic.keys()))
 for weapon in weapon_lst:
-    weapon_muzzle = st.selectbox('Weapon Muzzle', ['None'] + list(_weapon_stats_dic[weapon].muzzle.keys()))
-    weapon_barrel = st.selectbox('Weapon Barrel', ['None'] + list(_weapon_stats_dic[weapon].barrel.keys()))
-    weapon_body = st.selectbox('Weapon Body', ['None'] + list(_weapon_stats_dic[weapon].body.keys()))
-    weapon_ubarrel = st.selectbox('Weapon Underbarrel', ['None'] + list(_weapon_stats_dic[weapon].under_barrel.keys()))
-    weapon_mag = st.selectbox('Weapon Magazine', ['None'] + list(_weapon_stats_dic[weapon].magazine.keys()))
-    weapon_handle = st.selectbox('Weapon Handle', ['None'] + list(_weapon_stats_dic[weapon].handle.keys()))
-    weapon_stock = st.selectbox('Weapon Stock', ['None'] + list(_weapon_stats_dic[weapon].stock.keys()))
-    rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
-    pap = st.selectbox('Weapon Pack-a-punch level', ['0', '1', '2', '3'])
+    cv = str(count) + ' '
+    weapon_muzzle = st.selectbox(cv + 'Weapon Muzzle', ['None'] + list(_weapon_stats_dic[weapon].muzzle.keys()))
+    weapon_barrel = st.selectbox(cv + 'Weapon Barrel', ['None'] + list(_weapon_stats_dic[weapon].barrel.keys()))
+    weapon_body = st.selectbox(cv + 'Weapon Body', ['None'] + list(_weapon_stats_dic[weapon].body.keys()))
+    weapon_ubarrel = st.selectbox(cv + 'Weapon Underbarrel', ['None'] + list(_weapon_stats_dic[weapon].under_barrel.keys()))
+    weapon_mag = st.selectbox(cv + 'Weapon Magazine', ['None'] + list(_weapon_stats_dic[weapon].magazine.keys()))
+    weapon_handle = st.selectbox(cv + 'Weapon Handle', ['None'] + list(_weapon_stats_dic[weapon].handle.keys()))
+    weapon_stock = st.selectbox(cv + 'Weapon Stock', ['None'] + list(_weapon_stats_dic[weapon].stock.keys()))
+    rarity = st.selectbox(cv + 'Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
+    pap = st.selectbox(cv + 'Weapon Pack-a-punch level', ['0', '1', '2', '3'])
 
     attachments = {
         'Muzzle': weapon_muzzle,
@@ -77,6 +79,7 @@ for weapon in weapon_lst:
     val = {'weapon': weapon, 'nickname': 'Temp ' + weapon, 'equipped_attachments': attachments,
            'rarity': rarity, 'pap': pap, 'accuracy': None, 'critical': None}
     gun_lst.append(val)
+    count += 1
 
 # third_weapon = st.selectbox('Third Weapon', list(_weapon_stats_dic.keys()))
 # rarity = st.selectbox('Weapon Rarity', ['common', 'green', 'blue', 'purple', 'orange'])
