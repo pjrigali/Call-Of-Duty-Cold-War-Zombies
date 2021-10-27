@@ -1,3 +1,4 @@
+import pandas as pd
 from zombie.health_armour import Health
 from zombie.processor import DamageProfile
 from zombie.analysis import Analyze
@@ -48,6 +49,10 @@ gun_lst = [
 
 # Build Analyze Class
 analysis = Analyze(damage_profile=damage_profile, zombie_info=zom, weapon_dic_lst=gun_lst)
-st.line_chart(data=analysis._compare_info_for_plots[first_weapon]['Damage Per Second'])
+
+chart_df = pd.DataFrame()
+for weapon in [first_weapon]:
+    chart_df[weapon] = analysis._compare_info_for_plots[first_weapon]['Damage Per Second']
+st.line_chart(data=chart_df)
 
 
