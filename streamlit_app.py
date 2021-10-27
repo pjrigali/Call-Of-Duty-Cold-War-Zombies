@@ -5,7 +5,8 @@ from zombie.analysis import Analyze
 from zombie.weapon_stats import _weapon_stats_dic
 import streamlit as st
 
-st.header('Call-Of-Duty-Cold-War-Zombies')
+st.title('Call-Of-Duty-Cold-War-Zombies')
+st.subheader('Select Zombie Level')
 zom_level = st.slider('Round Number', 1, 100, 1)
 
 
@@ -54,9 +55,11 @@ zom_level = st.slider('Round Number', 1, 100, 1)
 
 count = 1
 gun_lst = []
+st.subheader('Select Weapons for Analysis')
 weapon_lst = st.multiselect('Weapons', list(_weapon_stats_dic.keys()))
 for weapon in weapon_lst:
     cv = str(count) + ' '
+    st.subheader(weapon + ' Attachments')
     weapon_muzzle = st.selectbox(weapon + ' Weapon Muzzle', ['None'] + list(_weapon_stats_dic[weapon].muzzle.keys()))
     weapon_barrel = st.selectbox(weapon + ' Weapon Barrel', ['None'] + list(_weapon_stats_dic[weapon].barrel.keys()))
     weapon_body = st.selectbox(weapon + ' Weapon Body', ['None'] + list(_weapon_stats_dic[weapon].body.keys()))
