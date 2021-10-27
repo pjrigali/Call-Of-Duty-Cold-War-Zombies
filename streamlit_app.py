@@ -6,8 +6,9 @@ from zombie.weapon_stats import _weapon_stats_dic
 import streamlit as st
 
 st.title('Call-Of-Duty-Cold-War-Zombies')
+st.markdown('*This is a demo of the Cold-War-Zombies package.*')
 st.subheader('Select Zombie Level')
-zom_level = st.slider('Round Number', 1, 100, 1)
+zom_level = st.slider('Round Value', 1, 100, 1)
 
 
 # first_weapon = st.selectbox('First Weapon', ['None'] + list(_weapon_stats_dic.keys()))
@@ -138,3 +139,4 @@ for weapon in weapon_lst:
     if weapon != 'None':
         ttk_df[weapon] = analysis._compare_info_for_plots[weapon]['Time To Kill']
 st.line_chart(data=ttk_df)
+st.caption('Seconds vs Range (Meters)')
