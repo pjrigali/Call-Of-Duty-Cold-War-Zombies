@@ -1026,6 +1026,83 @@ class Grav(Assault):
     }
 
 
+class Vargo(Assault):
+    name = 'Vargo'
+    temp_name = 'Base Vargo'
+    damage_1 = 32.0
+    damage_3 = 28.0
+    range_1 = 38.1
+    fire_rate = 800.0
+    velocity = 755.0
+    shoot_speed = 9.18
+    ads = 300.0
+    vertical_recoil = 360.0
+    horizontal_recoil = 30.0
+    centering_speed = 11.0
+    reload = 2.5
+    gun_acc_value = 0.47
+    gun_critical_value = 0.74
+    critical = 4.5
+    mag_capacity = 30
+    muzzle = {
+        'Muzzle Brake': ['+ 4% Vertical Recoil Control'],
+        'Flash Guard': ['+ 17.5% Increased Equipment Drop Chance'],
+        'Suppressor': ['+ 22.5% Increased Equipment Drop Chance', '- 13% Effective Damage Range',
+                       '- 8% Bullet Velocity'],
+        'Spetsnaz Compensator': ['+ 12% Vertical Recoil Control', '- 8% Horizontal Recoil Control'],
+        'KGB Eliminator': ['+ 30% Increased Equipment Drop Chance', '+ 17% Vertical Recoil Control',
+                           '- 10% Shooting Move Speed', '- 10% Horizontal Recoil Control'],
+        'GRU Suppressor': ['+ 35% Increased Equipment Drop Chance', '+ 10% Vertical Recoil Control',
+                           '- 27% Effective Damage Range', '- 15% Bullet Velocity'],
+        'None': ['None']
+    }
+    barrel = {
+        'Ultralight': ['+ 10% Aim Walking Movement Speed', '+ 5% Strafe Speed'],
+        'Liberator': ['+ 100% Bullet Velocity', '- 20% Aim Walking Movement Speed'],
+        'Cavalry Lancer': ['+ 50% Armour Damage'],
+        'VDV Reinforced': ['+ 100% Effective Damage Range', '+ 40% Bullet Velocity', '- 4% Sprinting Move Speed',
+                           '- 20% Aim Walking Movement Speed'],
+        'Take Down': ['+ 150% Effective Damage Range', '- 5% Sprinting Move Speed'],
+        'Task Force': ['+ 9% Damage', '+ 20% Effective Damage Range', '+ 66% Bullet Velocity',
+                       '- 33% Max Starting Ammo', '- 12% Vertical Recoil Control', '- 18% Horizontal Recoil Control'],
+        'None': ['None']
+    }
+    under_barrel = {
+        'Fore grip': ['+ 15% Horizontal Recoil Control'],
+        'Infiltrator Grip': ['+ 5% Movement Speed', '+ 5% Shooting Move Speed', '+ 5% Aim Walking Movement Speed'],
+        'Patrol Grip': ['+ 6% Sprinting Move Speed'],
+        'Bruiser Grip': ['+ 40% Melee Quickness', '+ 3% Movement Speed', '+ 3% Shooting Move Speed',
+                         '+ 3% Sprinting Move Speed', '+ 3% Aim Walking Movement Speed'],
+        'Spetsnaz Grip': ['+ 5% Vertical Recoil Control', '+ 15% Horizontal Recoil Control',
+                          '- 26% Shooting Move Speed'],
+        'Spetsnaz Speed Grip': ['+ 5% Sprinting Move Speed', '+ 15% Horizontal Recoil Control', '- 6% Movement Speed',
+                                '- 6% Shooting Move Speed', '- 6% Aim Walking Movement Speed'],
+        'None': ['None']
+    }
+    magazine = {
+        'RND': ['+ 33% Magazine Ammo Capacity', '+ 33% Max Starting Ammo', '+ 33% Ammo Capacity',
+                '- 10% Reload Quickness'],
+        'Taped Mag': ['+ 30% Reload Quickness'],
+        'Speed Mag': ['+ 33% Magazine Ammo Capacity', '+ 25% Reload Quickness', '+ 33% Max Starting Ammo',
+                      '+ 33% Ammo Capacity', '- 20% Aim Down Sight Time'],
+        'Spetsnaz Mag': ['+ 67% Magazine Ammo Capacity', '+ 67% Max Starting Ammo', '+ 67% Ammo Capacity',
+                         '- 10% Reload Quickness', '- 15% Aim Down Sight Time'],
+        'GRU Mag Clamp': ['+ 40% Reload Quickness', '+ 33% Max Starting Ammo', '- 6% Aim Down Sight Time'],
+        'VDV Fast Mag': ['+ 67% Magazine Ammo Capacity', '+ 35% Reload Quickness', '+ 67% Max Starting Ammo',
+                         '+ 67% Ammo Capacity', '- 25% Aim Down Sight Time'],
+        'None': ['None']
+    }
+    stock = {
+        'Tactical Stock': ['+ 20% Aim Walking Movement Speed'],
+        'Wire Stock': ['+ 10% Sprint to Fire Time'],
+        'Duster Stock': ['+ 5% Slide Speed'],
+        'No Stock': ['+ 30% Sprint to Fire Time', '- 15% Hip Fire Accuracy'],
+        'Spetsnaz Stock': ['+ 5% Shooting Move Speed', '+ 40% Aim Walking Movement Speed', '- 15% Hip Fire Accuracy'],
+        'KGB Stock': ['+ 30% Sprint to Fire Time', '+ 40% Aim Walking Movement Speed', '- 30% Hip Fire Accuracy'],
+        'None': ['None']
+    }
+
+
 class Smg(Weapon):
     movement = 10.8
     sprint = 14.8
@@ -3465,6 +3542,7 @@ _weapon_stats_dic = {
     'C58': C58,
     'EM2': Em2,
     'Grav': Grav,
+    'Vargo': Vargo,
     'MP5': Mp5,
     'Milano': Milano,
     'AK74u': Ak74u,
