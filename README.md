@@ -94,6 +94,7 @@ The *Analyze* class will return the following plots:
 * 1.0.0 - Base package.
 * 1.0.1 - Add Classes and Viz
 * 1.0.2 - Adds Grav, Ironhide, and updates inline with season 6.
+* 1.0.3 - Adds Vargo.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
